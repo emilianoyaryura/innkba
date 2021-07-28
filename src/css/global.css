@@ -1,6 +1,10 @@
 @import './reset.css';
 @import './inter.css';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --font-system:
     -apple-system,

@@ -1,10 +1,9 @@
-import PageLayout from 'components/layout/page'
-import Button from 'components/primitives/button'
+import PageLayout from 'components/layout/pageLayout'
 
 const HomePage = () => {
   return (
-    <PageLayout headProps={{ title: 'next-typescript | basement.studio' }}>
-      <Button>Hola mundo.</Button>
+    <PageLayout navProps={{ selected: 'inicio' }}>
+      <div className="h-screen bg-red w-20 mt-6 mx-auto">aca</div>
     </PageLayout>
   )
 }

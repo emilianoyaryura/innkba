@@ -1,0 +1,23 @@
+.nav {
+  padding: 60px 0 15px;
+  position: sticky;
+  top: -45px;
+  z-index: 100;
+}
+
+.mobileMenu {
+  width: 100%;
+  height: calc(100vh - 62px);
+  position: fixed;
+  top: 62px;
+  background: white;
+  transition: all 0.3s;
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+  }
+}
