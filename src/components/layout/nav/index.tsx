@@ -20,7 +20,7 @@ type Props = {
     | 'inicio'
 }
 
-const menu: Menu = [
+export const menu: Menu = [
   {
     label: 'Lifestyle',
     route: '/'

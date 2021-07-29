@@ -1,5 +1,7 @@
 import { ReactNode } from 'react'
+import Footer from '../footer'
 import Nav from '../nav'
+import PreFooter from '../preFooter'
 
 type Props = {
   children: ReactNode
@@ -12,13 +14,20 @@ type Props = {
       | 'literatura'
       | 'inicio'
   }
+  withoutPreFooter?: boolean
 }
 
-const PageLayout = ({ children, navProps }: Props) => {
+const PageLayout = ({
+  children,
+  navProps,
+  withoutPreFooter = false
+}: Props) => {
   return (
     <div>
       <Nav selected={navProps.selected} />
       {children}
+      {!withoutPreFooter && <PreFooter />}
+      <Footer />
     </div>
   )
 }
