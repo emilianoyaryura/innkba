@@ -8,13 +8,17 @@ export type Author = {
 }
 
 export type Post = {
-  link: string
+  link: {
+    href: string
+    label?: string
+  }
   image: {
     src: string
     title?: string
   }
   category: Category
   title: string
+  copy?: string
   author?: Author
   frontImage: {
     src: string
