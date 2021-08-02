@@ -10,36 +10,37 @@ type Menu = {
   route: string
 }[]
 
+export type Category =
+  | 'lifestyle'
+  | 'viajes'
+  | 'cultura'
+  | 'arte'
+  | 'literatura'
+
 type Props = {
-  selected:
-    | 'lifestyle'
-    | 'viajes'
-    | 'cultura'
-    | 'arte'
-    | 'literatura'
-    | 'inicio'
+  selected: Category | 'inicio'
 }
 
 export const menu: Menu = [
   {
     label: 'Lifestyle',
-    route: '/'
+    route: '/lifestyle'
   },
   {
     label: 'Viajes',
-    route: '/'
+    route: '/viajes'
   },
   {
     label: 'Cultura',
-    route: '/'
+    route: '/cultura'
   },
   {
     label: 'Arte',
-    route: '/'
+    route: '/arte'
   },
   {
     label: 'Literatura',
-    route: '/'
+    route: '/literatura'
   }
 ]
 
@@ -74,12 +75,17 @@ const Nav = ({ selected }: Props) => {
           size="large"
           className="hidden justify-between items-center lg:flex"
         >
-          <Image
-            src="/images/brand/logo.svg"
-            width={114}
-            height={49}
-            alt="logo"
-          />
+          <Link href="/">
+            <a className="cursor-pointer">
+              <Image
+                src="/images/brand/logo.svg"
+                width={114}
+                height={49}
+                alt="logo"
+              />
+            </a>
+          </Link>
+
           <div>
             {menu.map((item, idx) => (
               <Link key={idx} href={item.route}>

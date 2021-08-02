@@ -1,7 +1,24 @@
-// If we are using a database, here is where we'll define the db models
-// Multiple files recommended!
+import { Category } from 'components/layout/nav'
 
-export type User = {
-  id: string
+export type Author = {
   name: string
+  link?: string
+  image?: string
+  data?: string
+}
+
+export type Post = {
+  link: string
+  image: {
+    src: string
+    title?: string
+  }
+  category: Category
+  title: string
+  author?: Author
+  frontImage: {
+    src: string
+    title?: string
+  }
+  content: string
 }
