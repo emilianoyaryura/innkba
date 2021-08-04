@@ -53,7 +53,8 @@ module.exports = {
     },
     extend: {
       lineHeight: {
-        smooth: '110%'
+        smooth: '110%',
+        normal: '120%'
       }
     }
   },

@@ -2,7 +2,7 @@ import SectionLayout from 'components/layout/sectionLayout'
 import BigPost from 'components/atoms/post/bigPost'
 import { Post } from 'ts/models'
 import HorizonalPost from 'components/atoms/post/horizontal'
-import PostGrid from 'components/molecules/postGrid'
+import RegularPost from 'components/atoms/post'
 
 type Props = {
   principalPost: Post
@@ -25,8 +25,18 @@ const HeaderPosts = ({ posts, principalPost }: Props) => {
             />
           ))}
         </div>
-        <div className="flex md:hidden -mt-14">
-          <PostGrid posts={posts} />
+        <div className="flex md:hidden mt-4">
+          <div className="grid grid-cols-1 mt-10 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 lg:gap-x-10">
+            {posts.map((post, idx) => (
+              <RegularPost
+                key={idx}
+                category={post.category}
+                title={post.title}
+                image={post.image}
+                link={post.link}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </SectionLayout>

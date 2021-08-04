@@ -23,6 +23,7 @@ export const posts: Post[] = [
   },
   {
     title: 'Emiliano Yaryura presenta su nueva saga de cuentos cortos',
+    copy: 'It’s a milestone that individuals for months: the COVID-19 vaccine is finally (and gradually) being rolled out to millions worldwide.',
     category: 'literatura',
     link: {
       href: '/lifestyle/travel-across-europe-with-just-a-backpack'

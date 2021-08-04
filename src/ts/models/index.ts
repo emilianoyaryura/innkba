@@ -7,6 +7,15 @@ export type Author = {
   data?: string
 }
 
+export type PostWithoutImagePreview = {
+  link: {
+    href: string
+    label?: string
+  }
+  title: string
+  copy: string
+}
+
 export type Post = {
   link: {
     href: string
