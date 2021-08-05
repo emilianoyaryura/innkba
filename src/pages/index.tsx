@@ -4,6 +4,7 @@ import { posts } from 'hardcodedData'
 import HeaderPosts from 'components/sections/home/header-posts'
 import TwoGridPost from 'components/molecules/twoGridPost'
 import PostWithImageSlider from 'components/molecules/postWithImageSlider'
+import Spotify from 'components/molecules/spotify'
 
 const HomePage = () => {
   return (
@@ -20,6 +21,12 @@ const HomePage = () => {
         copy="Don’t miss this originals short stories. New chapters every weekend of this awesome writers. "
         images={[{ href: '', title: '' }]}
         posts={posts.slice(0, 3)}
+      />
+      <Spotify
+        title="Every journey needs a soundtrack"
+        copy="Tune in to the sounds of Spain and Latin America with our curated Spotify playlist. You be mouthing out the lyrics before you know it."
+        link={{ href: '/' }}
+        secondLink={{ href: '/' }}
       />
     </PageLayout>
   )
