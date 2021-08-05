@@ -58,7 +58,7 @@ const Spotify = ({ title, copy, link, secondLink, iframe }: SpotifyProps) => {
           </div>
         </div>
         <iframe
-          src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3"
+          src={iframe}
           width="300"
           height="310"
           frameBorder="0"
