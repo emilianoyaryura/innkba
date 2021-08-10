@@ -91,7 +91,13 @@ const Slider = ({ title, copy, slides }: SliderProps) => {
   return (
     <SectionLayout title={title} copy={copy}>
       <div className="flex flex-col md:flex-row justify-center md:justify-between items-center">
-        <i className="hidden md:flex cursor-pointer" onClick={slider?.prev}>
+        <i
+          className={clsx('hidden md:flex', {
+            'cursor-not-allowed': currentSlide == 0,
+            'cursor-pointer': currentSlide != 0
+          })}
+          onClick={slider?.prev}
+        >
           <Arrow isDisabled={currentSlide == 0} />
         </i>
         <div ref={sliderRef} className="keen-slider  md:mx-16">
@@ -117,7 +123,10 @@ const Slider = ({ title, copy, slides }: SliderProps) => {
         </div>
         <i
           onClick={slider?.next}
-          className="hidden md:flex cursor-pointer transform rotate-180"
+          className={clsx('hidden md:flex transform rotate-180', {
+            'cursor-not-allowed': currentSlide >= slides.length - 1,
+            'cursor-pointer': currentSlide < slides.length - 1
+          })}
         >
           <Arrow isDisabled={currentSlide >= slides.length - 1} />
         </i>
