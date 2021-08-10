@@ -6,6 +6,7 @@ import TwoGridPost from 'components/molecules/twoGridPost'
 import PostWithImageSlider from 'components/molecules/postWithImageSlider'
 import Spotify from 'components/molecules/spotify'
 import Slider, { SlideProps } from 'components/molecules/slider'
+import FullScreenPost from 'components/atoms/post/fullScreenPost'
 
 const slides: SlideProps[] = [
   {
@@ -55,6 +56,7 @@ const HomePage = () => {
         iframe="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3"
       />
       <Slider slides={slides} />
+      <FullScreenPost post={posts[0]} />
     </PageLayout>
   )
 }
