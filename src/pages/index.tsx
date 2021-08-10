@@ -7,6 +7,7 @@ import PostWithImageSlider from 'components/molecules/postWithImageSlider'
 import Spotify from 'components/molecules/spotify'
 import Slider, { SlideProps } from 'components/molecules/slider'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
+import Quote from 'components/atoms/quote'
 
 const slides: SlideProps[] = [
   {
@@ -57,6 +58,15 @@ const HomePage = () => {
       />
       <Slider slides={slides} />
       <FullScreenPost post={posts[0]} />
+      <Quote
+        author={{
+          name: 'Ernest Hemingway',
+          dates: { birth: 1899, death: 1961 },
+          image:
+            'https://images.unsplash.com/photo-1609090459635-b428136bc13e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80'
+        }}
+        quote="All modern American literature comes from one book by Mark Twain called Huckleberry Finn. There was nothing before. There has been nothing as good since."
+      />
     </PageLayout>
   )
 }
