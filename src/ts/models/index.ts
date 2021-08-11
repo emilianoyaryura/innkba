@@ -29,9 +29,5 @@ export type Post = {
   title: string
   copy?: string
   author?: Author
-  frontImage: {
-    src: string
-    title?: string
-  }
   content: string
 }

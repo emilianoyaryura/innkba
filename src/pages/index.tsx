@@ -2,12 +2,14 @@ import PageLayout from 'components/layout/pageLayout'
 import PostGrid from 'components/molecules/postGrid'
 import { posts } from 'hardcodedData'
 import HeaderPosts from 'components/sections/home/header-posts'
+import { InferGetStaticPropsType } from 'next'
 import TwoGridPost from 'components/molecules/twoGridPost'
 import PostWithImageSlider from 'components/molecules/postWithImageSlider'
 import Spotify from 'components/molecules/spotify'
 import Slider, { SlideProps } from 'components/molecules/slider'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
 import Quote from 'components/atoms/quote'
+import { getPosts } from 'lib/api'
 
 const slides: SlideProps[] = [
   {
@@ -33,7 +35,10 @@ const slides: SlideProps[] = [
   }
 ]
 
-const HomePage = () => {
+const HomePage = ({
+  contentfulPosts
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  console.log(contentfulPosts)
   return (
     <PageLayout navProps={{ selected: 'inicio' }}>
       <HeaderPosts principalPost={posts[0]} posts={posts} />
@@ -69,6 +74,16 @@ const HomePage = () => {
       />
     </PageLayout>
   )
+}
+
+export const getStaticProps = async () => {
+  const posts = await getPosts()
+
+  return {
+    props: {
+      contentfulPosts: posts
+    }
+  }
 }
 
 export default HomePage
