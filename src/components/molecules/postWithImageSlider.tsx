@@ -1,11 +1,11 @@
 import SectionLayout from 'components/layout/sectionLayout'
-import { Post } from 'ts/models'
+import { ContentfulPost } from 'ts/models'
 import Image from 'next/image'
 import HorizontalPost from 'components/atoms/post/horizontal'
 import RegularPost from 'components/atoms/post'
 
 type PostWithImageSliderProps = {
-  posts: Post[]
+  posts: ContentfulPost[]
   images: {
     href: string
     title?: string
@@ -26,13 +26,7 @@ const PostWithImageSlider = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="hidden md:flex flex-col justify-between">
           {posts.map((post, idx) => (
-            <HorizontalPost
-              key={idx}
-              title={post.title}
-              category={post.category}
-              link={post.link}
-              image={post.image}
-            />
+            <HorizontalPost key={idx} post={post} />
           ))}
         </div>
         <Image
@@ -46,13 +40,7 @@ const PostWithImageSlider = ({
         <div className="flex md:hidden">
           <div className="grid grid-cols-1 mt-10 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 lg:gap-x-10">
             {posts.map((post, idx) => (
-              <RegularPost
-                key={idx}
-                category={post.category}
-                title={post.title}
-                image={post.image}
-                link={post.link}
-              />
+              <RegularPost key={idx} post={post} />
             ))}
           </div>
         </div>

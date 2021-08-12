@@ -1,27 +1,14 @@
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Category } from '../../layout/nav'
+import { ContentfulPost } from 'ts/models'
 
-export type PostPreview = {
-  link: {
-    href: string
-    label?: string
-  }
-  image: {
-    src: string
-    title?: string
-  }
-  category: Category
-  title: string
-}
-
-const Post = ({ image, link, category, title }: PostPreview) => {
+const Post = ({ post }: { post: ContentfulPost }) => {
   return (
     <div className="flex flex-col">
       <Image
-        src={image.src}
-        alt={image.title}
+        src={post.image.src ?? ''}
+        alt={post.image.title ?? ''}
         width={320}
         height={270}
         className="rounded-xl"
@@ -30,17 +17,17 @@ const Post = ({ image, link, category, title }: PostPreview) => {
       <div className="mt-5 pr-3">
         <p
           className={clsx('mb-2 text-14 font-semibold capitalize', {
-            'text-blue': category === 'lifestyle',
-            'text-yellow': category === 'arte',
-            'text-green': category === 'cultura',
-            'text-violet': category === 'literatura',
-            'text-red': category === 'viajes'
+            'text-blue': post.category === 'Lifestyle',
+            'text-yellow': post.category === 'Arte',
+            'text-green': post.category === 'Cultura',
+            'text-violet': post.category === 'Literatura',
+            'text-red': post.category === 'Viajes'
           })}
         >
-          {category}
+          {post.category}
         </p>
-        <p className="text-18 font-semibold">{title}</p>
-        <Link href={link}>
+        <p className="text-18 font-semibold">{post.title}</p>
+        <Link href={post.slug}>
           <div className="mt-4 max-w-max cursor-pointer">
             <span className="text-14 mb-1 font-semibold">Keep Reading</span>
             <div className="h-px w-full bg-black" />
