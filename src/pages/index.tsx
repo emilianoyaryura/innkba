@@ -1,8 +1,6 @@
 import PageLayout from 'components/layout/pageLayout'
 import PostGrid from 'components/molecules/postGrid'
-import { posts } from 'hardcodedData'
 import HeaderPosts from 'components/sections/home/header-posts'
-import { InferGetStaticPropsType } from 'next'
 import TwoGridPost from 'components/molecules/twoGridPost'
 import PostWithImageSlider from 'components/molecules/postWithImageSlider'
 import Spotify from 'components/molecules/spotify'
@@ -10,6 +8,7 @@ import Slider, { SlideProps } from 'components/molecules/slider'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
 import Quote from 'components/atoms/quote'
 import { getPosts } from 'lib/api'
+import { ContentfulPost } from 'ts/models'
 
 const slides: SlideProps[] = [
   {
@@ -37,22 +36,26 @@ const slides: SlideProps[] = [
 
 const HomePage = ({
   contentfulPosts
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(contentfulPosts)
+}: {
+  contentfulPosts: ContentfulPost[]
+}) => {
   return (
     <PageLayout navProps={{ selected: 'inicio' }}>
-      <HeaderPosts principalPost={posts[0]} posts={posts} />
+      <HeaderPosts
+        principalPost={contentfulPosts[0]}
+        posts={contentfulPosts.slice(0, 4)}
+      />
       <PostGrid
         title="New Blog Posts"
         copy="Don’t miss this originals short stories. New chapters every weekend of this awesome writers. "
-        posts={posts}
+        posts={contentfulPosts}
       />
-      <TwoGridPost posts={posts.slice(0, 2)} />
+      <TwoGridPost posts={contentfulPosts.slice(0, 2)} />
       <PostWithImageSlider
         title="New Story Every Sunday"
         copy="Don’t miss this originals short stories. New chapters every weekend of this awesome writers. "
         images={[{ href: '', title: '' }]}
-        posts={posts.slice(0, 3)}
+        posts={contentfulPosts.slice(0, 3)}
       />
       <Spotify
         title="Every journey needs a soundtrack"
@@ -62,7 +65,8 @@ const HomePage = ({
         iframe="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3"
       />
       <Slider slides={slides} />
-      <FullScreenPost post={posts[0]} />
+      <FullScreenPost post={contentfulPosts[0]} />
+
       <Quote
         author={{
           name: 'Ernest Hemingway',
@@ -81,7 +85,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      contentfulPosts: posts
+      contentfulPosts: posts ?? null
     }
   }
 }

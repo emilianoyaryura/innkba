@@ -1,11 +1,11 @@
 import SectionLayout from 'components/layout/sectionLayout'
-import { Post } from 'ts/models'
+import { ContentfulPost } from 'ts/models'
 import Image from 'next/image'
 import Button from 'components/primitives/button'
 import clsx from 'clsx'
 
 type Props = {
-  post: Post
+  post: ContentfulPost
 }
 
 const FullScreenPost = ({ post }: Props) => {
@@ -13,7 +13,7 @@ const FullScreenPost = ({ post }: Props) => {
     <SectionLayout>
       <div className="flex flex-col md:flex-row md:items-center">
         <Image
-          src={post.image.src}
+          src={post.image.src ?? ''}
           alt={post.image.title ?? post.title}
           width={560}
           height={420}
@@ -24,11 +24,11 @@ const FullScreenPost = ({ post }: Props) => {
             className={clsx(
               'text-16 mt-6 md:mt-0 mb-3 md:mb-0 md:text-14 lg:text-16 font-semibold capitalize',
               {
-                'text-blue': post.category === 'lifestyle',
-                'text-yellow': post.category === 'arte',
-                'text-green': post.category === 'cultura',
-                'text-violet': post.category === 'literatura',
-                'text-red': post.category === 'viajes'
+                'text-blue': post.category === 'Lifestyle',
+                'text-yellow': post.category === 'Arte',
+                'text-green': post.category === 'Cultura',
+                'text-violet': post.category === 'Literatura',
+                'text-red': post.category === 'Viajes'
               }
             )}
           >
@@ -40,8 +40,8 @@ const FullScreenPost = ({ post }: Props) => {
           <p className="mt-3 md:mt-0 mb-7 max-w-lg font-medium text-14 lg:text-16 md:mb-6 lg:mb-10 text-gray-400 md:max-w-md">
             {post.copy}
           </p>
-          <Button href={post.link.href} className="max-w-max">
-            {post.link.label ?? 'Seguir Leyendo'}
+          <Button href={post.slug} className="max-w-max">
+            Seguir Leyendo
           </Button>
         </div>
       </div>
