@@ -91,7 +91,7 @@ const Slider = ({ title, copy, slides }: SliderProps) => {
   return (
     <SectionLayout title={title} copy={copy}>
       <div className="flex flex-col md:flex-row justify-center md:justify-between items-center">
-        <i
+        <button
           className={clsx('hidden md:flex', {
             'cursor-not-allowed': currentSlide == 0,
             'cursor-pointer': currentSlide != 0
@@ -99,7 +99,7 @@ const Slider = ({ title, copy, slides }: SliderProps) => {
           onClick={slider?.prev}
         >
           <Arrow isDisabled={currentSlide == 0} />
-        </i>
+        </button>
         <div ref={sliderRef} className="keen-slider  md:mx-16">
           {slides?.map((slide, idx) => (
             <div className="keen-slider__slide relative" key={idx}>
@@ -121,7 +121,7 @@ const Slider = ({ title, copy, slides }: SliderProps) => {
             </div>
           ))}
         </div>
-        <i
+        <button
           onClick={slider?.next}
           className={clsx('hidden md:flex transform rotate-180', {
             'cursor-not-allowed': currentSlide >= slides.length - 1,
@@ -129,17 +129,17 @@ const Slider = ({ title, copy, slides }: SliderProps) => {
           })}
         >
           <Arrow isDisabled={currentSlide >= slides.length - 1} />
-        </i>
+        </button>
         <div className="flex md:hidden mt-4 space-x-4">
-          <i onClick={slider?.prev} className="cursor-pointer">
+          <button onClick={slider?.prev} className="cursor-pointer">
             <SmallArrow isDisabled={currentSlide == 0} />
-          </i>
-          <i
+          </button>
+          <button
             onClick={slider?.next}
             className="cursor-pointer transform rotate-180"
           >
             <SmallArrow isDisabled={currentSlide >= slides.length - 1} />
-          </i>
+          </button>
         </div>
       </div>
     </SectionLayout>

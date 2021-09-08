@@ -47,6 +47,7 @@ export const menu: Menu = [
 const Nav = ({ selected }: Props) => {
   const [scrollsDown, setScrollsDown] = useState<boolean>(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [inputFocusState, setInputFocusState] = useState(false)
 
   const handleScroll = useCallback(() => {
     if (window.scrollY > 80) {
@@ -100,16 +101,46 @@ const Nav = ({ selected }: Props) => {
               </Link>
             ))}
           </div>
-          <div className="flex items-center border-solid border-b border-gray-300">
+          <div
+            className={clsx(
+              'flex items-center border-solid border-b transition-all duration-200',
+              {
+                'border-black': inputFocusState,
+                'border-gray-300': !inputFocusState
+              }
+            )}
+          >
             <label htmlFor="search">
-              <Image
-                src="/icons/search.svg"
-                alt="search"
-                width={18}
-                height={18}
-              />
+              {/* Search icon */}
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 4.93629 14.25 8.25 14.25Z"
+                  style={{ transition: 'all 0.2s' }}
+                  stroke={inputFocusState ? '#000' : '#A0A0A0'}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M15.7498 15.7498L12.4873 12.4873"
+                  style={{ transition: 'all 0.2s' }}
+                  stroke={inputFocusState ? '#000' : '#A0A0A0'}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </label>
-            <input id="search" className="focus:outline-none ml-4 mb-1" />
+            <input
+              id="search"
+              className="focus:outline-none ml-4 mb-1"
+              onFocus={() => setInputFocusState(true)}
+              onBlur={() => setInputFocusState(false)}
+            />
           </div>
         </Container>
         <Container

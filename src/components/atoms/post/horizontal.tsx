@@ -30,7 +30,7 @@ const HorizontalPost = ({ post }: { post: ContentfulPost }) => {
           {post.title}
         </p>
         <Link href={post.slug}>
-          <div className="mt-4 max-w-max cursor-pointer">
+          <div className="mt-4 max-w-max cursor-pointer transition-all duration-150 hover:opacity-70">
             <span className="text-14 mb-1 font-semibold">Keep Reading</span>
             <div className="h-px w-full bg-black" />
           </div>

@@ -32,7 +32,7 @@ const BigPost = ({ post }: { post: ContentfulPost }) => {
         {post.copy}
       </p>
       <Button className="max-w-max" href={post.slug}>
-        'Seguir Leyendo'
+        Seguir Leyendo
       </Button>
     </div>
   )

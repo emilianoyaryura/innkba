@@ -1,14 +1,12 @@
 import { NextSeo, NextSeoProps } from 'next-seo'
-import { originURL } from 'lib/constants'
 import { useRouter } from 'next/dist/client/router'
 import { useMemo } from 'react'
 import NextHead from 'next/head'
 import { useMedia } from 'hooks/use-media'
 
 const defaultMeta = {
-  title: 'next-typescript | basement.studio',
-  description: `A minimalist's boilerplate — Next.js with TypeScript.`,
-  ogImage: `${originURL}/og.png`
+  title: 'Cambio y Fuera',
+  description: `La realidad sin interferencias`
 }
 
 type Meta = {
@@ -29,9 +27,15 @@ const Head = (props: HeadProps) => {
       ...props.rawNextSeoProps,
       title: props.title ?? defaultMeta.title,
       description: props.description ?? defaultMeta.description,
-      canonical: `${originURL}${router.pathname}`,
+      canonical: `https://innkba.com/${router.pathname}`,
       openGraph: {
-        images: [{ url: props.ogImage ?? defaultMeta.ogImage }]
+        images: [
+          {
+            url:
+              props.ogImage ??
+              'https://cambioyfuera.com.ar/images/defaultOg.png'
+          }
+        ]
       },
       noindex: props.noIndex
     }
@@ -44,7 +48,7 @@ const Head = (props: HeadProps) => {
         <meta charSet="utf-8" />
         <meta
           name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=0"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
         />
         <meta name="theme-color" content="#ffffff" />
         <link rel="icon" href={isDark ? '/favicon-dark.svg' : '/favicon.svg'} />

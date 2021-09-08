@@ -11,7 +11,7 @@ type Props = {
 
 const SectionLayout = ({ title, children, copy, classname }: Props) => {
   return (
-    <Container size="large" className={clsx('mt-28 flex flex-col', classname)}>
+    <Container size="large" className={clsx('mb-28 flex flex-col', classname)}>
       {title && (
         <h1 className="text-28 sm:text-38 font-bold leading-normal">{title}</h1>
       )}
