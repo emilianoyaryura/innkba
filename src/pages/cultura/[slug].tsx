@@ -1,4 +1,4 @@
-import { getLifestylePosts } from 'lib/api'
+import { getCulturePosts } from 'lib/api'
 import { useRouter } from 'next/dist/client/router'
 import { ContentfulPost } from 'ts/models'
 import Container from 'components/layout/container'
@@ -8,7 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { renderBody } from 'lib/renderer'
 
-const LifestylePost = ({ posts }: { posts: ContentfulPost[] }) => {
+const CulturePost = ({ posts }: { posts: ContentfulPost[] }) => {
   const router = useRouter()
   const query = router.query.slug
   const post = posts.filter((p) => p.slug === query)[0]
@@ -155,7 +155,7 @@ const LifestylePost = ({ posts }: { posts: ContentfulPost[] }) => {
 }
 
 export const getStaticPaths = async () => {
-  const posts = await getLifestylePosts()
+  const posts = await getCulturePosts()
   const paths = posts.map((each: any) => ({
     params: { slug: each.slug as string }
   }))
@@ -166,7 +166,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async () => {
-  const posts = await getLifestylePosts()
+  const posts = await getCulturePosts()
 
   return {
     props: {
@@ -175,4 +175,4 @@ export const getStaticProps = async () => {
   }
 }
 
-export default LifestylePost
+export default CulturePost
