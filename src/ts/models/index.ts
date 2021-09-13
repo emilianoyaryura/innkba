@@ -1,5 +1,3 @@
-import { Category } from 'components/layout/nav'
-
 export type Author = {
   name: string
   link?: string
@@ -16,11 +14,19 @@ export type PostWithoutImagePreview = {
   copy: string
 }
 
+export type Category =
+  | 'Lifestyle'
+  | 'Arte'
+  | 'Literatura'
+  | 'Viajes'
+  | 'Cultura'
+  | 'Diario de Viaje'
+
 export type ContentfulPost = {
   title: string
   slug: string
   copy: string
-  category: 'Lifestyle' | 'Arte' | 'Literatura' | 'Viajes' | 'Cultura'
+  category: Category
   date: string
   author: {
     name: string

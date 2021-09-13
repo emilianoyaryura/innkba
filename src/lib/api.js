@@ -30,3 +30,39 @@ export async function getPosts() {
     }
   })
 }
+
+export const getLifestylePosts = async () => {
+  const allPosts = await getPosts()
+  const posts = allPosts.filter((e) => e.category === 'Lifestyle')
+  return posts
+}
+
+export const getLiteraturePosts = async () => {
+  const allPosts = await getPosts()
+  const posts = allPosts.filter((e) => e.category === 'Literatura')
+  return posts
+}
+
+export const getTravelPosts = async () => {
+  const allPosts = await getPosts()
+  const posts = allPosts.filter(
+    (e) => (e.category === 'Viajes') | (e.category === 'Diario de Viaje')
+  )
+  return posts
+}
+
+export const getArtPosts = async () => {
+  const allPosts = await getPosts()
+  const posts = allPosts.filter(
+    (e) => (e.category === 'Viajes') | (e.category === 'Arte')
+  )
+  return posts
+}
+
+export const getCulturePosts = async () => {
+  const allPosts = await getPosts()
+  const posts = allPosts.filter(
+    (e) => (e.category === 'Viajes') | (e.category === 'Cultura')
+  )
+  return posts
+}

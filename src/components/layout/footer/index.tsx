@@ -12,54 +12,60 @@ const Footer = () => {
       <div>
         <h1 className="uppercase font-semibold text-18 mb-5">Social</h1>
         <div className="flex flex-col">
-          <a
-            href=""
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center mb-4"
+          <Link href="https://twitter.com/innkba" passHref>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center mb-4"
+            >
+              <i className="mr-3 flex items-center justify-center">
+                <Image
+                  src="/icons/twitter.svg"
+                  alt="twitter"
+                  width={18}
+                  height={18}
+                />
+              </i>
+              <p>Twitter</p>
+            </a>
+          </Link>
+          <Link
+            href="https://www.facebook.com/Innk-ba-102751985452293"
+            passHref
           >
-            <i className="mr-3 flex items-center justify-center">
-              <Image
-                src="/icons/twitter.svg"
-                alt="twitter"
-                width={18}
-                height={18}
-              />
-            </i>
-            <p>Twitter</p>
-          </a>
-          <a
-            href=""
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center mb-4"
-          >
-            <i className="mr-3 flex items-center justify-center">
-              <Image
-                src="/icons/facebook.svg"
-                alt="facebook"
-                width={18}
-                height={18}
-              />
-            </i>
-            <p>Facebook</p>
-          </a>
-          <a
-            href=""
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center"
-          >
-            <i className="mr-3 flex items-center justify-center">
-              <Image
-                src="/icons/instagram.svg"
-                alt="instagram"
-                width={18}
-                height={18}
-              />
-            </i>
-            <p>Instagram</p>
-          </a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center mb-4"
+            >
+              <i className="mr-3 flex items-center justify-center">
+                <Image
+                  src="/icons/facebook.svg"
+                  alt="facebook"
+                  width={18}
+                  height={18}
+                />
+              </i>
+              <p>Facebook</p>
+            </a>
+          </Link>
+          <Link href="https://www.instagram.com/innkba/?hl=es-la" passHref>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center"
+            >
+              <i className="mr-3 flex items-center justify-center">
+                <Image
+                  src="/icons/instagram.svg"
+                  alt="instagram"
+                  width={18}
+                  height={18}
+                />
+              </i>
+              <p>Instagram</p>
+            </a>
+          </Link>
         </div>
       </div>
       <div>
