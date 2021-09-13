@@ -1,7 +1,9 @@
 import Button from 'components/primitives/button'
+import { getSectionSlug } from 'lib/utils/section'
 import { ContentfulPost } from 'ts/models'
 
 const PostWithoutImage = ({ post }: { post: ContentfulPost }) => {
+  const section = getSectionSlug(post.category)
   return (
     <div className="flex flex-col justify-between">
       <div>
@@ -13,7 +15,7 @@ const PostWithoutImage = ({ post }: { post: ContentfulPost }) => {
         </p>
       </div>
 
-      <Button href={post.slug} className="max-w-max">
+      <Button href={`/${section}/${post.slug}`} className="max-w-max">
         Seguir Leyendo
       </Button>
     </div>

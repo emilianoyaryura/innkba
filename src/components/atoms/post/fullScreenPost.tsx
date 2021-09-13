@@ -3,12 +3,14 @@ import { ContentfulPost } from 'ts/models'
 import Image from 'next/image'
 import Button from 'components/primitives/button'
 import clsx from 'clsx'
+import { getSectionSlug } from 'lib/utils/section'
 
 type Props = {
   post: ContentfulPost
 }
 
 const FullScreenPost = ({ post }: Props) => {
+  const section = getSectionSlug(post.category)
   return (
     <SectionLayout>
       <div className="flex flex-col md:flex-row md:items-center">
@@ -40,7 +42,7 @@ const FullScreenPost = ({ post }: Props) => {
           <p className="mt-3 md:mt-0 mb-7 max-w-lg font-medium text-14 lg:text-16 md:mb-6 lg:mb-10 text-gray-400 md:max-w-md">
             {post.copy}
           </p>
-          <Button href={post.slug} className="max-w-max">
+          <Button href={`/${section}/${post.slug}`} className="max-w-max">
             Seguir Leyendo
           </Button>
         </div>

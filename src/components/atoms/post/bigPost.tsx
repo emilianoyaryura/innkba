@@ -1,9 +1,11 @@
 import clsx from 'clsx'
 import Button from 'components/primitives/button'
+import { getSectionSlug } from 'lib/utils/section'
 import Image from 'next/image'
 import { ContentfulPost } from 'ts/models'
 
 const BigPost = ({ post }: { post: ContentfulPost }) => {
+  const section = getSectionSlug(post.category)
   return (
     <div className="flex flex-col">
       <Image
@@ -31,7 +33,7 @@ const BigPost = ({ post }: { post: ContentfulPost }) => {
       <p className="text-14 md:text-16 font-medium text-gray-400 mt-3 mb-7 max-w-lg">
         {post.copy}
       </p>
-      <Button className="max-w-max" href={post.slug}>
+      <Button className="max-w-max" href={`/${section}/${post.slug}`}>
         Seguir Leyendo
       </Button>
     </div>

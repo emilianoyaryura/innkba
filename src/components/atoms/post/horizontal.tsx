@@ -1,9 +1,11 @@
 import clsx from 'clsx'
+import { getSectionSlug } from 'lib/utils/section'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ContentfulPost } from 'ts/models'
 
 const HorizontalPost = ({ post }: { post: ContentfulPost }) => {
+  const section = getSectionSlug(post.category)
   return (
     <div className="flex">
       <Image
@@ -29,7 +31,7 @@ const HorizontalPost = ({ post }: { post: ContentfulPost }) => {
         <p className="text-18 font-semibold max-w-sm md:leading-smooth lg:leading-tight">
           {post.title}
         </p>
-        <Link href={post.slug}>
+        <Link href={`/${section}/${post.slug}`}>
           <div className="mt-4 max-w-max cursor-pointer transition-all duration-150 hover:opacity-70">
             <span className="text-14 mb-1 font-semibold">Keep Reading</span>
             <div className="h-px w-full bg-black" />
