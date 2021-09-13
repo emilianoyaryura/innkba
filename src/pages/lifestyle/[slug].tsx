@@ -6,6 +6,7 @@ import PageLayout from 'components/layout/pageLayout'
 import { getDate } from 'lib/utils/date'
 import Image from 'next/image'
 import Link from 'next/link'
+import { renderBody } from 'lib/renderer'
 
 const LifestylePost = ({ posts }: { posts: ContentfulPost[] }) => {
   const router = useRouter()
@@ -23,15 +24,31 @@ const LifestylePost = ({ posts }: { posts: ContentfulPost[] }) => {
     >
       <Container
         size="large"
-        className=" mt-12 sm:mt-16 flex flex-col items-center"
+        className=" mt-10 sm:mt-12 flex flex-col items-center"
       >
-        <h1 className="text-center text-28 md:text-38 font-bold max-w-xl md:max-w-3xl leading-tight md:leading-snug mb-8">
+        <div className="flex items-center justify-center space-x-6 mb-5">
+          <Link href="" passHref>
+            <a className="flex items-center justify-center py-2 px-4 rounded bg-lightBlue">
+              <span className="uppercase text-11 text-blue font-bold">
+                {post.category}
+              </span>
+            </a>
+          </Link>
+          <Link href="" passHref>
+            <a className="flex items-center justify-center py-2 px-4 rounded bg-lightBlue">
+              <span className="uppercase text-11 text-blue font-bold">
+                {post.tag}
+              </span>
+            </a>
+          </Link>
+        </div>
+        <h1 className="text-center text-28 md:text-38 font-bold max-w-xl md:max-w-3xl leading-tight md:leading-snug mb-6">
           {post.title}
         </h1>
         <div>
           <div className="flex items-center justify-center sm:justify-start md:justify-center mb-6 relative">
             <div className="flex flex-col items-center sm:items-start md:items-center">
-              <p className="text-18 font-medium">{post.author.name}</p>
+              <p className="text-16 font-medium">{post.author[0].name}</p>
               <p className="text-14 text-gray-600">{getDate(post.date)}</p>
             </div>
             <div className="absolute right-0 hidden sm:flex items-center">
@@ -130,7 +147,7 @@ const LifestylePost = ({ posts }: { posts: ContentfulPost[] }) => {
           </div>
         </div>
         <div className="mt-8 sm:mt-12 md:mt-16 max-w-2xl">
-          {/* {renderBody(post.content)} */}
+          {renderBody(post.content)}
         </div>
       </Container>
     </PageLayout>

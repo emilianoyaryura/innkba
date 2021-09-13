@@ -16,6 +16,7 @@ module.exports = {
       black: '#0d0526',
       white: '#fff',
       blue: '#1A5AFF',
+      lightBlue: 'rgba(26, 90, 255, 0.12)',
       red: '#D84B4B',
       yellow: '#F9A826',
       violet: '#9733EE',
@@ -34,6 +35,7 @@ module.exports = {
       }
     },
     fontSize: {
+      11: '11px',
       12: '12px',
       14: '14px',
       16: '16px',

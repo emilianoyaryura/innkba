@@ -14,6 +14,7 @@ export async function getPosts() {
       slug: post.fields.slug,
       copy: post.fields.copy,
       category: post.fields.section,
+      tag: post.fields.tag,
       date: post.fields.date,
       author: post.fields.author.map((author) => {
         return {
@@ -22,7 +23,7 @@ export async function getPosts() {
           twitter: author.fields.twitter
         }
       }),
-      content: post.fields.content.content,
+      content: post.fields.content,
       image: {
         src: `https:${post.fields.frontImage?.fields.file.url}` ?? null,
         title: post.fields.frontImage?.fields.title ?? ''

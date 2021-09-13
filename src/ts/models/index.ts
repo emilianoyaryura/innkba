@@ -22,17 +22,33 @@ export type Category =
   | 'Cultura'
   | 'Diario de Viaje'
 
+export type Tag =
+  | 'Hobbies'
+  | 'Geografía'
+  | 'Historia'
+  | 'Música'
+  | 'Películas'
+  | 'Libros'
+  | 'Descubre'
+  | 'Lugares'
+  | 'Salud'
+  | 'Comdias'
+  | 'Trending'
+  | 'Sintiendo la Música'
+  | 'Fashion'
+
 export type ContentfulPost = {
   title: string
   slug: string
   copy: string
   category: Category
+  tag: Tag
   date: string
   author: {
     name: string
     instagram?: string
     twitter?: string
-  }
+  }[]
   content: any
   image: {
     src: string | null
