@@ -5,8 +5,8 @@ import NextHead from 'next/head'
 import { useMedia } from 'hooks/use-media'
 
 const defaultMeta = {
-  title: 'Cambio y Fuera',
-  description: `La realidad sin interferencias`
+  title: 'Innk Ba',
+  description: ``
 }
 
 type Meta = {
@@ -31,9 +31,7 @@ const Head = (props: HeadProps) => {
       openGraph: {
         images: [
           {
-            url:
-              props.ogImage ??
-              'https://cambioyfuera.com.ar/images/defaultOg.png'
+            url: props.ogImage ?? 'https://innkba.com/og.png'
           }
         ]
       },

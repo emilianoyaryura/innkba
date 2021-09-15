@@ -18,8 +18,7 @@ const TravelPost = ({ posts }: { posts: ContentfulPost[] }) => {
       navProps={{ selected: 'lifestyle' }}
       headProps={{
         title: post.title,
-        ogImage:
-          post.image.src ?? 'https://cambioyfuera.com.ar/images/defaultOg.png'
+        ogImage: post.image.src ?? 'https://innkba.com/og.png'
       }}
     >
       <Container
@@ -55,7 +54,7 @@ const TravelPost = ({ posts }: { posts: ContentfulPost[] }) => {
               <span className="text-14 text-gray-600 mr-6">Compartir en</span>
               <div className="flex items-center space-x-4 -mb-2">
                 <Link
-                  href={`https://twitter.com/intent/tweet?text=${post.title}&url=https://cambioyfuera.com.ar/blog/${post.slug}`}
+                  href={`https://twitter.com/intent/tweet?text=${post.title}&url=https://innkba.com/viajes/${post.slug}`}
                   passHref
                 >
                   <a target="_blank" rel="noopener noreferrer">
@@ -63,7 +62,7 @@ const TravelPost = ({ posts }: { posts: ContentfulPost[] }) => {
                   </a>
                 </Link>
                 <Link
-                  href={`https://www.facebook.com/sharer/sharer.php?u=https://cambioyfuera.com.ar/blog/${post.slug}`}
+                  href={`https://www.facebook.com/sharer/sharer.php?u=https://innkba.com/viajes/${post.slug}`}
                   passHref
                 >
                   <a target="_blank" rel="noopener noreferrer">
@@ -71,7 +70,7 @@ const TravelPost = ({ posts }: { posts: ContentfulPost[] }) => {
                   </a>
                 </Link>
                 <Link
-                  href={`https://api.whatsapp.com/send?text=Mirá este artículo de Cambio y Fuera: https://cambioyfuera.com.ar/blog/${post.slug}`}
+                  href={`https://api.whatsapp.com/send?text=Mirá este artículo de Innk ba: https://innkba.com/viajes/${post.slug}`}
                   passHref
                 >
                   <a target="_blank" rel="noopener noreferrer">
@@ -127,7 +126,7 @@ const TravelPost = ({ posts }: { posts: ContentfulPost[] }) => {
                 </a>
               </Link>
               <Link
-                href={`https://api.whatsapp.com/send?text=Mirá este artículo de Cambio y Fuera: https://cambioyfuera.com.ar/blog/${post.slug}`}
+                href={`https://api.whatsapp.com/send?text=Mirá este artículo de Innk ba: https://cambioyfuera.com.ar/blog/${post.slug}`}
                 passHref
               >
                 <a
