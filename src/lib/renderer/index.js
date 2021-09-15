@@ -29,7 +29,7 @@ const renderBody = (document) => {
             alt={node.data.target.fields.file.title ?? 'imagen'}
           />
           <p className={styles.image__footer}>
-            {node.data.target.fields.title ?? ''}
+            {node.data.target.fields.description ?? ''}
           </p>
         </>
       ),
