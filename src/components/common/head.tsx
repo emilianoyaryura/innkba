@@ -48,6 +48,7 @@ const Head = (props: HeadProps) => {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
+        <meta name="description" content="Innk ba | Blog" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="icon" href={isDark ? '/favicon-dark.svg' : '/favicon.svg'} />
         <link rel="mask-icon" href="/favicon.svg" color="#000" />
