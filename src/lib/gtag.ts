@@ -1,4 +1,4 @@
-const GA_TRACKING_ID = process.env.GOOGLE_ANALYTICS_ID
+export const GA_TRACKING_ID = process.env.GOOGLE_ANALYTICS_ID
 
 declare global {
   interface Window {

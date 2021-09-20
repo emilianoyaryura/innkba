@@ -16,7 +16,7 @@ const TravelHeader = () => {
       <h1 className="font-bold text-48 max-w-2xl text-center tracking-tight leading-smooth">
         Conocé el mundo de una manera diferente
       </h1>
-      <div className="flex flex-col items-center mt-6 -mb-12">
+      <div className="flex flex-col items-center mt-6 -mb-12 z-50">
         <p className="text-16 font-medium text-black mb-4">
           Te gustaría compartir tus viajes en Innk BA?
         </p>
