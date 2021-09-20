@@ -45,7 +45,9 @@ module.exports = {
       28: '28px',
       32: '32px',
       34: '34px',
-      38: '38px'
+      38: '38px',
+      42: '42px',
+      48: '48px'
     },
     boxShadow: {
       sm: '1px 1px 20px rgba(0, 0, 0, 0.05)',

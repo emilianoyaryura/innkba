@@ -29,7 +29,9 @@ const Button = ({
         className,
         {
           'bg-blue hover:opacity-95': type === 'primary',
-          'px-9 py-4': size === 'medium'
+          'bg-black hover:opacity-95': type === 'secondary',
+          'px-9 py-4': size === 'medium',
+          'px-9 py-3': size === 'small'
         }
       )}
     >

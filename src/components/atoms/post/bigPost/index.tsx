@@ -3,6 +3,7 @@ import Button from 'components/primitives/button'
 import { getSectionSlug } from 'lib/utils/section'
 import Image from 'next/image'
 import { ContentfulPost } from 'ts/models'
+import s from './bigPost.module.css'
 
 const BigPost = ({ post }: { post: ContentfulPost }) => {
   const section = getSectionSlug(post.category)
@@ -30,7 +31,12 @@ const BigPost = ({ post }: { post: ContentfulPost }) => {
       <p className="text-28 sm:text-34 font-bold leading-smooth">
         {post.title}
       </p>
-      <p className="text-14 md:text-16 font-medium text-gray-400 mt-3 mb-7 max-w-lg">
+      <p
+        className={clsx(
+          'text-14 md:text-16 font-medium text-gray-400 mt-3 mb-7 max-w-lg',
+          s.copy
+        )}
+      >
         {post.copy}
       </p>
       <Button className="max-w-max" href={`/${section}/${post.slug}`}>

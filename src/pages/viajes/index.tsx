@@ -1,4 +1,5 @@
 import PageLayout from 'components/layout/pageLayout'
+import TravelHeader from 'components/sections/travel/header'
 
 const Viajes = () => {
   return (
@@ -6,7 +7,7 @@ const Viajes = () => {
       navProps={{ selected: 'viajes' }}
       headProps={{ title: 'Innk ba | Viajes' }}
     >
-      <div className="h-screen bg-red w-20 mt-6 mx-auto">aca</div>
+      <TravelHeader />
     </PageLayout>
   )
 }
