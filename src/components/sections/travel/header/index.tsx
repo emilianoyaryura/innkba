@@ -7,7 +7,25 @@ import Button from 'components/primitives/button'
 
 const TravelHeader = () => {
   const [email, setEmail] = useState('')
-  console.log(email)
+
+  const handleSend = async () => {
+    const res = await fetch('/lib/sendgrid', {
+      body: JSON.stringify({
+        email: email
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST'
+    })
+
+    const { error } = await res.json()
+    if (error) {
+      console.log(error)
+      return
+    }
+  }
+
   return (
     <Container
       size="large"
@@ -33,7 +51,12 @@ const TravelHeader = () => {
             }}
             className="text-gray-400 w-80 bg-gray-200 rounded-md py-3 px-4 text-14 font-normal"
           />
-          <Button size="small" type="secondary" className="px-12">
+          <Button
+            onClick={handleSend}
+            size="small"
+            type="secondary"
+            className="px-12"
+          >
             Enviar
           </Button>
         </div>
