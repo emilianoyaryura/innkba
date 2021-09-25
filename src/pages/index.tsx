@@ -40,10 +40,7 @@ const HomePage = ({
   contentfulPosts: ContentfulPost[]
 }) => {
   return (
-    <PageLayout
-      navProps={{ selected: 'inicio' }}
-      headProps={{ title: 'Innk ba' }}
-    >
+    <PageLayout headProps={{ title: 'Innk ba' }}>
       <HeaderPosts
         principalPost={contentfulPosts[0]}
         posts={contentfulPosts.slice(0, 4)}

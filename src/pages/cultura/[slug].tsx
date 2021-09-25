@@ -15,7 +15,6 @@ const CulturePost = ({ posts }: { posts: ContentfulPost[] }) => {
 
   return (
     <PageLayout
-      navProps={{ selected: 'lifestyle' }}
       headProps={{
         title: post.title,
         ogImage: post.image.src ?? 'https://innkba.com/og.png'

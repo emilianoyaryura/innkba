@@ -7,28 +7,18 @@ import PreFooter from '../preFooter'
 type Props = {
   children: ReactNode
   headProps: HeadProps
-  navProps: {
-    selected:
-      | 'lifestyle'
-      | 'viajes'
-      | 'cultura'
-      | 'arte'
-      | 'literatura'
-      | 'inicio'
-  }
   withoutPreFooter?: boolean
 }
 
 const PageLayout = ({
   children,
-  navProps,
   headProps,
   withoutPreFooter = false
 }: Props) => {
   return (
     <div>
       <Head {...headProps} />
-      <Nav selected={navProps.selected} />
+      <Nav />
       {children}
       {!withoutPreFooter && <PreFooter />}
       <Footer />

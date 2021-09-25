@@ -39,7 +39,7 @@ const Post = ({
         <p className="text-18 font-semibold">{post.title}</p>
         <Link href={`/${section}/${post.slug}`}>
           <div className="mt-4 max-w-max cursor-pointer">
-            <span className="text-14 mb-1 font-semibold">Keep Reading</span>
+            <span className="text-14 mb-1 font-semibold">Seguir Leyendo</span>
             <div className="h-px w-full bg-black" />
           </div>
         </Link>

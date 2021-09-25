@@ -4,6 +4,7 @@ import s from './nav.module.css'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { useCallback, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 type Menu = {
   label: string
@@ -16,10 +17,6 @@ export type Category =
   | 'cultura'
   | 'arte'
   | 'literatura'
-
-type Props = {
-  selected: Category | 'inicio'
-}
 
 export const menu: Menu = [
   {
@@ -44,13 +41,13 @@ export const menu: Menu = [
   }
 ]
 
-const Nav = ({ selected }: Props) => {
+const Nav = () => {
   const [scrollsDown, setScrollsDown] = useState<boolean>(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [inputFocusState, setInputFocusState] = useState(false)
 
   const handleScroll = useCallback(() => {
-    if (window.scrollY > 80) {
+    if (window.scrollY > 60) {
       setScrollsDown(true)
     } else {
       setScrollsDown(false)
@@ -65,6 +62,10 @@ const Nav = ({ selected }: Props) => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [handleScroll])
+
+  const router = useRouter()
+
+  const selected = router.asPath
   return (
     <>
       <div
@@ -93,7 +94,12 @@ const Nav = ({ selected }: Props) => {
                 <a
                   className={clsx(
                     'px-4 py-3 mr-2 last-of-type:mr-0 rounded-md text-14',
-                    { 'bg-gray-200': selected === item.label.toLowerCase() }
+                    {
+                      'bg-gray-200':
+                        selected === `/${item.label.toLowerCase()}`,
+                      'hover:bg-gray-50':
+                        selected !== `/${item.label.toLowerCase()}`
+                    }
                   )}
                 >
                   {item.label}

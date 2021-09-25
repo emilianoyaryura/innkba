@@ -25,11 +25,12 @@ const Button = ({
     <div
       {...restProps}
       className={clsx(
-        'rounded-lg text-white font-semibold text-14 cursor-pointer text-center transition-all duration-150',
+        'rounded-lg font-semibold text-14 cursor-pointer text-center transition-all duration-150',
         className,
         {
-          'bg-blue hover:opacity-95': type === 'primary',
-          'bg-black hover:opacity-95': type === 'secondary',
+          'bg-blue hover:opacity-95 text-white': type === 'primary',
+          'bg-black hover:opacity-95 text-white': type === 'secondary',
+          'bg-gray-100 hover:opacity-70 text-black': type === 'tertiary',
           'px-9 py-4': size === 'medium',
           'px-9 py-3': size === 'small'
         }
