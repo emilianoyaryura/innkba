@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Button from 'components/primitives/button'
 import clsx from 'clsx'
 import { getSectionSlug } from 'lib/utils/section'
+import s from './bigPost/bigPost.module.css'
 
 type Props = {
   post: ContentfulPost
@@ -39,7 +40,12 @@ const FullScreenPost = ({ post }: Props) => {
           <h1 className="font-bold text-28 md:text-32 lg:text-38 leading-smooth md:leading-normal md:mt-3 mb-4 lg:mt-4 lg:mb-5">
             {post.title}
           </h1>
-          <p className="mt-3 md:mt-0 mb-7 max-w-lg font-medium text-14 lg:text-16 md:mb-6 lg:mb-10 text-gray-400 md:max-w-md">
+          <p
+            className={clsx(
+              'mt-3 md:mt-0 mb-7 max-w-lg font-medium text-14 lg:text-16 md:mb-6 lg:mb-10 text-gray-400 md:max-w-md',
+              s.copy
+            )}
+          >
             {post.copy}
           </p>
           <Button href={`/${section}/${post.slug}`} className="max-w-max">

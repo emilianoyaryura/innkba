@@ -93,7 +93,7 @@ const Nav = () => {
               <Link key={idx} href={item.route}>
                 <a
                   className={clsx(
-                    'px-4 py-3 mr-2 last-of-type:mr-0 rounded-md text-14',
+                    'px-4 py-3 mr-2 last-of-type:mr-0 rounded-md text-15 font-medium',
                     {
                       'bg-gray-200':
                         selected === `/${item.label.toLowerCase()}`,

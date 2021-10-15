@@ -25,7 +25,7 @@ const LiteraturePost = ({ posts }: { posts: ContentfulPost[] }) => {
         className=" mt-10 sm:mt-12 flex flex-col items-center"
       >
         <div className="flex items-center justify-center space-x-6 mb-6">
-          <Link href="" passHref>
+          <Link href={`/${post.category.toLocaleLowerCase()}`} passHref>
             <a className="flex items-center justify-center py-2 px-4 rounded bg-lightBlue">
               <span className="uppercase text-11 text-blue font-bold">
                 {post.category}
