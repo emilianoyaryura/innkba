@@ -6,6 +6,7 @@ import { getDate } from 'lib/utils/date'
 import Image from 'next/image'
 import Link from 'next/link'
 import { renderBody } from 'lib/renderer'
+import Post from 'components/atoms/post'
 
 const Template = ({ posts }: { posts: ContentfulPost[] }) => {
   const router = useRouter()
@@ -166,6 +167,19 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
         </div>
         <div className="mt-8 sm:mt-12 md:mt-16 max-w-2xl">
           {renderBody(post.content)}
+        </div>
+        <div className="mt-32">
+          <p className="text-26 text-center sm:text-left sm:text-32 font-semibold mb-8 sm:mb-5">
+            Seguir leyendo
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-x-4 lg:gap-x-8">
+            {posts
+              .filter((p) => p.slug !== query)
+              .slice(0, 6)
+              .map((each, idx) => (
+                <Post key={idx} post={each} />
+              ))}
+          </div>
         </div>
       </Container>
     </PageLayout>
