@@ -20,20 +20,20 @@ export type Category =
 
 export const menu: Menu = [
   {
-    label: 'Lifestyle',
-    route: '/lifestyle'
-  },
-  {
     label: 'Viajes',
     route: '/viajes'
+  },
+  {
+    label: 'Arte',
+    route: '/arte'
   },
   {
     label: 'Cultura',
     route: '/cultura'
   },
   {
-    label: 'Arte',
-    route: '/arte'
+    label: 'Lifestyle',
+    route: '/lifestyle'
   },
   {
     label: 'Literatura',
@@ -64,6 +64,12 @@ const Nav = () => {
   }, [handleScroll])
 
   const router = useRouter()
+
+  useEffect(() => {
+    menuOpen
+      ? (document.body.style.overflow = 'hidden')
+      : document.body.style.removeProperty('overflow')
+  }, [menuOpen])
 
   const selected = router.asPath
   return (
@@ -177,11 +183,11 @@ const Nav = () => {
           '-left-full': !menuOpen
         })}
       >
-        <div className="mt-16 flex flex-col items-center">
+        <div className="mt-8 flex flex-col items-center">
           {menu.map((item, idx) => (
             <Link key={idx} href={item.route}>
               <a
-                className={clsx('px-4 py-3 rounded-md text-26 font-semibold', {
+                className={clsx('px-4 py-3 rounded-md text-22 font-semibold', {
                   'bg-gray-200': selected === item.label.toLowerCase()
                 })}
               >
@@ -190,6 +196,62 @@ const Nav = () => {
             </Link>
           ))}
         </div>
+        <div style={{ height: '1px' }} className="w-full bg-gray-300 my-8" />
+        <div className="flex items-center space-x-6 justify-center">
+          <Link href="https://twitter.com/innkba" passHref>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center"
+            >
+              <Image
+                src="/icons/twitter.svg"
+                alt="twitter"
+                width={22}
+                height={22}
+              />
+            </a>
+          </Link>
+          <Link
+            href="https://www.facebook.com/Innk-ba-102751985452293"
+            passHref
+          >
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center"
+            >
+              <Image
+                src="/icons/facebook.svg"
+                alt="facebook"
+                width={22}
+                height={22}
+              />
+            </a>
+          </Link>
+          <Link href="https://www.instagram.com/innkba/?hl=es-la" passHref>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center"
+            >
+              <Image
+                src="/icons/instagram.svg"
+                alt="instagram"
+                width={22}
+                height={22}
+              />
+            </a>
+          </Link>
+        </div>
+        <a
+          className="text-16 flex flex-col max-w-max mx-auto mt-6"
+          href="mailto:emilianoyaryurat@gmail.com"
+          aria-label="contact mail"
+        >
+          <span>hola@innkba.com</span>
+          <span style={{ height: '2px' }} className="w-full bg-black" />
+        </a>
       </div>
     </>
   )
