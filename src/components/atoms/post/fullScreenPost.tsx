@@ -5,6 +5,7 @@ import Button from 'components/primitives/button'
 import clsx from 'clsx'
 import { getSectionSlug } from 'lib/utils/section'
 import s from './bigPost/bigPost.module.css'
+import Link from 'next/link'
 
 type Props = {
   post: ContentfulPost
@@ -13,47 +14,47 @@ type Props = {
 const FullScreenPost = ({ post }: Props) => {
   const section = getSectionSlug(post.category)
   return (
-    <SectionLayout>
-      <div className="flex flex-col md:flex-row md:items-center">
-        <Image
-          src={post.image.src ?? ''}
-          alt={post.image.title ?? post.title}
-          width={560}
-          height={420}
-          className="rounded-xl"
-        />
-        <div className="md:ml-5 lg:ml-8">
-          <p
-            className={clsx(
-              'text-16 mt-6 md:mt-0 mb-3 md:mb-0 md:text-14 lg:text-16 font-semibold capitalize',
-              {
-                'text-blue': post.category === 'Lifestyle',
-                'text-yellow': post.category === 'Arte',
-                'text-green': post.category === 'Cultura',
-                'text-violet': post.category === 'Literatura',
-                'text-red': post.category === 'Viajes'
-              }
-            )}
-          >
-            {post.category}
-          </p>
-          <h1 className="font-bold text-28 md:text-32 lg:text-38 leading-smooth md:leading-normal md:mt-3 mb-4 lg:mt-4 lg:mb-5">
-            {post.title}
-          </h1>
-          <p
-            className={clsx(
-              'mt-3 md:mt-0 mb-7 max-w-lg font-medium text-14 lg:text-16 md:mb-6 lg:mb-10 text-gray-400 md:max-w-md',
-              s.copy
-            )}
-          >
-            {post.copy}
-          </p>
-          <Button href={`/${section}/${post.slug}`} className="max-w-max">
-            Seguir Leyendo
-          </Button>
+    <Link href={`/${section}/${post.slug}`}>
+      <SectionLayout classname="cursor-pointer">
+        <div className="flex flex-col md:flex-row md:items-center">
+          <Image
+            src={post.image.src ?? ''}
+            alt={post.image.title ?? post.title}
+            width={560}
+            height={420}
+            className="rounded-xl"
+          />
+          <div className="md:ml-5 lg:ml-8">
+            <p
+              className={clsx(
+                'text-16 mt-6 md:mt-0 mb-3 md:mb-0 md:text-14 lg:text-16 font-semibold capitalize',
+                {
+                  'text-blue': post.category === 'Lifestyle',
+                  'text-yellow': post.category === 'Arte',
+                  'text-green': post.category === 'Cultura',
+                  'text-violet': post.category === 'Literatura',
+                  'text-red': post.category === 'Viajes'
+                }
+              )}
+            >
+              {post.category}
+            </p>
+            <h1 className="font-bold text-28 md:text-32 lg:text-38 leading-smooth md:leading-normal md:mt-3 mb-4 lg:mt-4 lg:mb-5">
+              {post.title}
+            </h1>
+            <p
+              className={clsx(
+                'mt-3 md:mt-0 mb-7 max-w-lg font-medium text-14 lg:text-16 md:mb-6 lg:mb-10 text-gray-400 md:max-w-md',
+                s.copy
+              )}
+            >
+              {post.copy}
+            </p>
+            <Button className="max-w-max">Seguir Leyendo</Button>
+          </div>
         </div>
-      </div>
-    </SectionLayout>
+      </SectionLayout>
+    </Link>
   )
 }
 

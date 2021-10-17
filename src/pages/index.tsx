@@ -46,6 +46,7 @@ const HomePage = ({
         posts={contentfulPosts.slice(0, 4)}
       />
       <PostGrid
+        id="newBlogPosts"
         title="New Blog Posts"
         copy="Don’t miss this originals short stories. New chapters every weekend of this awesome writers. "
         posts={contentfulPosts}

@@ -31,13 +31,11 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
               </span>
             </a>
           </Link>
-          <Link href="" passHref>
-            <a className="flex items-center justify-center py-2 px-4 rounded bg-lightBlue">
-              <span className="uppercase text-11 text-blue font-bold">
-                {post.tag}
-              </span>
-            </a>
-          </Link>
+          <p className="flex items-center justify-center py-2 px-4 rounded bg-lightBlue">
+            <span className="uppercase text-11 text-blue font-bold">
+              {post.tag}
+            </span>
+          </p>
         </div>
         <h1 className="text-center text-28 md:text-38 font-bold max-w-xl md:max-w-3xl leading-tight md:leading-normal mb-5">
           {post.title}
@@ -52,27 +50,52 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
               <span className="text-14 text-gray-600 mr-6">Compartir en</span>
               <div className="flex items-center space-x-4 -mb-2">
                 <Link
-                  href={`https://twitter.com/intent/tweet?text=${post.title}&url=https://innkba.com/viajes/${post.slug}`}
+                  href={`https://twitter.com/intent/tweet?text=${
+                    post.title
+                  }&url=https://innkba.com/${post.category.toLocaleLowerCase()}/${
+                    post.slug
+                  }`}
                   passHref
                 >
                   <a target="_blank" rel="noopener noreferrer">
-                    <Image src="/icons/twitter.svg" width={22} height={18} />
+                    <Image
+                      src="/icons/twitter.svg"
+                      alt="share twitter desktop"
+                      width={22}
+                      height={18}
+                    />
                   </a>
                 </Link>
                 <Link
-                  href={`https://www.facebook.com/sharer/sharer.php?u=https://innkba.com/viajes/${post.slug}`}
+                  href={`https://www.facebook.com/sharer/sharer.php?u=https://innkba.com/${post.category.toLocaleLowerCase()}/${
+                    post.slug
+                  }`}
                   passHref
                 >
                   <a target="_blank" rel="noopener noreferrer">
-                    <Image src="/icons/facebook.svg" width={14} height={20} />
+                    <Image
+                      src="/icons/facebook.svg"
+                      alt="share facebook desktop"
+                      width={14}
+                      height={20}
+                    />
                   </a>
                 </Link>
                 <Link
-                  href={`https://api.whatsapp.com/send?text=Mirá este artículo de Innk ba: https://innkba.com/viajes/${post.slug}`}
+                  href={`https://api.whatsapp.com/send?text=Mirá este artículo ${
+                    post.author[0].name
+                  } en Innk ba: https://innkba.com/${post.category.toLocaleLowerCase()}/${
+                    post.slug
+                  }`}
                   passHref
                 >
                   <a target="_blank" rel="noopener noreferrer">
-                    <Image src="/icons/whatsapp.svg" width={22} height={22} />
+                    <Image
+                      src="/icons/whatsapp.svg"
+                      alt="share whatsapp desktop"
+                      width={22}
+                      height={22}
+                    />
                   </a>
                 </Link>
               </div>
@@ -90,53 +113,51 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
             <p className="text-16 text-gray-600 mb-3">Compartir en</p>
             <div className="flex items-center space-x-6 -mb-2">
               <Link
-                href={`https://twitter.com/intent/tweet?text=${post.title}&url=https://cambioyfuera.com.ar/blog/${post.slug}`}
+                href={`https://twitter.com/intent/tweet?text=${
+                  post.title
+                }&url=https://innkba.com/${post.category.toLocaleLowerCase()}/${
+                  post.slug
+                }`}
                 passHref
               >
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="share on twitter"
-                >
+                <a target="_blank" rel="noopener noreferrer">
                   <Image
                     src="/icons/twitter.svg"
                     width={22}
                     height={18}
-                    alt="share on twitter"
+                    alt="share twitter mobile"
                   />
                 </a>
               </Link>
               <Link
-                href={`https://www.facebook.com/sharer/sharer.php?u=https://cambioyfuera.com.ar/blog/${post.slug}`}
+                href={`https://www.facebook.com/sharer/sharer.php?u=https://innkba.com/${post.category.toLocaleLowerCase()}/${
+                  post.slug
+                }`}
                 passHref
               >
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="share on facebook"
-                >
+                <a target="_blank" rel="noopener noreferrer">
                   <Image
                     src="/icons/facebook.svg"
+                    alt="share facebook mobile"
                     width={14}
                     height={20}
-                    alt="share on facebook"
                   />
                 </a>
               </Link>
               <Link
-                href={`https://api.whatsapp.com/send?text=Mirá este artículo de Innk ba: https://cambioyfuera.com.ar/blog/${post.slug}`}
+                href={`https://api.whatsapp.com/send?text=Mirá este artículo ${
+                  post.author[0].name
+                } en Innk ba: https://innkba.com/${post.category.toLocaleLowerCase()}/${
+                  post.slug
+                }`}
                 passHref
               >
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="share on whatsapp"
-                >
+                <a target="_blank" rel="noopener noreferrer">
                   <Image
                     src="/icons/whatsapp.svg"
+                    alt="share whatsapp mobile"
                     width={22}
                     height={22}
-                    alt="share on whatsapp"
                   />
                 </a>
               </Link>
