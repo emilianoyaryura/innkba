@@ -1,4 +1,4 @@
-import { getArtPosts } from 'lib/api'
+import { getArtPosts, getPosts } from 'lib/api'
 import ArtPostPage from 'pages/template'
 
 export const getStaticPaths = async () => {
@@ -13,7 +13,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async () => {
-  const posts = await getArtPosts()
+  const posts = await getPosts()
 
   return {
     props: {

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { ContentfulPost } from 'ts/models'
 
 type Menu = {
   label: string
@@ -41,7 +42,7 @@ export const menu: Menu = [
   }
 ]
 
-const Nav = () => {
+const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
   const [scrollsDown, setScrollsDown] = useState<boolean>(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [inputFocusState, setInputFocusState] = useState(false)
@@ -72,6 +73,8 @@ const Nav = () => {
   }, [menuOpen])
 
   const selected = router.asPath
+
+  console.log(posts)
   return (
     <>
       <div

@@ -1,4 +1,4 @@
-import { getLifestylePosts } from 'lib/api'
+import { getLifestylePosts, getPosts } from 'lib/api'
 import LifestylePostPage from 'pages/template'
 
 export const getStaticPaths = async () => {
@@ -13,7 +13,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async () => {
-  const posts = await getLifestylePosts()
+  const posts = await getPosts()
 
   return {
     props: {

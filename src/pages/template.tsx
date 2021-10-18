@@ -15,6 +15,7 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
 
   return (
     <PageLayout
+      posts={posts}
       headProps={{
         title: post.title,
         ogImage: post.image.src ?? 'https://innkba.com/og.png'
@@ -174,10 +175,11 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-x-4 lg:gap-x-8">
             {posts
+              .filter((e) => e.category === post.category)
               .filter((p) => p.slug !== query)
               .slice(0, 6)
               .map((each, idx) => (
-                <Post key={idx} post={each} />
+                <Post key={idx} post={each} withoutCategory />
               ))}
           </div>
         </div>
