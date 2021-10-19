@@ -6,6 +6,7 @@ import clsx from 'clsx'
 import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { ContentfulPost } from 'ts/models'
+import { useRef } from 'react'
 
 type Menu = {
   label: string
@@ -46,6 +47,12 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
   const [scrollsDown, setScrollsDown] = useState<boolean>(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [inputFocusState, setInputFocusState] = useState(false)
+  const [search, setSearch] = useState('')
+  const [searcherFilter, setSearcherFilter] = useState<ContentfulPost[] | null>(
+    null
+  )
+  const [searcherFocused, setSearcherFocused] = useState(false)
+  const searcherRef = useRef<any>(null)
 
   const handleScroll = useCallback(() => {
     if (window.scrollY > 60) {
@@ -72,9 +79,33 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
       : document.body.style.removeProperty('overflow')
   }, [menuOpen])
 
+  useEffect(() => {
+    const filteredPosts = posts.filter((post) =>
+      post.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+    )
+    return setSearcherFilter(filteredPosts)
+  }, [posts, search])
+
+  useEffect(() => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(e) {
+      if (searcherRef.current && !searcherRef.current.contains(e.target)) {
+        setSearcherFocused(false)
+      }
+    }
+
+    // Bind the event listener
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [searcherRef])
+
   const selected = router.asPath
 
-  console.log(posts)
   return (
     <>
       <div
@@ -118,7 +149,7 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
           </div>
           <div
             className={clsx(
-              'flex items-center border-solid border-b transition-all duration-200',
+              'flex items-center border-solid border-b transition-all duration-200 relative',
               {
                 'border-black': inputFocusState,
                 'border-gray-300': !inputFocusState
@@ -153,9 +184,42 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
             <input
               id="search"
               className="focus:outline-none ml-4 mb-1"
-              onFocus={() => setInputFocusState(true)}
+              onFocus={() => {
+                setInputFocusState(true)
+                setSearcherFocused(true)
+              }}
               onBlur={() => setInputFocusState(false)}
+              onChange={(e) => {
+                const value = e.target.value
+                setSearcherFocused(true)
+                setSearch(value)
+              }}
             />
+            {search && searcherFocused && (
+              <div
+                style={{ maxHeight: '450px', width: '400px' }}
+                ref={searcherRef}
+                className="absolute space-y-3 right-0 top-8 bg-white rounded-lg shadow-md overflow-y-auto p-5"
+              >
+                {searcherFilter?.map((post, idx) => (
+                  <Link
+                    href={`/${post.category.toLocaleLowerCase()}/${post.slug}`}
+                    key={idx}
+                  >
+                    <a className="flex">
+                      <img
+                        src={post.image.src ?? ''}
+                        alt={post.title}
+                        className="object-cover h-20 w-24 rounded"
+                      />
+                      <p className="ml-2 text-16 leading-tight font-medium">
+                        {post.title}
+                      </p>
+                    </a>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         </Container>
         <Container
