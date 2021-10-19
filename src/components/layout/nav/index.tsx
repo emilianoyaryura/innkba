@@ -199,20 +199,20 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
               <div
                 style={{ maxHeight: '450px', width: '400px' }}
                 ref={searcherRef}
-                className="absolute space-y-3 right-0 top-8 bg-white rounded-lg shadow-md overflow-y-auto p-5"
+                className="absolute right-0 top-8 bg-white rounded-lg shadow-xl overflow-y-auto p-2 border border-solid border-gray-300"
               >
                 {searcherFilter?.map((post, idx) => (
                   <Link
                     href={`/${post.category.toLocaleLowerCase()}/${post.slug}`}
                     key={idx}
                   >
-                    <a className="flex">
+                    <a className="flex p-4 transition-all duration-150 hover:bg-gray-200 rounded-md">
                       <img
                         src={post.image.src ?? ''}
                         alt={post.title}
                         className="object-cover h-20 w-24 rounded"
                       />
-                      <p className="ml-2 text-16 leading-tight font-medium">
+                      <p className="ml-2 text-15 leading-tight font-medium">
                         {post.title}
                       </p>
                     </a>
