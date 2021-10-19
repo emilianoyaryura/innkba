@@ -90,7 +90,7 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
     /**
      * Alert if clicked on outside of element
      */
-    function handleClickOutside(e) {
+    function handleClickOutside(e: any) {
       if (searcherRef.current && !searcherRef.current.contains(e.target)) {
         setSearcherFocused(false)
       }
