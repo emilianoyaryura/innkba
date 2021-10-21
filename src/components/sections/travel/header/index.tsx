@@ -7,23 +7,44 @@ import Button from 'components/primitives/button'
 
 const TravelHeader = () => {
   const [email, setEmail] = useState('')
+  const [status, setStatus] = useState({
+    submitted: false,
+    submitting: false,
+    info: { error: false, msg: null }
+  })
+
+  console.log(status)
+
+  const handleResponse = ({ status, msg }: { status: number; msg: any }) => {
+    if (status === 200) {
+      setStatus({
+        submitted: true,
+        submitting: false,
+        info: { error: false, msg: msg }
+      })
+    } else {
+      setStatus({
+        submitted: false,
+        submitting: false,
+        info: { error: true, msg: msg }
+      })
+    }
+  }
 
   const handleSend = async () => {
     const res = await fetch('/api/sendgrid', {
-      body: JSON.stringify({
-        email: email
-      }),
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      method: 'POST'
+      body: JSON.stringify({
+        email: email
+      })
     })
 
-    const { error } = await res.json()
-    if (error) {
-      console.log(error)
-      return
-    } else setEmail('')
+    const text = await res.text
+
+    handleResponse({ msg: text, status: res.status })
   }
 
   return (
