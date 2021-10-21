@@ -44,6 +44,7 @@ const TravelHeader = () => {
         <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-5">
           <input
             type="email"
+            value={email}
             placeholder="Ingresa tu mail y nos contactaremos"
             onChange={(e) => {
               const value = e.target.value
