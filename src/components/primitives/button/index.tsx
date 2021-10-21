@@ -9,7 +9,7 @@ type Props = {
   isExternal?: boolean
   className?: string
   size?: 'small' | 'medium' | 'large'
-  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 const Button = ({
@@ -22,8 +22,9 @@ const Button = ({
   ...restProps
 }: Props) => {
   return (
-    <div
+    <button
       {...restProps}
+      style={{ minWidth: '135px' }}
       className={clsx(
         'rounded-lg font-semibold text-14 cursor-pointer text-center transition-all duration-150',
         className,
@@ -47,9 +48,9 @@ const Button = ({
           </a>
         </Link>
       ) : (
-        <div>{children}</div>
+        <a className="flex items-center justify-center">{children}</a>
       )}
-    </div>
+    </button>
   )
 }
 
