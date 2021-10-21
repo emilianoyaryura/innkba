@@ -9,7 +9,7 @@ const TravelHeader = () => {
   const [email, setEmail] = useState('')
 
   const handleSend = async () => {
-    const res = await fetch('/lib/sendgrid', {
+    const res = await fetch('/api/sendgrid', {
       body: JSON.stringify({
         email: email
       }),
@@ -23,7 +23,7 @@ const TravelHeader = () => {
     if (error) {
       console.log(error)
       return
-    }
+    } else setEmail('')
   }
 
   return (

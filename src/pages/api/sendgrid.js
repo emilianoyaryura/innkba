@@ -8,7 +8,7 @@ async function sendEmail(req, res) {
       to: 'emilianoyaryurat@gmail.com', // Your email where you'll receive emails
       from: 'emilianoyaryurat@gmail.com', // your website email address here
       subject: `${req.body.subject}`,
-      html: `<div>You've got a mail</div>`
+      html: `<div>You've got a mail from ${req.body.subject}</div>`
     })
   } catch (error) {
     // console.log(error);
