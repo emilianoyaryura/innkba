@@ -14,13 +14,13 @@ const Post = ({
   const section = getSectionSlug(post.category)
   return (
     <Link href={`/${section}/${post.slug}`}>
-      <a className="flex flex-col cursor-pointer noDecoration">
+      <a className="flex flex-col cursor-pointer noDecoration group">
         <Image
           src={post.image.src ?? ''}
           alt={post.image.title ?? ''}
           width={320}
           height={270}
-          className="rounded-xl"
+          className="rounded-xl transition-all duration-150 group-hover:opacity-90"
           objectFit="cover"
         />
         <div className="mt-5 pr-3">

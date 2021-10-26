@@ -29,10 +29,11 @@ const Button = ({
         'rounded-lg font-semibold text-14 cursor-pointer text-center transition-all duration-150',
         className,
         {
-          'bg-blue hover:opacity-95 text-white': type === 'primary',
-          'bg-black hover:opacity-95 text-white': type === 'secondary',
+          'bg-blue hover:opacity-90 group-hover:opacity-90 text-white':
+            type === 'primary',
+          'bg-black hover:opacity-90 text-white': type === 'secondary',
           'bg-gray-100 hover:opacity-70 text-black': type === 'tertiary',
-          'bg-transparent text-black font-semibold hover:opacity-95':
+          'bg-transparent text-black font-semibold hover:text-violet':
             type === 'alternative',
           'px-9 py-4': size === 'medium',
           'px-9 py-3': size === 'small'

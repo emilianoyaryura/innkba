@@ -16,13 +16,13 @@ const FullScreenPost = ({ post }: Props) => {
   return (
     <Link href={`/${section}/${post.slug}`}>
       <SectionLayout classname="cursor-pointer">
-        <div className="flex flex-col md:flex-row md:items-center">
+        <div className="flex flex-col md:flex-row md:items-center group">
           <Image
             src={post.image.src ?? ''}
             alt={post.image.title ?? post.title}
             width={560}
             height={420}
-            className="rounded-xl"
+            className="rounded-xl transition-all duration-150 group-hover:opacity-90"
           />
           <div className="md:ml-5 lg:ml-8">
             <p

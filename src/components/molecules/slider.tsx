@@ -2,23 +2,23 @@ import SectionLayout from 'components/layout/sectionLayout'
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 import Image from 'next/image'
-import Button from 'components/primitives/button'
 import clsx from 'clsx'
 import { useState } from 'react'
+import Button from 'components/primitives/button'
 
 export type SlideProps = {
   title?: string
   img: string
-  link?: {
-    label?: string
-    href: string
-  }
 }
 
 export type SliderProps = {
   title?: string
   copy?: string
   slides: SlideProps[]
+  link?: {
+    href: string
+    label?: string
+  }
 }
 
 const Arrow = ({ isDisabled }: { isDisabled?: boolean }) => {
@@ -77,7 +77,7 @@ const SmallArrow = ({ isDisabled }: { isDisabled?: boolean }) => {
   )
 }
 
-const Slider = ({ title, copy, slides }: SliderProps) => {
+const Slider = ({ title, copy, slides, link }: SliderProps) => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     initial: 0,
@@ -100,26 +100,29 @@ const Slider = ({ title, copy, slides }: SliderProps) => {
         >
           <Arrow isDisabled={currentSlide == 0} />
         </button>
-        <div ref={sliderRef} className="keen-slider  md:mx-16">
-          {slides?.map((slide, idx) => (
-            <div className="keen-slider__slide relative" key={idx}>
-              <Image
-                src={slide.img}
-                width={1040}
-                height={600}
-                alt={slide.title ?? `slide ${idx}`}
-                className="rounded-xl"
-              />
-              {slide.link?.href && (
-                <Button
-                  href={slide.link.href}
-                  className="absolute bottom-4 right-4 md:bottom-8 md:right-8"
-                >
-                  {slide.link.label ?? 'Ver Más'}
-                </Button>
-              )}
-            </div>
-          ))}
+        <div className="flex-col flex md:mx-16">
+          <div ref={sliderRef} className="keen-slider flex">
+            {slides?.map((slide, idx) => (
+              <div className="keen-slider__slide relative" key={idx}>
+                <Image
+                  src={slide.img}
+                  width={1040}
+                  height={600}
+                  alt={slide.title ?? `slide ${idx}`}
+                  className="rounded-xl"
+                />
+              </div>
+            ))}
+          </div>
+          {link && (
+            <Button
+              href={link?.href}
+              type="alternative"
+              className="self-end -mr-9"
+            >
+              {link?.label ?? 'Ver más'}
+            </Button>
+          )}
         </div>
         <button
           onClick={slider?.next}

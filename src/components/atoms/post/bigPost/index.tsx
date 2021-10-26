@@ -10,13 +10,13 @@ const BigPost = ({ post }: { post: ContentfulPost }) => {
   const section = getSectionSlug(post.category)
   return (
     <Link href={`/${section}/${post.slug}`}>
-      <a className="flex flex-col cursor-pointer noDecoration">
+      <a className="flex flex-col group cursor-pointer noDecoration">
         <Image
           src={post.image.src ?? ''}
           alt={post.image.title ?? post.title}
           width={650}
           height={360}
-          className="rounded-xl"
+          className="rounded-xl transition-all duration-150 group-hover:opacity-90"
           objectFit="cover"
         />
         <p
