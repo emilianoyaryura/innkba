@@ -71,3 +71,16 @@ export type Post = {
   author?: Author
   content: string
 }
+
+export type Page = {
+  header: {
+    title: string
+    copy: string
+    ctas: {
+      href: string
+      label: string
+    }[]
+    illustration: string
+  }
+  featuredPosts: Post[]
+}

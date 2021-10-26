@@ -1,9 +1,16 @@
 import PageLayout from 'components/layout/pageLayout'
-import { getPosts } from 'lib/api'
-import { ContentfulPost } from 'ts/models'
+import { getLifestylePage, getPosts } from 'lib/api'
+import { ContentfulPost, Page } from 'ts/models'
 import SectionHeader from 'components/molecules/sectionHeader'
 
-const Lifestyle = ({ posts }: { posts: ContentfulPost[] }) => {
+const Lifestyle = ({
+  posts,
+  page
+}: {
+  posts: ContentfulPost[]
+  page: Page
+}) => {
+  console.log(page)
   return (
     <PageLayout posts={posts} headProps={{ title: 'Innk ba | Lifestyle' }}>
       <SectionHeader
@@ -26,10 +33,12 @@ const Lifestyle = ({ posts }: { posts: ContentfulPost[] }) => {
 
 export const getStaticProps = async () => {
   const posts = await getPosts()
+  const page = await getLifestylePage()
 
   return {
     props: {
-      posts: posts ?? null
+      posts: posts ?? null,
+      page: page ?? null
     }
   }
 }

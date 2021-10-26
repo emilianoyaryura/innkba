@@ -33,7 +33,7 @@ const Button = ({
             type === 'primary',
           'bg-black hover:opacity-90 text-white': type === 'secondary',
           'bg-gray-100 hover:opacity-70 text-black': type === 'tertiary',
-          'bg-transparent text-black font-semibold hover:text-violet':
+          'bg-transparent text-black font-semibold hover:opacity-80':
             type === 'alternative',
           'px-9 py-4': size === 'medium',
           'px-9 py-3': size === 'small'

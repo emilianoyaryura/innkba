@@ -5,10 +5,8 @@ const client = createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 })
 
-export async function getPosts() {
-  const posts = await client.getEntries({ content_type: 'post' })
-
-  return posts.items.map((post) => {
+function getCleanPosts(posts) {
+  return posts.map((post) => {
     return {
       title: post.fields.title,
       slug: post.fields.slug,
@@ -37,6 +35,104 @@ export async function getPosts() {
       }
     }
   })
+}
+
+export async function getLifestylePage() {
+  const page = await client.getEntry({ content_type: 'pageLifestyle' })
+
+  return {
+    header: {
+      title: page.fields.header.fields.title ?? '',
+      copy: page.fields.header.fields.copy ?? '',
+      illustration: page.fields.header.fields.headerIllustration
+        ? `https:${page.fields.header.fields.headerIllustration?.fields.file.url}`
+        : '',
+      ctas: page.fields.header.fields.ctas?.map((cta) => {
+        return {
+          href: cta.fields.href,
+          label: cta.fields.label
+        }
+      })
+    },
+    featuredPosts: getCleanPosts(page.fields.featuredPosts)
+  }
+}
+
+export async function getLiteraturePage() {
+  const page = await client.getEntry({ content_type: 'pageLiterature' })
+
+  return {
+    header: {
+      title: page.fields.header.fields.title ?? '',
+      copy: page.fields.header.fields.copy ?? '',
+      illustration: page.fields.header.fields.headerIllustration
+        ? `https:${page.fields.header.fields.headerIllustration?.fields.file.url}`
+        : '',
+      ctas: page.fields.header.fields.ctas?.map((cta) => {
+        return {
+          href: cta.fields.href,
+          label: cta.fields.label
+        }
+      })
+    },
+    featuredPosts: getCleanPosts(page.fields.featuredPosts)
+  }
+}
+
+export async function getCulturePage() {
+  const page = await client.getEntry({ content_type: 'pageCulture' })
+
+  return {
+    header: {
+      title: page.fields.header.fields.title ?? '',
+      copy: page.fields.header.fields.copy ?? '',
+      illustration: page.fields.header.fields.headerIllustration
+        ? `https:${page.fields.header.fields.headerIllustration?.fields.file.url}`
+        : '',
+      ctas: page.fields.header.fields.ctas?.map((cta) => {
+        return {
+          href: cta.fields.href,
+          label: cta.fields.label
+        }
+      })
+    },
+    featuredPosts: getCleanPosts(page.fields.featuredPosts)
+  }
+}
+
+export async function getArtPage() {
+  const page = await client.getEntry({ content_type: 'pageArt' })
+
+  return {
+    header: {
+      title: page.fields.header.fields.title ?? '',
+      copy: page.fields.header.fields.copy ?? '',
+      illustration: page.fields.header.fields.headerIllustration
+        ? `https:${page.fields.header.fields.headerIllustration?.fields.file.url}`
+        : '',
+      ctas: page.fields.header.fields.ctas?.map((cta) => {
+        return {
+          href: cta.fields.href,
+          label: cta.fields.label
+        }
+      })
+    },
+    featuredPosts: getCleanPosts(page.fields.featuredPosts)
+  }
+}
+
+export async function getTravelPage() {
+  const page = await client.getEntry({ content_type: 'pageTravel' })
+
+  return {
+    featuredPosts: getCleanPosts(page.fields.featuredPosts)
+  }
+}
+
+export async function getPosts() {
+  const posts = await client.getEntries({ content_type: 'post' })
+
+  return getCleanPosts(posts.items)
 }
 
 export const getLifestylePosts = async () => {
