@@ -8,7 +8,7 @@ const HorizontalPost = ({ post }: { post: ContentfulPost }) => {
   const section = getSectionSlug(post.category)
   return (
     <Link href={`/${section}/${post.slug}`}>
-      <a className="flex cursor-pointer">
+      <a className="flex cursor-pointer noDecoration">
         <Image
           src={post.image.src ?? ''}
           alt={post.image.title}

@@ -36,3 +36,11 @@ body {
   font-family: var(--font-body);
   color: #081623;
 }
+
+a:not(.noDecoration) {
+  transition: all 0.15s;
+}
+
+a:not(.noDecoration):hover {
+  color: #9733EE;
+}

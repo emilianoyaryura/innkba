@@ -30,7 +30,7 @@ const PostGrid = ({ posts, title, copy, id }: Props) => {
 
   return (
     <div id={id} className="-mt-32 pt-32">
-      <SectionLayout title={title} copy={copy}>
+      <SectionLayout title={title} copy={copy} colCenter>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 lg:gap-x-10">
           {regularGridPosts.map((post, idx) => (
             <Post key={idx} post={post} />
@@ -39,7 +39,7 @@ const PostGrid = ({ posts, title, copy, id }: Props) => {
         {posts.length > 6 && (
           <Button
             type="tertiary"
-            className="max-w-max mx-auto mt-16"
+            className="max-w-max mt-16"
             onClick={handlePosts}
           >
             {morePosts < postsLimit ? 'Ver más' : 'Ver menos'}

@@ -12,6 +12,7 @@ module.exports = {
       '3xl': '1536px'
     },
     colors: {
+      current: 'currentColor',
       strongBlack: '#000',
       black: '#081623',
       white: '#fff',

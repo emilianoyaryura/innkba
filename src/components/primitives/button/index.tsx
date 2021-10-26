@@ -3,7 +3,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 
 type Props = {
-  type?: 'primary' | 'secondary' | 'tertiary'
+  type?: 'primary' | 'secondary' | 'tertiary' | 'alternative'
   children: ReactNode
   href?: string
   isExternal?: boolean
@@ -32,6 +32,8 @@ const Button = ({
           'bg-blue hover:opacity-95 text-white': type === 'primary',
           'bg-black hover:opacity-95 text-white': type === 'secondary',
           'bg-gray-100 hover:opacity-70 text-black': type === 'tertiary',
+          'bg-transparent text-black font-semibold hover:opacity-95':
+            type === 'alternative',
           'px-9 py-4': size === 'medium',
           'px-9 py-3': size === 'small'
         }
@@ -39,16 +41,23 @@ const Button = ({
     >
       {!isExternal && href ? (
         <Link href={href}>
-          <a>{children}</a>
+          <a className="noDecoration">{children}</a>
         </Link>
       ) : isExternal && href ? (
         <Link href={href} passHref>
-          <a href={href} target="_blank" rel="noopener noreferrer">
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="noDecoration"
+          >
             {children}
           </a>
         </Link>
       ) : (
-        <a className="flex items-center justify-center">{children}</a>
+        <a className="flex items-center justify-center noDecoration">
+          {children}
+        </a>
       )}
     </button>
   )

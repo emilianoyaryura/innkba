@@ -120,7 +120,7 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
           className="hidden justify-between items-center lg:flex"
         >
           <Link href="/">
-            <a className="cursor-pointer">
+            <a className="cursor-pointer noDecoration">
               <Image
                 src="/images/brand/logo.svg"
                 width={114}
@@ -135,7 +135,7 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
               <Link key={idx} href={item.route}>
                 <a
                   className={clsx(
-                    'px-4 py-3 mr-2 last-of-type:mr-0 rounded-md text-15 font-medium',
+                    'px-4 py-3 mr-2 last-of-type:mr-0 rounded-md text-15 font-medium noDecoration',
                     {
                       'bg-gray-200':
                         selected === `/${item.label.toLowerCase()}`,
@@ -208,7 +208,7 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
                     href={`/${post.category.toLocaleLowerCase()}/${post.slug}`}
                     key={idx}
                   >
-                    <a className="flex p-4 transition-all duration-150 hover:bg-gray-200 rounded-md">
+                    <a className="flex p-4 transition-all duration-150 hover:bg-gray-200 rounded-md noDecoration">
                       <img
                         src={post.image.src ?? ''}
                         alt={post.title}

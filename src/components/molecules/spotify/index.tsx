@@ -38,7 +38,7 @@ const Spotify = ({ title, copy, link, secondLink, iframe }: SpotifyProps) => {
           </p>
           <div className="flex items-center">
             <Link href={link.href}>
-              <a className={clsx('flex items-center', s.button)}>
+              <a className={clsx('flex items-center noDecoration', s.button)}>
                 <Image
                   src="/icons/spotify.svg"
                   width={24}
@@ -50,7 +50,7 @@ const Spotify = ({ title, copy, link, secondLink, iframe }: SpotifyProps) => {
             </Link>
             {secondLink?.href && (
               <Link href={secondLink.href}>
-                <a className={s.secondButton}>
+                <a className={clsx('noDecoration', s.secondButton)}>
                   {secondLink.label ?? 'Leer Más'}
                 </a>
               </Link>

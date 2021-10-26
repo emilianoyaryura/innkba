@@ -1,8 +1,12 @@
 export type Author = {
   name: string
-  link?: string
-  image?: string
-  data?: string
+  image: string
+  shortDescription: string
+  twitter?: string
+  instagram?: string
+  facebook?: string
+  linkedin?: string
+  website?: string
 }
 
 export type PostWithoutImagePreview = {
@@ -44,11 +48,7 @@ export type ContentfulPost = {
   category: Category
   tag: Tag
   date: string
-  author: {
-    name: string
-    instagram?: string
-    twitter?: string
-  }[]
+  author: Author[]
   content: any
   image: {
     src: string | null

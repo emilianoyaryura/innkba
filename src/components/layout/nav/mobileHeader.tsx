@@ -80,7 +80,7 @@ export const MobileSearcher = ({
                 href={`/${post.category.toLocaleLowerCase()}/${post.slug}`}
                 key={idx}
               >
-                <a className="flex py-4 transition-all duration-150 hover:bg-gray-200 rounded-md">
+                <a className="flex py-4 noDecoration">
                   <img
                     src={post.image.src ?? ''}
                     alt={post.title}
@@ -124,9 +124,12 @@ export const MobileHeader = ({
         {menu.map((item, idx) => (
           <Link key={idx} href={item.route}>
             <a
-              className={clsx('px-4 py-3 rounded-md text-22 font-semibold', {
-                'bg-gray-200': selected === item.label.toLowerCase()
-              })}
+              className={clsx(
+                'px-4 py-3 rounded-md text-22 font-semibold noDecoration',
+                {
+                  'bg-gray-200': selected === item.label.toLowerCase()
+                }
+              )}
             >
               {item.label}
             </a>
@@ -139,7 +142,7 @@ export const MobileHeader = ({
           <a
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center"
+            className="flex items-center noDecoration"
           >
             <Image
               src="/icons/twitter.svg"
@@ -153,7 +156,7 @@ export const MobileHeader = ({
           <a
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center"
+            className="flex items-center noDecoration"
           >
             <Image
               src="/icons/facebook.svg"
@@ -167,7 +170,7 @@ export const MobileHeader = ({
           <a
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center"
+            className="flex items-center noDecoration"
           >
             <Image
               src="/icons/instagram.svg"
@@ -179,7 +182,7 @@ export const MobileHeader = ({
         </Link>
       </div>
       <a
-        className="text-16 flex flex-col max-w-max mx-auto mt-6"
+        className="text-16 flex flex-col max-w-max mx-auto mt-6 noDecoration"
         href="mailto:emilianoyaryurat@gmail.com"
         aria-label="contact mail"
       >

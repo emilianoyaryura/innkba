@@ -19,8 +19,15 @@ export async function getPosts() {
       author: post.fields.author.map((author) => {
         return {
           name: author.fields.name,
-          instagram: author.fields.instagram,
-          twitter: author.fields.twitter
+          image: author.fields.frontImage
+            ? `https:${author.fields.frontImage?.fields.file.url}`
+            : '/images/brand/logo.svg',
+          shortDescription: author.fields.shortDescription ?? '',
+          instagram: author.fields.instagram ?? '',
+          linkedin: author.fields.linkedin ?? '',
+          facebook: author.fields.facebook ?? '',
+          twitter: author.fields.twitter ?? '',
+          website: author.fields.website ?? ''
         }
       }),
       content: post.fields.content,

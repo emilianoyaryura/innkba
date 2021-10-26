@@ -14,7 +14,7 @@ const Post = ({
   const section = getSectionSlug(post.category)
   return (
     <Link href={`/${section}/${post.slug}`}>
-      <a className="flex flex-col cursor-pointer">
+      <a className="flex flex-col cursor-pointer noDecoration">
         <Image
           src={post.image.src ?? ''}
           alt={post.image.title ?? ''}

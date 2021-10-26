@@ -2,6 +2,9 @@ import Container from '../container'
 import Image from 'next/image'
 import { menu } from '../nav'
 import Link from 'next/link'
+import InstagramIcon from 'components/atoms/icons/instagram'
+import FacebookIcon from 'components/atoms/icons/facebook'
+import TwitterIcon from 'components/atoms/icons/twitter'
 
 const Footer = () => {
   return (
@@ -18,15 +21,8 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="flex items-center mb-4"
             >
-              <i className="mr-3 flex items-center justify-center">
-                <Image
-                  src="/icons/twitter.svg"
-                  alt="twitter"
-                  width={18}
-                  height={18}
-                />
-              </i>
-              <p>Twitter</p>
+              <TwitterIcon />
+              <p className="ml-3">Twitter</p>
             </a>
           </Link>
           <Link
@@ -38,15 +34,8 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="flex items-center mb-4"
             >
-              <i className="mr-3 flex items-center justify-center">
-                <Image
-                  src="/icons/facebook.svg"
-                  alt="facebook"
-                  width={18}
-                  height={18}
-                />
-              </i>
-              <p>Facebook</p>
+              <FacebookIcon />
+              <p className="ml-3">Facebook</p>
             </a>
           </Link>
           <Link href="https://www.instagram.com/innkba/?hl=es-la" passHref>
@@ -55,15 +44,8 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="flex items-center"
             >
-              <i className="mr-3 flex items-center justify-center">
-                <Image
-                  src="/icons/instagram.svg"
-                  alt="instagram"
-                  width={18}
-                  height={18}
-                />
-              </i>
-              <p>Instagram</p>
+              <InstagramIcon />
+              <p className="ml-3">Instagram</p>
             </a>
           </Link>
         </div>

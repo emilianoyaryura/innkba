@@ -7,6 +7,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { renderBody } from 'lib/renderer'
 import Post from 'components/atoms/post'
+import Author from 'components/atoms/author'
+import FacebookIcon from 'components/atoms/icons/facebook'
+import TwitterIcon from 'components/atoms/icons/twitter'
+import WhatsAppIcon from 'components/atoms/icons/whatsapp'
 
 const Template = ({ posts }: { posts: ContentfulPost[] }) => {
   const router = useRouter()
@@ -51,7 +55,7 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
               </div>
               <div className="absolute right-0 hidden sm:flex items-center">
                 <span className="text-14 text-gray-600 mr-6">Compartir en</span>
-                <div className="flex items-center space-x-4 -mb-2">
+                <div className="flex items-center space-x-4">
                   <Link
                     href={`https://twitter.com/intent/tweet?text=${
                       post.title
@@ -60,13 +64,13 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
                     }`}
                     passHref
                   >
-                    <a target="_blank" rel="noopener noreferrer">
-                      <Image
-                        src="/icons/twitter.svg"
-                        alt="share twitter desktop"
-                        width={22}
-                        height={18}
-                      />
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="share on twitter"
+                      className="text-black hover:text-violet transition-all duration-150"
+                    >
+                      <TwitterIcon />
                     </a>
                   </Link>
                   <Link
@@ -75,13 +79,13 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
                     }`}
                     passHref
                   >
-                    <a target="_blank" rel="noopener noreferrer">
-                      <Image
-                        src="/icons/facebook.svg"
-                        alt="share facebook desktop"
-                        width={14}
-                        height={20}
-                      />
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="share on facebook"
+                      className="text-black hover:text-violet transition-all duration-150"
+                    >
+                      <FacebookIcon />
                     </a>
                   </Link>
                   <Link
@@ -92,13 +96,13 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
                     }`}
                     passHref
                   >
-                    <a target="_blank" rel="noopener noreferrer">
-                      <Image
-                        src="/icons/whatsapp.svg"
-                        alt="share whatsapp desktop"
-                        width={22}
-                        height={22}
-                      />
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="share on whatsapp"
+                      className="text-black hover:text-violet transition-all duration-150"
+                    >
+                      <WhatsAppIcon />
                     </a>
                   </Link>
                 </div>
@@ -169,6 +173,7 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
           </div>
           <div className="mt-8 sm:mt-12 md:mt-16 max-w-2xl">
             {renderBody(post.content)}
+            <Author author={post.author} />
           </div>
           <div className="mt-32">
             <p className="text-26 text-center sm:text-left sm:text-32 font-semibold mb-8 sm:mb-5">

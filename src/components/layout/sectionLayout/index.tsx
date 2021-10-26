@@ -7,9 +7,18 @@ type Props = {
   children: ReactNode
   copy?: string
   classname?: string
+  colCenter?: boolean
+  rowCenter?: boolean
 }
 
-const SectionLayout = ({ title, children, copy, classname }: Props) => {
+const SectionLayout = ({
+  title,
+  children,
+  copy,
+  classname,
+  colCenter,
+  rowCenter
+}: Props) => {
   return (
     <Container size="large" className={clsx('mb-28 flex flex-col', classname)}>
       {title && (
@@ -22,7 +31,9 @@ const SectionLayout = ({ title, children, copy, classname }: Props) => {
       )}
       <div
         className={clsx('', {
-          'mt-10 sm:mt-12': title !== undefined || title !== null
+          'mt-10 sm:mt-12': title !== undefined || title !== null,
+          'flex flex-col items-center': colCenter,
+          'flex items-center': rowCenter
         })}
       >
         {children}
