@@ -26,18 +26,39 @@ const renderBody = (document) => {
           <p>{children}</p>
         </li>
       ),
-      [BLOCKS.EMBEDDED_ASSET]: (node) => (
-        <>
-          <img
-            className={styles.image}
-            src={node.data.target.fields.file.url}
-            alt={node.data.target.fields.file.title ?? 'imagen'}
-          />
-          <p className={styles.image__footer}>
-            {node.data.target.fields.description ?? ''}
-          </p>
-        </>
-      ),
+      [BLOCKS.EMBEDDED_ASSET]: (node) => {
+        if (
+          node.data.target.fields.file.contentType === 'video/mp4' ||
+          node.data.target.fields.file.contentType === 'video/ogg'
+        ) {
+          return (
+            <video controls className={styles.video}>
+              <source
+                src={`https:${node.data.target.fields.file.url}`}
+                type="video/mp4"
+              />
+              <source
+                src={`https:${node.data.target.fields.file.url}`}
+                type="video/ogg"
+              />
+              Your browser does not support the video tag.
+            </video>
+          )
+        } else {
+          return (
+            <>
+              <img
+                className={styles.image}
+                src={node.data.target.fields.file.url}
+                alt={node.data.target.fields.file.title ?? 'imagen'}
+              />
+              <p className={styles.image__footer}>
+                {node.data.target.fields.description ?? ''}
+              </p>
+            </>
+          )
+        }
+      },
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {
         // target the contentType of the EMBEDDED_ENTRY to display as you need
         if (node.data.target.sys.contentType.sys.id === 'callout') {
