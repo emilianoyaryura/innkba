@@ -35,8 +35,8 @@ const Button = ({
           'bg-gray-100 hover:opacity-70 text-black': type === 'tertiary',
           'bg-transparent text-black font-semibold hover:opacity-80':
             type === 'alternative',
-          'px-9 py-4': size === 'medium',
-          'px-9 py-3': size === 'small'
+          'px-8 py-4': size === 'medium' && type !== 'alternative',
+          'px-8 py-3': size === 'small' && type !== 'alternative'
         }
       )}
     >

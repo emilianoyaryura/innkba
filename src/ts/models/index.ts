@@ -80,7 +80,12 @@ export type Page = {
       href: string
       label: string
     }[]
-    illustration: string
+    illustration: {
+      src: string
+      label?: string
+      width?: string | number
+      height?: string | number
+    }
   }
-  featuredPosts: Post[]
+  featuredPosts: Post[] | null
 }

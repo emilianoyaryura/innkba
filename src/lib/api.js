@@ -44,9 +44,18 @@ export async function getLifestylePage() {
     header: {
       title: page.fields.header.fields.title ?? '',
       copy: page.fields.header.fields.copy ?? '',
-      illustration: page.fields.header.fields.headerIllustration
-        ? `https:${page.fields.header.fields.headerIllustration?.fields.file.url}`
-        : '',
+      illustration: {
+        src: page.fields.header.fields.headerIllustration
+          ? `https:${page.fields.header.fields.headerIllustration?.fields.file.url}`
+          : '',
+        label: page.fields.header.fields.title ?? '',
+        width:
+          page.fields.header.fields.headerIllustration?.fields.file.details
+            .image.width ?? 700,
+        height:
+          page.fields.header.fields.headerIllustration?.fields.file.details
+            .image.height ?? 525
+      },
       ctas: page.fields.header.fields.ctas?.map((cta) => {
         return {
           href: cta.fields.href,

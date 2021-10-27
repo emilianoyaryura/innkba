@@ -1,12 +1,14 @@
+import clsx from 'clsx'
 import Button from 'components/primitives/button'
 import Image from 'next/image'
+import s from './sectionHeader.module.css'
 
 type SectionHeaderProps = {
   image: {
     src: string
     title?: string
-    width?: number
-    height?: number
+    width?: number | string | undefined
+    height?: number | string | undefined
   }
   title: string
   copy: string
@@ -18,8 +20,13 @@ type SectionHeaderProps = {
 
 const SectionHeader = ({ image, title, copy, ctas }: SectionHeaderProps) => {
   return (
-    <div className="grid grid-cols-10 p-28">
-      <div className="col-start-1 col-end-6">
+    <div
+      className={clsx(
+        'w-full flex flex-col items-center lg:grid grid-cols-10 lg:px-28',
+        s.container
+      )}
+    >
+      <div className="lg:col-start-1 lg:col-end-6 max-w-lg lg:max-w-max">
         <Image
           src={image.src}
           alt={image.title ?? 'Section Header'}
@@ -27,9 +34,9 @@ const SectionHeader = ({ image, title, copy, ctas }: SectionHeaderProps) => {
           height={image.height ?? 525}
         />
       </div>
-      <div className="flex flex-col col-start-6 col-end-11 max-w-xl ml-16 my-auto">
-        <h1 className="text-28 font-bold leading-tight">{title}</h1>
-        <p className="mt-3 text-15 font-medium mb-9 max-w-lg text-gray-800">
+      <div className="flex flex-col mx-auto lg:mx-0 lg:col-start-6 lg:col-end-11 max-w-lg lg:max-w-xl lg:ml-16 lg:my-auto mb-12">
+        <h1 className="text-22 sm:text-28 font-bold leading-tight">{title}</h1>
+        <p className="mt-3 text-14 sm:text-15 font-medium mb-6 sm:mb-9 max-w-lg text-gray-800">
           {copy}
         </p>
         <div className="flex">
@@ -39,7 +46,12 @@ const SectionHeader = ({ image, title, copy, ctas }: SectionHeaderProps) => {
                 {cta.label}
               </Button>
             ) : (
-              <Button type="alternative" key={idx} href={cta.href}>
+              <Button
+                type="alternative"
+                key={idx}
+                href={cta.href}
+                className="sm:ml-4"
+              >
                 {cta.label}
               </Button>
             )

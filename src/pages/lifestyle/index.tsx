@@ -10,22 +10,18 @@ const Lifestyle = ({
   posts: ContentfulPost[]
   page: Page
 }) => {
-  console.log(page)
   return (
     <PageLayout posts={posts} headProps={{ title: 'Innk ba | Lifestyle' }}>
       <SectionHeader
         image={{
-          src: '/images/lifestyle-header.svg',
-          title: 'Lifestyle header illo',
-          width: 700,
-          height: 525
+          src: page.header.illustration.src,
+          title: page.header.illustration.label ?? 'Lifestyle Header Illo',
+          width: page.header.illustration.width,
+          height: page.header.illustration.height
         }}
-        title="Discover hundreds of most beautiful places to visit"
-        copy="Argentine cuisine is described as a cultural blending of Mediterranean influences (such as those created by Italian and Spanish."
-        ctas={[
-          { href: '/', label: 'Keep Reading' },
-          { href: '', label: 'Write for us' }
-        ]}
+        title={page.header.title}
+        copy={page.header.copy}
+        ctas={page.header.ctas}
       />
     </PageLayout>
   )
