@@ -1,9 +1,10 @@
 import PageLayout from 'components/layout/pageLayout'
 import TravelHeader from 'components/sections/travel/header'
-import { getPosts } from 'lib/api'
-import { ContentfulPost } from 'ts/models'
+import { getPosts, getTravelPage } from 'lib/api'
+import { ContentfulPost, Page } from 'ts/models'
 
-const Viajes = ({ posts }: { posts: ContentfulPost[] }) => {
+const Viajes = ({ posts, page }: { posts: ContentfulPost[]; page: Page }) => {
+  console.log(page)
   return (
     <PageLayout posts={posts} headProps={{ title: 'Innk ba | Viajes' }}>
       <TravelHeader />
@@ -13,10 +14,12 @@ const Viajes = ({ posts }: { posts: ContentfulPost[] }) => {
 
 export const getStaticProps = async () => {
   const posts = await getPosts()
+  const page = await getTravelPage()
 
   return {
     props: {
-      posts: posts ?? null
+      posts: posts ?? null,
+      page: page ?? null
     }
   }
 }
