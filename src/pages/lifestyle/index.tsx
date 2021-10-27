@@ -21,7 +21,16 @@ const Lifestyle = ({
         }}
         title={page.header.title}
         copy={page.header.copy}
-        ctas={page.header.ctas}
+        ctas={[
+          {
+            href: '/lifestyle',
+            label: 'Seguí leyendo'
+          },
+          {
+            href: 'mailto:test@example.com?subject=Testing out mailto!',
+            label: 'Escribí en Innk'
+          }
+        ]}
       />
     </PageLayout>
   )

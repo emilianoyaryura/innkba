@@ -9,7 +9,7 @@ type Props = {
   isExternal?: boolean
   className?: string
   size?: 'small' | 'medium' | 'large'
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
 }
 
 const Button = ({
@@ -19,22 +19,21 @@ const Button = ({
   href,
   isExternal = false,
   className,
-  ...restProps
+  onClick
 }: Props) => {
   return (
-    <button
-      {...restProps}
+    <div
+      onClick={onClick}
       style={{ minWidth: '135px' }}
       className={clsx(
-        'rounded-lg font-semibold text-14 cursor-pointer text-center transition-all duration-150',
+        'rounded-lg flex items-center font-semibold text-14 cursor-pointer text-center transition-all duration-150',
         className,
         {
           'bg-blue hover:opacity-90 group-hover:opacity-90 text-white':
             type === 'primary',
           'bg-black hover:opacity-90 text-white': type === 'secondary',
           'bg-gray-100 hover:opacity-70 text-black': type === 'tertiary',
-          'bg-transparent text-black font-semibold hover:opacity-80':
-            type === 'alternative',
+          'bg-transparent text-black hover:opacity-80': type === 'alternative',
           'px-8 py-4': size === 'medium' && type !== 'alternative',
           'px-8 py-3': size === 'small' && type !== 'alternative'
         }
@@ -42,7 +41,9 @@ const Button = ({
     >
       {!isExternal && href ? (
         <Link href={href}>
-          <a className="noDecoration">{children}</a>
+          <a aria-label="internal button" className="noDecoration">
+            {children}
+          </a>
         </Link>
       ) : isExternal && href ? (
         <Link href={href} passHref>
@@ -50,17 +51,21 @@ const Button = ({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="external button"
             className="noDecoration"
           >
             {children}
           </a>
         </Link>
       ) : (
-        <a className="flex items-center justify-center noDecoration">
+        <button
+          aria-label="no link button"
+          className="flex items-center justify-center noDecoration"
+        >
           {children}
-        </a>
+        </button>
       )}
-    </button>
+    </div>
   )
 }
 

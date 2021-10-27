@@ -50,7 +50,7 @@ const SectionHeader = ({ image, title, copy, ctas }: SectionHeaderProps) => {
                 type="alternative"
                 key={idx}
                 href={cta.href}
-                className="sm:ml-4"
+                className="ml-4 sm:ml-6"
               >
                 {cta.label}
               </Button>
