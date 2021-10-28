@@ -70,10 +70,11 @@ export async function getLifestylePage() {
 }
 
 export async function getLiteraturePage() {
-  const page = await client.getEntry({
+  const data = await client.getEntries({
     include: 4,
     content_type: 'pageLiterature'
   })
+  const page = data.items[0]
 
   return {
     header: getSectionHeader(page.fields.header),
@@ -82,10 +83,11 @@ export async function getLiteraturePage() {
 }
 
 export async function getCulturePage() {
-  const page = await client.getEntry({
+  const data = await client.getEntries({
     include: 4,
     content_type: 'pageCulture'
   })
+  const page = data.items[0]
 
   return {
     header: getSectionHeader(page.fields.header),
@@ -94,7 +96,11 @@ export async function getCulturePage() {
 }
 
 export async function getArtPage() {
-  const page = await client.getEntry({ include: 4, content_type: 'pageArt' })
+  const data = await client.getEntries({
+    include: 4,
+    content_type: 'pageArt'
+  })
+  const page = data.items[0]
 
   return {
     header: getSectionHeader(page.fields.header),

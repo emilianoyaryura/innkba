@@ -22,7 +22,7 @@ const SectionHeader = ({ image, title, copy, ctas }: SectionHeaderProps) => {
   return (
     <div
       className={clsx(
-        'w-full flex flex-col items-center lg:grid grid-cols-10 lg:px-28',
+        'w-full max-w-screen-2xl mx-auto flex flex-col items-center lg:grid grid-cols-10 lg:px-28',
         s.container
       )}
     >

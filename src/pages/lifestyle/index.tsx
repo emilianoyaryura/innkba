@@ -27,7 +27,7 @@ const Lifestyle = ({
             label: 'Seguí leyendo'
           },
           {
-            href: 'mailto:test@example.com?subject=Testing out mailto!',
+            href: 'mailto:test@example.com?subject=Hola, quiero escribir en la sección de lifestyle!',
             label: 'Escribí en Innk'
           }
         ]}
