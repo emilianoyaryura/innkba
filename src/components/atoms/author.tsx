@@ -9,7 +9,7 @@ import WebsiteIcon from './icons/website'
 
 const PostAuthor = ({ author }: Pick<ContentfulPost, 'author'>) => {
   return (
-    <div className="w-full flex flex-col sm:flex-row items-center border border-solid border-black p-5 rounded-xl mt-20">
+    <div className="w-full max-w-2xl mx-auto flex flex-col sm:flex-row items-center border border-solid border-black p-5 rounded-xl mt-20">
       <div className="min-w-max">
         <Image
           src={author[0].image ?? '/images/brand/logo.svg'}

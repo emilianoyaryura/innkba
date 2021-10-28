@@ -49,6 +49,7 @@ export type ContentfulPost = {
   tag: Tag
   date: string
   author: Author[]
+  bigImages: boolean
   content: any
   image: {
     src: string | null
@@ -70,6 +71,7 @@ export type Post = {
   copy?: string
   author?: Author
   content: string
+  bigImages: boolean
 }
 
 export type Page = {

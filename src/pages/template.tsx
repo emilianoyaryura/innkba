@@ -11,6 +11,7 @@ import Author from 'components/atoms/author'
 import FacebookIcon from 'components/atoms/icons/facebook'
 import TwitterIcon from 'components/atoms/icons/twitter'
 import WhatsAppIcon from 'components/atoms/icons/whatsapp'
+import clsx from 'clsx'
 
 const Template = ({ posts }: { posts: ContentfulPost[] }) => {
   const router = useRouter()
@@ -171,8 +172,12 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
               </div>
             </div>
           </div>
-          <div className="mt-8 sm:mt-12 md:mt-16 max-w-2xl">
-            {renderBody(post.content)}
+          <div
+            className={clsx('mt-8 sm:mt-12 md:mt-16', {
+              'max-w-2xl': !post.bigImages
+            })}
+          >
+            {renderBody(post.content, post.bigImages)}
             <Author author={post.author} />
           </div>
           <div className="mt-32">

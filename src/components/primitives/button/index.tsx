@@ -26,7 +26,7 @@ const Button = ({
       onClick={onClick}
       style={{ minWidth: '135px' }}
       className={clsx(
-        'rounded-lg flex items-center font-semibold text-14 cursor-pointer text-center transition-all duration-150',
+        'rounded-lg flex items-center justify-center font-semibold text-14 cursor-pointer text-center transition-all duration-150',
         className,
         {
           'bg-blue hover:opacity-90 group-hover:opacity-90 text-white':

@@ -7,21 +7,21 @@ import KeyIcon from 'components/atoms/icons/key'
 import WarningIcon from 'components/atoms/icons/warning'
 import clsx from 'clsx'
 
-const renderBody = (document) => {
+const renderBody = (document, size) => {
   const options = {
     renderNode: {
       [BLOCKS.HEADING_1]: (node, children) => (
-        <p className={styles.heading}>{children}</p>
+        <p className={clsx('max-w-2xl', styles.heading)}>{children}</p>
       ),
       [BLOCKS.HEADING_3]: (node, children) => (
-        <p className={styles.heading__3}>{children}</p>
+        <p className={clsx('max-w-2xl', styles.heading__3)}>{children}</p>
       ),
       [BLOCKS.QUOTE]: (node, children) => <blockquote>{children}</blockquote>,
       [BLOCKS.PARAGRAPH]: (node, children) => (
-        <p className={styles.paragraph}>{children}</p>
+        <p className={clsx('max-w-2xl', styles.paragraph)}>{children}</p>
       ),
       [BLOCKS.LIST_ITEM]: (node, children) => (
-        <li className={styles.list__item}>
+        <li className={clsx('max-w-2xl', styles.list__item)}>
           <div />
           <p>{children}</p>
         </li>
@@ -32,7 +32,7 @@ const renderBody = (document) => {
           node.data.target.fields.file.contentType === 'video/ogg'
         ) {
           return (
-            <video controls className={styles.video}>
+            <video controls className={size ? styles.bigVideo : styles.video}>
               <source
                 src={`https:${node.data.target.fields.file.url}`}
                 type="video/mp4"
@@ -48,7 +48,7 @@ const renderBody = (document) => {
           return (
             <>
               <img
-                className={styles.image}
+                className={size ? styles.bigImage : styles.image}
                 src={node.data.target.fields.file.url}
                 alt={node.data.target.fields.file.title ?? 'imagen'}
               />
@@ -65,7 +65,7 @@ const renderBody = (document) => {
           return (
             <div
               className={clsx(
-                'flex flex-col sm:flex-row p-4 sm:p-6 rounded-lg my-8',
+                'max-w-2xl mx-auto w-full flex flex-col sm:flex-row p-4 sm:p-6 rounded-lg my-8',
                 {
                   'bg-lightYellow': node.data.target.fields.type === 'Hint',
                   'bg-lightRed': node.data.target.fields.type === 'Warning',

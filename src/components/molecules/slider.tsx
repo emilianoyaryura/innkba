@@ -118,7 +118,7 @@ const Slider = ({ title, copy, slides, link }: SliderProps) => {
             <Button
               href={link?.href}
               type="alternative"
-              className="self-end -mr-9"
+              className="self-center mr-0 md:self-end md:-mr-9"
             >
               {link?.label ?? 'Ver más'}
             </Button>

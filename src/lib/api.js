@@ -28,6 +28,7 @@ function getCleanPost(post) {
         website: author.fields.website ?? ''
       }
     }),
+    bigImages: post.fields.bigImages ?? false,
     content: post.fields.content,
     image: {
       src: `https:${post.fields.frontImage?.fields.file.url}` ?? null,
@@ -109,7 +110,11 @@ export async function getArtPage() {
 }
 
 export async function getTravelPage() {
-  const page = await client.getEntry({ include: 4, content_type: 'pageTravel' })
+  const data = await client.getEntries({
+    include: 4,
+    content_type: 'pageTravel'
+  })
+  const page = data.items[0]
 
   return {
     featuredPosts: page.fields.featuredPosts.map((post) => getCleanPost(post))
