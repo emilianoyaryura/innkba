@@ -17,7 +17,7 @@ const Cultura = ({ posts, page }: { posts: ContentfulPost[]; page: Page }) => {
         copy={page.header.copy}
         ctas={[
           {
-            href: '/lifestyle',
+            href: '/cultura',
             label: 'Seguí leyendo'
           },
           {

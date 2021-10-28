@@ -23,7 +23,7 @@ const Literatura = ({
         copy={page.header.copy}
         ctas={[
           {
-            href: '/lifestyle',
+            href: '/literatura',
             label: 'Seguí leyendo'
           },
           {
