@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { useState } from 'react'
 import { ContentfulPost } from 'ts/models'
 import Post from '../atoms/post'
@@ -9,9 +10,16 @@ type Props = {
   title?: string
   copy?: string
   id: string
+  withoutMargins?: boolean
 }
 
-const PostGrid = ({ posts, title, copy, id }: Props) => {
+const PostGrid = ({
+  posts,
+  title,
+  copy,
+  id,
+  withoutMargins = false
+}: Props) => {
   const [morePosts, setMorePosts] = useState(6)
 
   const postsLimit = posts.length
@@ -29,8 +37,13 @@ const PostGrid = ({ posts, title, copy, id }: Props) => {
   }
 
   return (
-    <div id={id} className="-mt-32 pt-32">
-      <SectionLayout title={title} copy={copy} colCenter>
+    <div
+      id={id}
+      className={clsx('', {
+        '-mt-32 pt-32': !withoutMargins
+      })}
+    >
+      <SectionLayout title={title} copy={copy}>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 lg:gap-x-10">
           {regularGridPosts.map((post, idx) => (
             <Post key={idx} post={post} />
@@ -39,7 +52,7 @@ const PostGrid = ({ posts, title, copy, id }: Props) => {
         {posts.length > 6 && (
           <Button
             type="tertiary"
-            className="max-w-max mt-16"
+            className="max-w-max mt-16 mx-auto"
             onClick={handlePosts}
           >
             {morePosts < postsLimit ? 'Ver más' : 'Ver menos'}

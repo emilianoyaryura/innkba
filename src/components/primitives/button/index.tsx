@@ -41,7 +41,10 @@ const Button = ({
     >
       {!isExternal && href ? (
         <Link href={href}>
-          <a aria-label="internal button" className="noDecoration">
+          <a
+            aria-label="internal button"
+            className="noDecoration font-semibold"
+          >
             {children}
           </a>
         </Link>
@@ -52,7 +55,7 @@ const Button = ({
             target="_blank"
             rel="noopener noreferrer"
             aria-label="external button"
-            className="noDecoration"
+            className="noDecoration font-semibold"
           >
             {children}
           </a>
@@ -60,7 +63,7 @@ const Button = ({
       ) : (
         <button
           aria-label="no link button"
-          className="flex items-center justify-center noDecoration"
+          className="flex items-center justify-center noDecoration font-semibold"
         >
           {children}
         </button>

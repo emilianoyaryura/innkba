@@ -22,7 +22,7 @@ const SectionLayout = ({
   return (
     <Container size="large" className={clsx('mb-28 flex flex-col', classname)}>
       {title && (
-        <h1 className="text-28 sm:text-38 font-bold leading-normal">{title}</h1>
+        <h1 className="text-28 sm:text-34 font-bold leading-normal">{title}</h1>
       )}
       {copy && (
         <p className="text-14 sm:text-16 mt-2 max-w-lg text-gray-700 font-medium">

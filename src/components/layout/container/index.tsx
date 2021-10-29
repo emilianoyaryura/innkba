@@ -12,7 +12,7 @@ const Container = ({
 }) => {
   return (
     <div
-      className={clsx(className, 'mx-auto px-4', {
+      className={clsx(className, 'w-full mx-auto px-4', {
         'max-w-7xl': size === 'large',
         'max-w-5xl': size === 'medium',
         'max-w-4xl': size === 'small'

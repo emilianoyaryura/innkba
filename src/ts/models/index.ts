@@ -89,5 +89,5 @@ export type Page = {
       height?: string | number
     }
   }
-  featuredPosts: Post[] | null
+  featuredPosts: ContentfulPost[]
 }
