@@ -24,7 +24,13 @@ const Viajes = ({ posts, page }: { posts: ContentfulPost[]; page: Page }) => {
         </h1>
       </Container>
       {page.featuredPosts && page.featuredPosts?.length > 1 ? (
-        <PostGrid id="LoMasDestacado" posts={page.featuredPosts} />
+        <div className="-mb-24">
+          <PostGrid
+            withoutMargins
+            id="LoMasDestacado"
+            posts={page.featuredPosts}
+          />
+        </div>
       ) : (
         <FullScreenPost post={page.featuredPosts[0]} />
       )}

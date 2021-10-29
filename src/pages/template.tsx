@@ -39,11 +39,16 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
                 </span>
               </a>
             </Link>
-            <p className="flex items-center justify-center py-2 px-4 rounded bg-lightBlue">
-              <span className="uppercase text-11 text-blue font-bold">
-                {post.tag}
-              </span>
-            </p>
+            <Link
+              href={`/${post.category.toLocaleLowerCase()}#${post.tag.toLocaleLowerCase()}`}
+              passHref
+            >
+              <a className="flex items-center justify-center py-2 px-4 rounded bg-lightBlue">
+                <span className="uppercase text-11 text-blue font-bold">
+                  {post.tag}
+                </span>
+              </a>
+            </Link>
           </div>
           <h1 className="text-center text-28 md:text-38 font-bold max-w-xl md:max-w-3xl leading-tight md:leading-normal mb-5">
             {post.title}

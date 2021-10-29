@@ -9,7 +9,10 @@ const Section = ({
   children: ReactNode
 }) => {
   return (
-    <div className="flex flex-col mt-28 md:mt-32 lg:mt-36">
+    <div
+      id={section.toLocaleLowerCase()}
+      className="flex flex-col pt-28 md:pt-32 lg:pt-36"
+    >
       <Container size="large" className="flex flex-col mb-12 sm:mb-14">
         <p className="text-15 sm:text-16 uppercase font-bold mb-2">{section}</p>
         <div

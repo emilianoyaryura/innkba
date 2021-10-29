@@ -13,13 +13,7 @@ type Props = {
   withoutMargins?: boolean
 }
 
-const PostGrid = ({
-  posts,
-  title,
-  copy,
-  id,
-  withoutMargins = false
-}: Props) => {
+const PostGrid = ({ posts, title, copy, id, withoutMargins }: Props) => {
   const [morePosts, setMorePosts] = useState(6)
 
   const postsLimit = posts.length
