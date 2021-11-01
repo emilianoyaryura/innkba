@@ -27,10 +27,6 @@ export const menu: Menu = [
     route: '/viajes'
   },
   {
-    label: 'Arte',
-    route: '/arte'
-  },
-  {
     label: 'Cultura',
     route: '/cultura'
   },
@@ -39,8 +35,8 @@ export const menu: Menu = [
     route: '/lifestyle'
   },
   {
-    label: 'Literatura',
-    route: '/literatura'
+    label: 'Arte y Literatura',
+    route: '/arte-y-literatura'
   }
 ]
 

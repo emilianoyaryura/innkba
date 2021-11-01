@@ -3,7 +3,7 @@ import { getLiteraturePage, getPosts } from 'lib/api'
 import { ContentfulPost, Page } from 'ts/models'
 import SectionHeader from 'components/molecules/sectionHeader'
 
-const Literatura = ({
+const ArteyLiteratura = ({
   posts,
   page
 }: {
@@ -11,7 +11,10 @@ const Literatura = ({
   page: Page
 }) => {
   return (
-    <PageLayout posts={posts} headProps={{ title: 'Innk ba | Literatura' }}>
+    <PageLayout
+      posts={posts}
+      headProps={{ title: 'Innk ba | Arte y Literatura' }}
+    >
       <SectionHeader
         image={{
           src: page.header.illustration.src,
@@ -23,11 +26,11 @@ const Literatura = ({
         copy={page.header.copy}
         ctas={[
           {
-            href: '/literatura',
+            href: '/arte-y-literatura',
             label: 'Seguí leyendo'
           },
           {
-            href: 'mailto:test@example.com?subject=Hola, quiero escribir en la sección de literatura!',
+            href: 'mailto:test@example.com?subject=Hola, quiero escribir en la sección de Arte y Literatura!',
             label: 'Escribí en Innk'
           }
         ]}
@@ -48,4 +51,4 @@ export const getStaticProps = async () => {
   }
 }
 
-export default Literatura
+export default ArteyLiteratura
