@@ -1,8 +1,8 @@
-import { getLiteraturePosts, getPosts } from 'lib/api'
+import { getArtandLiteraturePosts, getPosts } from 'lib/api'
 import LiteraturePostPage from 'pages/template'
 
 export const getStaticPaths = async () => {
-  const posts = await getLiteraturePosts()
+  const posts = await getArtandLiteraturePosts()
   const paths = posts.map((each: any) => ({
     params: { slug: each.slug as string }
   }))

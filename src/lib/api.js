@@ -133,12 +133,6 @@ export const getLifestylePosts = async () => {
   return posts
 }
 
-export const getLiteraturePosts = async () => {
-  const allPosts = await getPosts()
-  const posts = allPosts.filter((e) => e.category === 'Literatura')
-  return posts
-}
-
 export const getTravelPosts = async () => {
   const allPosts = await getPosts()
   const posts = allPosts.filter(
@@ -147,18 +141,16 @@ export const getTravelPosts = async () => {
   return posts
 }
 
-export const getArtPosts = async () => {
+export const getArtandLiteraturePosts = async () => {
   const allPosts = await getPosts()
   const posts = allPosts.filter(
-    (e) => (e.category === 'Viajes') | (e.category === 'Arte')
+    (e) => (e.category === 'Literatura') | (e.category === 'Arte')
   )
   return posts
 }
 
 export const getCulturePosts = async () => {
   const allPosts = await getPosts()
-  const posts = allPosts.filter(
-    (e) => (e.category === 'Viajes') | (e.category === 'Cultura')
-  )
+  const posts = allPosts.filter((e) => e.category === 'Cultura')
   return posts
 }
