@@ -39,7 +39,7 @@ const FullScreenPost = ({ post }: Props) => {
             >
               {post.category}
             </p>
-            <h1 className="font-bold text-28 md:text-32 lg:text-38 leading-smooth md:leading-normal md:mt-3 mb-4 lg:mt-4 lg:mb-5">
+            <h1 className="font-bold text-26 md:text-28 lg:text-30 leading-smooth md:leading-normal md:mt-3 mb-4 lg:mt-4 lg:mb-5">
               {post.title}
             </h1>
             <p

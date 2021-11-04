@@ -30,7 +30,7 @@ const BigPost = ({ post }: { post: ContentfulPost }) => {
         >
           {post.category}
         </p>
-        <p className="text-28 sm:text-34 font-bold leading-smooth">
+        <p className="text-26 sm:text-30 font-bold leading-smooth">
           {post.title}
         </p>
         <p

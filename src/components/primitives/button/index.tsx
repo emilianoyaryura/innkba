@@ -24,7 +24,7 @@ const Button = ({
   return (
     <div
       onClick={onClick}
-      style={{ minWidth: '135px' }}
+      style={{ minWidth: '120px' }}
       className={clsx(
         'rounded-lg flex items-center justify-center font-semibold text-14 cursor-pointer text-center transition-all duration-150',
         className,
@@ -34,8 +34,8 @@ const Button = ({
           'bg-black hover:opacity-90 text-white': type === 'secondary',
           'bg-gray-100 hover:opacity-70 text-black': type === 'tertiary',
           'bg-transparent text-black hover:opacity-80': type === 'alternative',
-          'px-8 py-4': size === 'medium' && type !== 'alternative',
-          'px-8 py-3': size === 'small' && type !== 'alternative'
+          'px-7 py-4': size === 'medium' && type !== 'alternative',
+          'px-6 py-3': size === 'small' && type !== 'alternative'
         }
       )}
     >
