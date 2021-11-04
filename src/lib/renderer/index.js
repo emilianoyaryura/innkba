@@ -6,6 +6,9 @@ import WorldIcon from 'components/atoms/icons/world'
 import KeyIcon from 'components/atoms/icons/key'
 import WarningIcon from 'components/atoms/icons/warning'
 import clsx from 'clsx'
+import Button from 'components/primitives/button'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 const renderBody = (document, size) => {
   const options = {
@@ -61,7 +64,7 @@ const renderBody = (document, size) => {
       },
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {
         // target the contentType of the EMBEDDED_ENTRY to display as you need
-        if (node.data.target.sys.contentType.sys.id === 'callout') {
+        if (node.data.target.sys.contentType?.sys.id === 'callout') {
           return (
             <div
               className={clsx(
@@ -88,6 +91,29 @@ const renderBody = (document, size) => {
               <p className="text-14 leading-6 mt-3 ml-1 sm:mt-1 sm:ml-4">
                 {node.data.target.fields.content}
               </p>
+            </div>
+          )
+        } else if (
+          node.data.target.sys.contentType?.sys.id === 'documentQuote'
+        ) {
+          return (
+            <div className="rounded-xl w-full my-8 border border-solid border-gray-400 px-8 pt-10 pb-4 flex flex-col">
+              <p className="self-center font-bold mb-3 text-18">
+                {node.data.target.fields.title}
+              </p>
+              <p className={styles.paragraph}>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {node.data.target.fields.quote}
+                </ReactMarkdown>
+              </p>
+              <Button
+                isExternal
+                type="alternative"
+                className="self-end -mr-8"
+                href={node.data.target.fields.ctaHref}
+              >
+                {node.data.target.fields.ctaLabel}
+              </Button>
             </div>
           )
         }
