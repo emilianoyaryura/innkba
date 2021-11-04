@@ -186,7 +186,7 @@ export const MobileHeader = ({
         href="mailto:innkba@gmail.com"
         aria-label="contact mail"
       >
-        <span>hola@innkba.com</span>
+        <span>innkba@gmail.com</span>
         <span style={{ height: '2px' }} className="w-full bg-black" />
       </a>
     </div>

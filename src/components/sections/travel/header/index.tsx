@@ -38,6 +38,15 @@ const TravelHeader = () => {
         },
         icon: '👏'
       })
+
+      setTimeout(() => {
+        setStatus({
+          submitted: false,
+          submitting: false,
+          info: { error: false, msg: null }
+        })
+        setEmail('')
+      }, 4000)
     } else {
       setStatus({
         submitted: false,
