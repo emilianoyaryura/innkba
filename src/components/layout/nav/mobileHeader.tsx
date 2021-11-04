@@ -183,7 +183,7 @@ export const MobileHeader = ({
       </div>
       <a
         className="text-16 flex flex-col max-w-max mx-auto mt-6 noDecoration"
-        href="mailto:emilianoyaryurat@gmail.com"
+        href="mailto:innkba@gmail.com"
         aria-label="contact mail"
       >
         <span>hola@innkba.com</span>

@@ -6,7 +6,7 @@ import { useMedia } from 'hooks/use-media'
 
 const defaultMeta = {
   title: 'Innk Ba',
-  description: `Born in Buenos Aires`
+  description: `Un nuevo espacio para nuevas historias`
 }
 
 type Meta = {

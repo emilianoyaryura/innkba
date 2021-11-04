@@ -204,7 +204,10 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
                     href={`/${post.category.toLocaleLowerCase()}/${post.slug}`}
                     key={idx}
                   >
-                    <a className="flex p-4 transition-all duration-150 hover:bg-gray-200 rounded-md noDecoration">
+                    <a
+                      onClick={() => setMobileSearcherOpen(false)}
+                      className="flex p-4 transition-all duration-150 hover:bg-gray-200 rounded-md noDecoration"
+                    >
                       <img
                         src={post.image.src ?? ''}
                         alt={post.title}
