@@ -14,7 +14,7 @@ const PostWithoutImage = ({ post }: { post: ContentfulPost }) => {
         </h1>
         <p
           className={clsx(
-            'max-w-md md:max-w-md mb-7 text-16 text-gray-500 font-medium pr-8 md:pr-0',
+            'max-w-md md:max-w-md mb-7 text-16 text-gray-600 font-medium pr-8 md:pr-0',
             s.copy
           )}
         >

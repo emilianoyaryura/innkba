@@ -39,7 +39,7 @@ const PreFooter = () => {
                   const value = e.target.value
                   setEmail(value)
                 }}
-                className="bg-gray-200 w-full text-center sm:text-left mb-3 sm:mb-0 py-4 mr-4 rounded-lg text-14 px-5 outline-none transition-all duration-200 border-2 border-solid border-gray-200 focus:border-blue focus:outline-none sm:w-96"
+                className="bg-gray-200 placeholder-gray-500 w-full text-center sm:text-left mb-3 sm:mb-0 py-4 mr-4 rounded-lg text-14 px-5 outline-none transition-all duration-200 border-2 border-solid border-gray-200 focus:border-blue focus:outline-none sm:w-96"
                 placeholder="Ingresa tu mail para más novedades"
               />
               <button

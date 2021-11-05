@@ -44,7 +44,7 @@ const FullScreenPost = ({ post }: Props) => {
             </h1>
             <p
               className={clsx(
-                'mt-3 md:mt-0 mb-7 max-w-lg font-medium text-14 lg:text-16 md:mb-6 lg:mb-10 text-gray-500 md:max-w-md',
+                'mt-3 md:mt-0 mb-7 max-w-lg font-medium text-14 lg:text-16 md:mb-6 lg:mb-10 text-gray-600 md:max-w-md',
                 s.copy
               )}
             >

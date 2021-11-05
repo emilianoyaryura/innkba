@@ -57,10 +57,10 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
             <div className="flex items-center justify-center sm:justify-start md:justify-center mb-6 relative">
               <div className="flex flex-col items-center sm:items-start md:items-center">
                 <p className="text-16 font-medium">{post.author[0].name}</p>
-                <p className="text-14 text-gray-600">{getDate(post.date)}</p>
+                <p className="text-14 text-gray-700">{getDate(post.date)}</p>
               </div>
               <div className="absolute right-0 hidden sm:flex items-center">
-                <span className="text-14 text-gray-600 mr-6">Compartir en</span>
+                <span className="text-14 text-gray-700 mr-6">Compartir en</span>
                 <div className="flex items-center space-x-4">
                   <Link
                     href={`https://twitter.com/intent/tweet?text=${
@@ -123,7 +123,7 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
               className="rounded-xl sm:rounded-2xl"
             />
             <div className="flex flex-col mt-3 sm:hidden items-center mx-auto">
-              <p className="text-16 text-gray-600 mb-3">Compartir en</p>
+              <p className="text-16 text-gray-700 mb-3">Compartir en</p>
               <div className="flex items-center space-x-6 -mb-2">
                 <Link
                   href={`https://twitter.com/intent/tweet?text=${

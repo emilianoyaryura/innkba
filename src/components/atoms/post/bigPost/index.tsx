@@ -35,7 +35,7 @@ const BigPost = ({ post }: { post: ContentfulPost }) => {
         </p>
         <p
           className={clsx(
-            'text-14 md:text-16 font-medium text-gray-500 mt-3 mb-7 max-w-lg',
+            'text-14 md:text-16 font-medium text-gray-600 mt-3 mb-7 max-w-lg',
             s.copy
           )}
         >
