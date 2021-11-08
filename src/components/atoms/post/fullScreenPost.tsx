@@ -21,7 +21,7 @@ const FullScreenPost = ({ post }: Props) => {
             src={post.image.src ?? ''}
             alt={post.image.title ?? post.title}
             width={560}
-            height={420}
+            height={410}
             className="rounded-xl transition-all duration-150 group-hover:opacity-90"
           />
           <div className="md:ml-5 lg:ml-8">

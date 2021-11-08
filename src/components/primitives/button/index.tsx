@@ -9,7 +9,7 @@ type Props = {
   isExternal?: boolean
   className?: string
   size?: 'small' | 'medium' | 'large'
-  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 const Button = ({
@@ -22,7 +22,7 @@ const Button = ({
   onClick
 }: Props) => {
   return (
-    <div
+    <button
       onClick={onClick}
       style={{ minWidth: '120px' }}
       className={clsx(
@@ -61,14 +61,14 @@ const Button = ({
           </a>
         </Link>
       ) : (
-        <button
+        <a
           aria-label="no link button"
           className="flex items-center justify-center noDecoration font-semibold"
         >
           {children}
-        </button>
+        </a>
       )}
-    </div>
+    </button>
   )
 }
 
