@@ -1,3 +1,15 @@
+export type Quote = {
+  quote: string
+  author: {
+    name: string
+    image: string
+    dates: {
+      birth: number | string
+      death?: number | string
+    }
+  }
+}
+
 export type Author = {
   name: string
   image: string
@@ -90,4 +102,5 @@ export type Page = {
     }
   }
   featuredPosts: ContentfulPost[]
+  weeklyQuote?: Quote
 }

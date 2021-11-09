@@ -1,4 +1,3 @@
-import SectionLayout from 'components/layout/sectionLayout'
 import { ContentfulPost } from 'ts/models'
 import Image from 'next/image'
 import Button from 'components/primitives/button'
@@ -6,22 +5,23 @@ import clsx from 'clsx'
 import { getSectionSlug } from 'lib/utils/section'
 import s from './bigPost/bigPost.module.css'
 import Link from 'next/link'
+import Container from 'components/layout/container'
 
 type Props = {
   post: ContentfulPost
+  className?: string
 }
 
-const FullScreenPost = ({ post }: Props) => {
+const FullScreenPost = ({ post, className }: Props) => {
   const section = getSectionSlug(post.category)
   return (
     <Link href={`/${section}/${post.slug}`}>
-      <SectionLayout classname="cursor-pointer">
+      <Container size="large" className={clsx('cursor-pointer', className)}>
         <div className="flex flex-col md:flex-row md:items-center group">
-          <div className="lg:min-w-max block">
+          <div className="xl:min-w-max">
             <Image
               src={post.image.src ?? ''}
               alt={post.image.title ?? post.title}
-              layout="responsive"
               width={560}
               height={370}
               className="rounded-xl transition-all duration-150 group-hover:opacity-90"
@@ -56,7 +56,7 @@ const FullScreenPost = ({ post }: Props) => {
             <Button className="max-w-max">Seguir Leyendo</Button>
           </div>
         </div>
-      </SectionLayout>
+      </Container>
     </Link>
   )
 }

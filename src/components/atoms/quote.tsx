@@ -1,18 +1,7 @@
 import Container from 'components/layout/container'
 import SectionLayout from 'components/layout/sectionLayout'
 import Image from 'next/image'
-
-export type QuoteProps = {
-  quote: string
-  author: {
-    name: string
-    image: string
-    dates: {
-      birth: number | string
-      death?: number | string
-    }
-  }
-}
+import { Quote as QuoteProps } from 'ts/models'
 
 const QuotationMark = () => {
   return (

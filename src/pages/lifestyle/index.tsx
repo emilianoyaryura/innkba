@@ -2,7 +2,6 @@ import PageLayout from 'components/layout/pageLayout'
 import { getLifestylePage, getLifestylePosts } from 'lib/api'
 import { ContentfulPost, Page } from 'ts/models'
 import SectionHeader from 'components/molecules/sectionHeader'
-import Container from 'components/layout/container'
 import PostGrid from 'components/molecules/postGrid'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
 import Section from 'components/molecules/section'
@@ -42,22 +41,32 @@ const Lifestyle = ({
           }
         ]}
       />
-      <Container size="large">
-        <h1 className="text-28 text-center sm:text-left lg:text-34 font-bold mt-28">
-          Lo más destacado
-        </h1>
-      </Container>
-      <div className="-mb-24">
-        {page.featuredPosts && page.featuredPosts?.length > 1 ? (
-          <PostGrid
-            withoutMargins
-            id="LoMasDestacado"
-            posts={page.featuredPosts}
-          />
-        ) : (
-          <FullScreenPost post={page.featuredPosts[0]} />
-        )}
-      </div>
+      <Section section="Lo más destacado">
+        <div>
+          {page.featuredPosts && (
+            <>
+              <div className="hidden md:flex flex-col">
+                <FullScreenPost
+                  className="mb-14"
+                  post={page.featuredPosts[0]}
+                />
+                <PostGrid
+                  withoutMargins
+                  id="LoMasDestacado"
+                  posts={page.featuredPosts.slice(1, 10)}
+                />
+              </div>
+              <div className="flex md:hidden flex-col">
+                <PostGrid
+                  withoutMargins
+                  id="LoMasDestacado"
+                  posts={page.featuredPosts}
+                />
+              </div>
+            </>
+          )}
+        </div>
+      </Section>
       {sections.map((section, idx) => (
         <Section key={idx} section={section}>
           <PostGrid

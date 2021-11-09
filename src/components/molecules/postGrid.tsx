@@ -2,8 +2,8 @@ import clsx from 'clsx'
 import { useState } from 'react'
 import { ContentfulPost } from 'ts/models'
 import Post from '../atoms/post'
-import SectionLayout from '../layout/sectionLayout'
 import Button from '../primitives/button'
+import Container from 'components/layout/container'
 
 type Props = {
   posts: ContentfulPost[]
@@ -13,7 +13,7 @@ type Props = {
   withoutMargins?: boolean
 }
 
-const PostGrid = ({ posts, title, copy, id, withoutMargins }: Props) => {
+const PostGrid = ({ posts, id, withoutMargins }: Props) => {
   const [morePosts, setMorePosts] = useState(6)
 
   const postsLimit = posts.length
@@ -37,7 +37,7 @@ const PostGrid = ({ posts, title, copy, id, withoutMargins }: Props) => {
         '-mt-32 pt-32': !withoutMargins
       })}
     >
-      <SectionLayout title={title} copy={copy}>
+      <Container size="large">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 lg:gap-x-10">
           {regularGridPosts.map((post, idx) => (
             <Post key={idx} post={post} />
@@ -52,7 +52,7 @@ const PostGrid = ({ posts, title, copy, id, withoutMargins }: Props) => {
             {morePosts < postsLimit ? 'Ver más' : 'Ver menos'}
           </Button>
         )}
-      </SectionLayout>
+      </Container>
     </div>
   )
 }

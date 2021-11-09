@@ -76,10 +76,22 @@ export async function getLiteraturePage() {
     content_type: 'pageLiterature'
   })
   const page = data.items[0]
+  const quote = page.fields.quoteOfTheWeek.fields
 
   return {
     header: getSectionHeader(page.fields.header),
-    featuredPosts: page.fields.featuredPosts.map((post) => getCleanPost(post))
+    featuredPosts: page.fields.featuredPosts.map((post) => getCleanPost(post)),
+    weeklyQuote: {
+      quote: quote.quote,
+      author: {
+        name: quote.author,
+        image: `https:${quote.authorsImage?.fields.file.url}`,
+        dates: {
+          birth: quote.authorsBirthYear,
+          death: quote.authorsDeathYear
+        }
+      }
+    }
   }
 }
 

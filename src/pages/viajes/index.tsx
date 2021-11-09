@@ -3,7 +3,6 @@ import TravelHeader from 'components/sections/travel/header'
 import { getTravelPage, getTravelPosts } from 'lib/api'
 import { ContentfulPost, Page } from 'ts/models'
 import Section from 'components/molecules/section'
-import Container from 'components/layout/container'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
 import PostGrid from 'components/molecules/postGrid'
 
@@ -17,22 +16,32 @@ const Viajes = ({ posts, page }: { posts: ContentfulPost[]; page: Page }) => {
   return (
     <PageLayout posts={posts} headProps={{ title: 'Innk ba | Viajes' }}>
       <TravelHeader />
-      <Container size="large">
-        <h1 className="text-28 text-center sm:text-left lg:text-34 font-bold -mb-4 mt-28">
-          Lo más destacado
-        </h1>
-      </Container>
-      {page.featuredPosts && page.featuredPosts?.length > 1 ? (
-        <div className="-mb-24">
-          <PostGrid
-            withoutMargins
-            id="LoMasDestacado"
-            posts={page.featuredPosts}
-          />
+      <Section section="Lo más destacado">
+        <div>
+          {page.featuredPosts && (
+            <>
+              <div className="hidden md:flex flex-col">
+                <FullScreenPost
+                  className="mb-14"
+                  post={page.featuredPosts[0]}
+                />
+                <PostGrid
+                  withoutMargins
+                  id="LoMasDestacado"
+                  posts={page.featuredPosts.slice(1, 10)}
+                />
+              </div>
+              <div className="flex md:hidden flex-col">
+                <PostGrid
+                  withoutMargins
+                  id="LoMasDestacado"
+                  posts={page.featuredPosts}
+                />
+              </div>
+            </>
+          )}
         </div>
-      ) : (
-        <FullScreenPost post={page.featuredPosts[0]} />
-      )}
+      </Section>
       {sections.map((section, idx) => (
         <Section key={idx} section={section}>
           <PostGrid
