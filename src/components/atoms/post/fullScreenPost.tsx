@@ -17,13 +17,16 @@ const FullScreenPost = ({ post }: Props) => {
     <Link href={`/${section}/${post.slug}`}>
       <SectionLayout classname="cursor-pointer">
         <div className="flex flex-col md:flex-row md:items-center group">
-          <Image
-            src={post.image.src ?? ''}
-            alt={post.image.title ?? post.title}
-            width={560}
-            height={410}
-            className="rounded-xl transition-all duration-150 group-hover:opacity-90"
-          />
+          <div className="lg:min-w-max block">
+            <Image
+              src={post.image.src ?? ''}
+              alt={post.image.title ?? post.title}
+              layout="responsive"
+              width={560}
+              height={370}
+              className="rounded-xl transition-all duration-150 group-hover:opacity-90"
+            />
+          </div>
           <div className="md:ml-5 lg:ml-8">
             <p
               className={clsx(
