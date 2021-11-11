@@ -33,9 +33,8 @@ const FullScreenPost = ({ post, className }: Props) => {
                 'text-16 mt-6 md:mt-0 mb-3 md:mb-0 md:text-14 lg:text-16 font-semibold capitalize',
                 {
                   'text-blue': post.category === 'Lifestyle',
-                  'text-yellow': post.category === 'Arte',
-                  'text-green': post.category === 'Cultura',
-                  'text-violet': post.category === 'Literatura',
+                  'text-yellow': post.category === 'Arte y Literatura',
+                  'text-violet': post.category === 'Cultura',
                   'text-red': post.category === 'Viajes'
                 }
               )}

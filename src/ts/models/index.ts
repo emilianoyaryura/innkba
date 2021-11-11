@@ -30,13 +30,7 @@ export type PostWithoutImagePreview = {
   copy: string
 }
 
-export type Category =
-  | 'Lifestyle'
-  | 'Arte'
-  | 'Literatura'
-  | 'Viajes'
-  | 'Cultura'
-  | 'Diario de Viaje'
+export type Category = 'Lifestyle' | 'Arte y Literatura' | 'Viajes' | 'Cultura'
 
 export type Tag =
   | 'Hobbies'
@@ -61,6 +55,10 @@ export type ContentfulPost = {
   tag: Tag
   date: string
   author: Author[]
+  spotify?: {
+    link: string
+    iframe: string
+  }
   bigImages: boolean
   content: any
   image: {

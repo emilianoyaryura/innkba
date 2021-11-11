@@ -28,6 +28,10 @@ function getCleanPost(post) {
         website: author.fields.website ?? ''
       }
     }),
+    spotify: {
+      link: post.fields.spotifyLink ?? '',
+      iframe: post.fields.spotifyIframe ?? ''
+    },
     bigImages: post.fields.bigImages ?? false,
     content: post.fields.content,
     image: {
@@ -155,9 +159,7 @@ export const getTravelPosts = async () => {
 
 export const getArtandLiteraturePosts = async () => {
   const allPosts = await getPosts()
-  const posts = allPosts.filter(
-    (e) => (e.category === 'Literatura') | (e.category === 'Arte')
-  )
+  const posts = allPosts.filter((e) => e.category === 'Arte y Literatura')
   return posts
 }
 

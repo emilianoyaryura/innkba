@@ -4,6 +4,8 @@ import { ContentfulPost } from 'ts/models'
 import Post from '../atoms/post'
 import Button from '../primitives/button'
 import Container from 'components/layout/container'
+import Spotify from './spotify'
+import { getSectionSlug } from 'lib/utils/section'
 
 type Props = {
   posts: ContentfulPost[]
@@ -14,16 +16,17 @@ type Props = {
 }
 
 const PostGrid = ({ posts, id, withoutMargins }: Props) => {
-  const [morePosts, setMorePosts] = useState(6)
+  const spotifyPost = posts.filter((post) => post.spotify?.link !== '')[0]
+  const [morePosts, setMorePosts] = useState(spotifyPost ? 7 : 6)
 
   const postsLimit = posts.length
-  const regularGridPosts = posts.slice(0, morePosts)
+  const regularGridPosts = posts.slice(spotifyPost ? 4 : 0, morePosts)
 
   const handlePosts = () => {
     if (morePosts < postsLimit) {
-      setMorePosts((prev) => prev + 3)
+      setMorePosts((prev) => prev + 6)
     } else if (morePosts >= postsLimit) {
-      setMorePosts(6)
+      setMorePosts(spotifyPost ? 7 : 6)
       // @ts-ignore
       const element = document.getElementById(id)
       element?.scrollIntoView()
@@ -39,9 +42,29 @@ const PostGrid = ({ posts, id, withoutMargins }: Props) => {
     >
       <Container size="large">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 lg:gap-x-10">
-          {regularGridPosts.map((post, idx) => (
-            <Post key={idx} post={post} />
-          ))}
+          {!spotifyPost
+            ? regularGridPosts.map((post, idx) => (
+                <Post key={idx} post={post} />
+              ))
+            : posts
+                .filter((p) => p.title !== spotifyPost.title)
+                .slice(0, 3)
+                .map((post, idx) => <Post key={idx} post={post} />)}
+          {spotifyPost && (
+            <Spotify
+              title={spotifyPost.title}
+              copy={spotifyPost.copy}
+              iframe={spotifyPost.spotify?.iframe ?? ''}
+              link={{ href: spotifyPost.spotify?.link ?? '' }}
+              secondLink={{
+                href: `/${getSectionSlug(spotifyPost.category)}/${
+                  spotifyPost.slug
+                }`
+              }}
+            />
+          )}
+          {spotifyPost &&
+            regularGridPosts.map((post, idx) => <Post key={idx} post={post} />)}
         </div>
         {posts.length > 6 && (
           <Button

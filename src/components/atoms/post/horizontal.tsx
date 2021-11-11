@@ -21,9 +21,8 @@ const HorizontalPost = ({ post }: { post: ContentfulPost }) => {
           <p
             className={clsx('mb-2 text-14 font-semibold capitalize', {
               'text-blue': post.category === 'Lifestyle',
-              'text-yellow': post.category === 'Arte',
-              'text-green': post.category === 'Cultura',
-              'text-violet': post.category === 'Literatura',
+              'text-yellow': post.category === 'Arte y Literatura',
+              'text-violet': post.category === 'Cultura',
               'text-red': post.category === 'Viajes'
             })}
           >

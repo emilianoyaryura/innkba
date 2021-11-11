@@ -20,11 +20,10 @@ const BigPost = ({ post }: { post: ContentfulPost }) => {
           objectFit="cover"
         />
         <p
-          className={clsx('text-16 mt-6 mb-3 font-semibold capitalize', {
+          className={clsx('text-16 mt-4 mb-3 font-semibold capitalize', {
             'text-blue': post.category === 'Lifestyle',
-            'text-yellow': post.category === 'Arte',
-            'text-green': post.category === 'Cultura',
-            'text-violet': post.category === 'Literatura',
+            'text-yellow': post.category === 'Arte y Literatura',
+            'text-violet': post.category === 'Cultura',
             'text-red': post.category === 'Viajes'
           })}
         >
