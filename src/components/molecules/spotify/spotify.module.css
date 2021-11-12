@@ -3,6 +3,11 @@
     border-radius: 20px;
 }
 
+.inline__container {
+    background: linear-gradient(180deg, #2C4750 0%, #021213 100%);
+    padding: 2px;
+}
+
 .button {
     background: #1DB954;
     border-radius: 100px;

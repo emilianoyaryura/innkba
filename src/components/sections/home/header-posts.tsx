@@ -20,7 +20,7 @@ const HeaderPosts = ({ posts, principalPost }: Props) => {
           ))}
         </div>
         <div className="flex md:hidden mt-4">
-          <div className="grid grid-cols-1 mt-10 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 lg:gap-x-10">
+          <div className="w-full grid grid-cols-1 mt-10 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 lg:gap-x-10">
             {posts.map((post, idx) => (
               <RegularPost key={idx} post={post} />
             ))}

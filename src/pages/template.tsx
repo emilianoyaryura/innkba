@@ -12,6 +12,7 @@ import FacebookIcon from 'components/atoms/icons/facebook'
 import TwitterIcon from 'components/atoms/icons/twitter'
 import WhatsAppIcon from 'components/atoms/icons/whatsapp'
 import clsx from 'clsx'
+import InlineSpotify from 'components/molecules/spotify/inline'
 
 const Template = ({ posts }: { posts: ContentfulPost[] }) => {
   const router = useRouter()
@@ -177,6 +178,7 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
               </div>
             </div>
           </div>
+          {post.spotify?.link && <InlineSpotify link={post.spotify?.link} />}
           <div
             className={clsx('mt-8 sm:mt-12 md:mt-16', {
               'max-w-2xl': !post.bigImages
