@@ -1,7 +1,9 @@
+import clsx from 'clsx'
 import Container from 'components/layout/container'
-import SectionLayout from 'components/layout/sectionLayout'
 import Image from 'next/image'
 import { Quote as QuoteProps } from 'ts/models'
+import s from './quote.module.css'
+import { useInView } from 'react-intersection-observer'
 
 const QuotationMark = () => {
   return (
@@ -40,34 +42,57 @@ const SmallQuotationMark = () => {
 }
 
 const Quote = ({ quote, author }: QuoteProps) => {
+  const { ref, inView } = useInView()
   return (
-    <SectionLayout>
-      <Container size="medium" className="flex flex-col relative">
-        <i className="hidden md:flex absolute top-0 left-0">
-          <QuotationMark />
-        </i>
-        <i className="absolute md:hidden top-0 left-0">
-          <SmallQuotationMark />
-        </i>
-        <h1 className="font-medium text-22 md:text-38 md:leading-snug text-center pt-10 pl-5 md:pt-20 md:pl-16">
-          {quote}
-        </h1>
-        <div className="flex flex-col items-end self-end mt-5">
-          <Image
-            src={author.image}
-            alt={author.name}
-            width={80}
-            height={80}
-            className="rounded-full"
-          />
-          <p className="my-2 text-18 md:text-22 font-bold">{author.name}</p>
-          <p className="font-bold text-12">
-            {author.dates.birth}{' '}
-            {author.dates.death && ` - ${author.dates.death}`}
-          </p>
+    <div ref={ref}>
+      <Container size="large" className={s.quote}>
+        <div className="relative flex flex-col max-w-md md:max-w-5xl mx-auto -mb-28">
+          <i
+            className={clsx(
+              'hidden md:flex absolute top-0 left-0 opacity-0',
+              inView && s.mark
+            )}
+          >
+            <QuotationMark />
+          </i>
+          <i
+            className={clsx(
+              'absolute md:hidden top-0 left-0 opacity-0',
+              inView && s.mark
+            )}
+          >
+            <SmallQuotationMark />
+          </i>
+          <h1
+            className={clsx(
+              'font-medium text-22 md:text-38 md:leading-snug text-center pt-10 pl-5 md:pt-20 md:pl-16 opacity-0',
+              s.text
+            )}
+          >
+            {quote}
+          </h1>
+          <div
+            className={clsx(
+              'flex flex-col items-end self-end mt-5 opacity-0',
+              inView && s.author
+            )}
+          >
+            <Image
+              src={author.image}
+              alt={author.name}
+              width={80}
+              height={80}
+              className="rounded-full"
+            />
+            <p className="my-2 text-18 md:text-22 font-bold">{author.name}</p>
+            <p className="font-bold text-12">
+              {author.dates.birth}{' '}
+              {author.dates.death && ` - ${author.dates.death}`}
+            </p>
+          </div>
         </div>
       </Container>
-    </SectionLayout>
+    </div>
   )
 }
 
