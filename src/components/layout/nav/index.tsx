@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import { ContentfulPost } from 'ts/models'
 import { useRef } from 'react'
 import { MobileHeader, MobileSearcher } from './mobileHeader'
+import { getSectionSlug } from 'lib/utils/section'
 
 export type Menu = {
   label: string
@@ -201,7 +202,7 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
               >
                 {searcherFilter?.map((post, idx) => (
                   <Link
-                    href={`/${post.category.toLocaleLowerCase()}/${post.slug}`}
+                    href={`/${getSectionSlug(post.category)}/${post.slug}`}
                     key={idx}
                   >
                     <a
@@ -213,7 +214,7 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
                         alt={post.title}
                         className="object-cover h-20 w-24 rounded"
                       />
-                      <p className="ml-2 text-15 leading-tight font-medium">
+                      <p className="ml-2 mt-2 text-15 leading-tight font-medium">
                         {post.title}
                       </p>
                     </a>

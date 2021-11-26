@@ -8,6 +8,7 @@ export type Quote = {
       death?: number | string
     }
   }
+  className?: string
 }
 
 export type Author = {
@@ -67,21 +68,28 @@ export type ContentfulPost = {
   }
 }
 
-export type Post = {
-  link: {
-    href: string
-    label?: string
-  }
-  image: {
-    src: string
-    title?: string
-  }
-  category: Category
+export type ShortStory = {
   title: string
+  slug: string
+  tag: Tag
+  date: string
+  content: any
+  image: {
+    src: string | null
+    title: string
+  }
+}
+
+export type Story = {
+  title: string
+  slug: string
   copy?: string
-  author?: Author
-  content: string
-  bigImages: boolean
+  image: {
+    src: string | null
+    title: string
+  }
+  author: Author
+  chapters: ShortStory[]
 }
 
 export type Page = {
@@ -100,5 +108,7 @@ export type Page = {
     }
   }
   featuredPosts: ContentfulPost[]
+  mainFeaturedPost?: ContentfulPost
   weeklyQuote?: Quote
+  story: Story
 }

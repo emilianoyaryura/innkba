@@ -9,8 +9,6 @@ import { getSectionSlug } from 'lib/utils/section'
 
 type Props = {
   posts: ContentfulPost[]
-  title?: string
-  copy?: string
   id: string
   withoutMargins?: boolean
 }
@@ -40,8 +38,8 @@ const PostGrid = ({ posts, id, withoutMargins }: Props) => {
         '-mt-32 pt-32': !withoutMargins
       })}
     >
-      <Container size="large">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 lg:gap-x-10">
+      <Container withoutPadding size="large">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 lg:gap-x-10">
           {!spotifyPost
             ? regularGridPosts.map((post, idx) => (
                 <Post key={idx} post={post} />

@@ -46,7 +46,7 @@ const Quote = ({ quote, author }: QuoteProps) => {
   return (
     <div ref={ref}>
       <Container size="large" className={s.quote}>
-        <div className="relative flex flex-col max-w-md md:max-w-5xl mx-auto -mb-28">
+        <div className="relative flex flex-col max-w-md md:max-w-5xl mx-auto">
           <i
             className={clsx(
               'hidden md:flex absolute top-0 left-0 opacity-0',

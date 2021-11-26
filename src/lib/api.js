@@ -61,6 +61,68 @@ function getSectionHeader(header) {
   }
 }
 
+export async function getHomePage() {
+  const data = await client.getEntries({
+    include: 4,
+    content_type: 'pageHome'
+  })
+  const page = data.items[0]
+
+  const quote = page.fields.weeklyQuote.fields
+  const story = page.fields.story.fields
+
+  return {
+    mainFeaturedPost: getCleanPost(page.fields.mainFeaturedPost),
+    featuredPosts: page.fields.featuredPosts.map((post) => getCleanPost(post)),
+    weeklyQuote: {
+      quote: quote.quote,
+      author: {
+        name: quote.author,
+        image: `https:${quote.authorsImage?.fields.file.url}`,
+        dates: {
+          birth: quote.authorsBirthYear,
+          death: quote.authorsDeathYear
+        }
+      }
+    },
+    story: {
+      title: story.title,
+      slug: story.slug,
+      copy: story.copy ?? '',
+      image: {
+        src: story.image ? `https:${story.image?.fields.file.url}` : null,
+        title: story.image.fields.title
+      },
+      author: {
+        name: story.author.fields.name,
+        image: story.author.fields.frontImage
+          ? `https:${story.author.fields.frontImage?.fields.file.url}`
+          : '/images/brand/logo.svg',
+        shortDescription: story.author.fields.shortDescription ?? '',
+        instagram: story.author.fields.instagram ?? '',
+        linkedin: story.author.fields.linkedin ?? '',
+        facebook: story.author.fields.facebook ?? '',
+        twitter: story.author.fields.twitter ?? '',
+        website: story.author.fields.website ?? ''
+      },
+      chapters: story.chapters.map((chapter) => {
+        return {
+          title: chapter.fields.title,
+          slug: chapter.fields.slug,
+          date: chapter.fields.date,
+          content: chapter.fields.content,
+          image: {
+            src: chapter.fields.image
+              ? `https:${chapter.fields.image?.fields.file.url}`
+              : null,
+            title: chapter.fields.title
+          }
+        }
+      })
+    }
+  }
+}
+
 export async function getLifestylePage() {
   const data = await client.getEntries({
     include: 4,

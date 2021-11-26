@@ -31,7 +31,7 @@ const SectionLayout = ({
       )}
       <div
         className={clsx('', {
-          'mt-10 sm:mt-12': title !== undefined || title !== null,
+          'mt-8': title !== undefined || title !== null,
           'flex flex-col items-center': colCenter,
           'flex items-center': rowCenter
         })}

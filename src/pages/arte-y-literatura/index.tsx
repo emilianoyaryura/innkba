@@ -73,6 +73,7 @@ const ArteyLiteratura = ({
       </Section>
       {page.weeklyQuote && (
         <Quote
+          className="-mb-28 -mt-8 border border-red border-solid"
           quote={page.weeklyQuote?.quote}
           author={page.weeklyQuote?.author}
         />
