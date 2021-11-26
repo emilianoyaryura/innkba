@@ -24,14 +24,15 @@ const Button = ({
   return (
     <button
       onClick={onClick}
-      style={{ minWidth: '120px' }}
+      style={{ minWidth: type !== 'alternative' ? '120px' : '' }}
       className={clsx(
         'rounded-lg flex items-center justify-center font-semibold text-14 cursor-pointer text-center transition-all duration-150',
         className,
         {
           'bg-blue hover:opacity-90 group-hover:opacity-90 text-white':
             type === 'primary',
-          'bg-black hover:opacity-90 text-white': type === 'secondary',
+          'bg-black border border-solid border-black hover:bg-transparent text-white hover:text-black':
+            type === 'secondary',
           'bg-gray-100 hover:opacity-70 text-black': type === 'tertiary',
           'bg-transparent text-black hover:opacity-80': type === 'alternative',
           'px-7 py-4': size === 'medium' && type !== 'alternative',

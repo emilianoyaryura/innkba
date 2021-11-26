@@ -71,6 +71,8 @@ module.exports = {
     }
   },
   variants: {
-    extend: {}
+    extend: {
+      translate: ['active', 'group-hover']
+    }
   }
 }

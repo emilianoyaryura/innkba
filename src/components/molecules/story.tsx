@@ -2,14 +2,26 @@ import SectionLayout from 'components/layout/sectionLayout'
 import { Story as StoryProps } from 'ts/models'
 import Image from 'next/image'
 import Link from 'next/link'
+import Button from 'components/primitives/button'
 
 const Story = ({ story }: { story: StoryProps }) => {
   return (
     <SectionLayout title={story.title} copy={story.copy ?? ''}>
-      <p className="-mt-6 text-14 sm:text-16 text-gray-700 font-medium mb-8">
-        Por <b className="text-black">{story.author.name}</b>
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="flex flex-col -mt-6 -mb-4 sm:mb-8">
+        <p className="text-14 sm:text-16 text-gray-700 font-medium mb-3">
+          Por <b className="text-black">{story.author.name}</b>
+        </p>
+        <Button
+          type="alternative"
+          className="max-w-max group"
+          href={story.slug}
+        >
+          <span className="group-hover:text-violet transition-all duration-150">
+            {`-->`} Ver más
+          </span>
+        </Button>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 sm:gap-4 md:gap-10">
         <div className="hidden md:flex flex-col justify-between py-6">
           {story.chapters.map((post, idx) => (
             <Link href={post.slug} key={idx}>
@@ -35,10 +47,10 @@ const Story = ({ story }: { story: StoryProps }) => {
           height={540}
           width={414}
           className="rounded-xl"
-          objectFit="cover"
+          // objectFit="cover"
         />
         <div className="flex md:hidden">
-          <div className="grid mt-10 grid-cols-2 gap-y-10 gap-x-5 lg:gap-x-10 justify-items-center w-full">
+          <div className="grid -mt-4 sm:mt-2 grid-cols-2 gap-y-10 gap-x-5 lg:gap-x-10 justify-items-center w-full">
             {story.chapters.map((post, idx) => (
               <Link href={post.slug} key={idx}>
                 <a className="flex flex-col sm:flex-row noDecoration">
