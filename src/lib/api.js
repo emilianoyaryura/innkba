@@ -230,3 +230,44 @@ export const getCulturePosts = async () => {
   const posts = allPosts.filter((e) => e.category === 'Cultura')
   return posts
 }
+
+export const getAllStories = async () => {
+  const stories = await client.getEntries({ content_type: 'story' })
+  return stories.items.map((s) => {
+    return {
+      title: s.fields.title,
+      slug: s.fields.slug,
+      copy: s.fields.copy ?? '',
+      image: {
+        src: s.fields.image ? `https:${s.fields.image?.fields.file.url}` : null,
+        title: s.fields.title
+      },
+      author: {
+        name: s.fields.author.fields.name,
+        image: s.fields.author.fields.frontImage
+          ? `https:${s.fields.author.fields.frontImage?.fields.file.url}`
+          : '/images/brand/logo.svg',
+        shortDescription: s.fields.author.fields.shortDescription ?? '',
+        instagram: s.fields.author.fields.instagram ?? '',
+        linkedin: s.fields.author.fields.linkedin ?? '',
+        facebook: s.fields.author.fields.facebook ?? '',
+        twitter: s.fields.author.fields.twitter ?? '',
+        website: s.fields.author.fields.website ?? ''
+      },
+      chapters: s.fields.chapters.map((chapter) => {
+        return {
+          title: chapter.fields.title,
+          slug: chapter.fields.slug,
+          date: chapter.fields.date,
+          content: chapter.fields.content,
+          image: {
+            src: chapter.fields.image
+              ? `https:${chapter.fields.image?.fields.file.url}`
+              : null,
+            title: chapter.fields.title
+          }
+        }
+      })
+    }
+  })
+}

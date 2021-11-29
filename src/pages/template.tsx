@@ -1,5 +1,5 @@
 import { useRouter } from 'next/dist/client/router'
-import { ContentfulPost } from 'ts/models'
+import { ContentfulPost, Story } from 'ts/models'
 import Container from 'components/layout/container'
 import PageLayout from 'components/layout/pageLayout'
 import { getDate } from 'lib/utils/date'
@@ -13,11 +13,19 @@ import TwitterIcon from 'components/atoms/icons/twitter'
 import WhatsAppIcon from 'components/atoms/icons/whatsapp'
 import clsx from 'clsx'
 import InlineSpotify from 'components/molecules/spotify/inline'
+import { getSectionSlug } from 'lib/utils/section'
 
-const Template = ({ posts }: { posts: ContentfulPost[] }) => {
+const Template = ({
+  posts,
+  stories
+}: {
+  posts: ContentfulPost[]
+  stories: Story[]
+}) => {
   const router = useRouter()
   const query = router.query.slug
   const post = posts?.filter((p) => p.slug === query)[0]
+  const story = stories?.filter((s) => s.slug === query)[0]
 
   if (post) {
     return (
@@ -33,7 +41,7 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
           className=" mt-10 sm:mt-12 flex flex-col items-center"
         >
           <div className="flex items-center justify-center space-x-6 mb-6">
-            <Link href={`/${post.category.toLocaleLowerCase()}`} passHref>
+            <Link href={`/${getSectionSlug(post.category)}`} passHref>
               <a className="flex items-center justify-center py-2 px-4 rounded bg-lightBlue">
                 <span className="uppercase text-11 text-blue font-bold">
                   {post.category}
@@ -41,7 +49,9 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
               </a>
             </Link>
             <Link
-              href={`/${post.category.toLocaleLowerCase()}#${post.tag.toLocaleLowerCase()}`}
+              href={`/${getSectionSlug(
+                post.category
+              )}#${post.tag.toLocaleLowerCase()}`}
               passHref
             >
               <a className="flex items-center justify-center py-2 px-4 rounded bg-lightBlue">
@@ -202,6 +212,18 @@ const Template = ({ posts }: { posts: ContentfulPost[] }) => {
             </div>
           </div>
         </Container>
+      </PageLayout>
+    )
+  } else if (story) {
+    return (
+      <PageLayout
+        posts={posts}
+        headProps={{
+          title: story?.title,
+          ogImage: story?.image.src ?? 'https://innkba.com/og.png'
+        }}
+      >
+        <Container size="large">aca</Container>
       </PageLayout>
     )
   } else return null
