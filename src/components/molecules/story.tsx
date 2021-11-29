@@ -14,7 +14,7 @@ const Story = ({ story }: { story: StoryProps }) => {
         <Button
           type="alternative"
           className="max-w-max group"
-          href={story.slug}
+          href={`arte-y-literatura/${story.slug}`}
         >
           <span className="group-hover:text-violet transition-all duration-150">
             {`-->`} Ver más
@@ -24,7 +24,10 @@ const Story = ({ story }: { story: StoryProps }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 sm:gap-4 md:gap-10">
         <div className="hidden md:flex flex-col justify-between py-6">
           {story.chapters.map((post, idx) => (
-            <Link href={post.slug} key={idx}>
+            <Link
+              href={`arte-y-literatura/${story.slug}/${post.slug}`}
+              key={idx}
+            >
               <a className="flex noDecoration hover:opacity-90 transition-all duration-150">
                 <Image
                   width={100}

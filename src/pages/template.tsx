@@ -223,7 +223,70 @@ const Template = ({
           ogImage: story?.image.src ?? 'https://innkba.com/og.png'
         }}
       >
-        <Container size="large">aca</Container>
+        <Container size="large" className="mt-14">
+          <div className="flex flex-col lg:grid w-full lg:grid-cols-2 gap-16 items-center">
+            <div className="flex flex-col items-center lg:items-start self-center max-w-2xl lg:max-w-max">
+              <h1 className="font-medium text-28 sm:text-38 mb-4 text-center lg:text-left">
+                {story.title}
+              </h1>
+              <p className="font-normal text-14 sm:text-16 leading-relaxed text-gray-700 text-center lg:text-left">
+                {story.copy}
+              </p>
+              <p className="text-16 text-gray-700 mt-4 sm:mt-8">
+                Por <b className="text-black">{story.author.name}</b>
+              </p>
+              <div className="flex items-center mt-8 sm:mt-14 pt-4 border-t border-solid border-gray-400 w-full justify-center lg:justify-start max-w-md">
+                <span className="text-14 text-gray-700 mr-6">Compartir en</span>
+                <div className="flex items-center space-x-4">
+                  <Link
+                    href={`https://twitter.com/intent/tweet?text=${story.title}&url=https://innkba.com/arte-y-literatura/${story.slug}`}
+                    passHref
+                  >
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="share on twitter"
+                      className="text-black hover:text-violet transition-all duration-150"
+                    >
+                      <TwitterIcon />
+                    </a>
+                  </Link>
+                  <Link
+                    href={`https://www.facebook.com/sharer/sharer.php?u=https://innkba.com/arte-y-literatura/${story.slug}`}
+                    passHref
+                  >
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="share on facebook"
+                      className="text-black hover:text-violet transition-all duration-150"
+                    >
+                      <FacebookIcon />
+                    </a>
+                  </Link>
+                  <Link
+                    href={`https://api.whatsapp.com/send?text=Mirá este artículo ${story.author.name} en Innk ba: https://innkba.com/arte-y-literatura/${story.slug}`}
+                    passHref
+                  >
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="share on whatsapp"
+                      className="text-black hover:text-violet transition-all duration-150"
+                    >
+                      <WhatsAppIcon />
+                    </a>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <img
+              src={story.image.src ?? ''}
+              alt={story.title}
+              className="w-full h-auto max-w-md lg:max-w-xl object-cover"
+            />
+          </div>
+        </Container>
       </PageLayout>
     )
   } else return null

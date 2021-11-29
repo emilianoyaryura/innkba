@@ -12,10 +12,9 @@ const ChapterPage = ({
   posts: ContentfulPost[]
 }) => {
   const router = useRouter()
-  const query = router.query.slug
-  const story = stories?.filter((s) =>
-    s.chapters.some((c) => c.title === query)
-  )[0]
+  const query = router.query
+  const story = stories?.filter((s) => s.slug === query.slug)[0]
+  const chapter = story.chapters.filter((c) => c.slug === query.chapter)[0]
   return (
     <PageLayout
       posts={posts}
@@ -24,7 +23,7 @@ const ChapterPage = ({
         ogImage: story?.image.src ?? 'https://innkba.com/og.png'
       }}
     >
-      <Container size="large">a</Container>
+      <Container size="large">{chapter.title}</Container>
     </PageLayout>
   )
 }
