@@ -286,6 +286,27 @@ const Template = ({
               className="w-full h-auto max-w-md lg:max-w-xl object-cover"
             />
           </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 max-w-max mx-auto mt-44">
+            {story.chapters.map((c, idx) => (
+              <Link
+                key={idx}
+                href={`/arte-y-literatura/${story.slug}/${c.slug}`}
+              >
+                <a className="noDecoration">
+                  <Image
+                    src={c.image.src ?? ''}
+                    alt={c.title}
+                    width={200}
+                    height={120}
+                    className="rounded-lg"
+                  />
+                  <p className="mt-2 text-18">
+                    {idx + 1}.<b className="ml-2">{c.title}</b>
+                  </p>
+                </a>
+              </Link>
+            ))}
+          </div>
         </Container>
       </PageLayout>
     )
