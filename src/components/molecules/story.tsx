@@ -14,7 +14,7 @@ const Story = ({ story }: { story: StoryProps }) => {
         <Button
           type="alternative"
           className="max-w-max group"
-          href={story.slug}
+          href={`/arte-y-literatura/${story.slug}`}
         >
           <span className="group-hover:text-violet transition-all duration-150">
             {`-->`} Ver más
@@ -23,19 +23,22 @@ const Story = ({ story }: { story: StoryProps }) => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 sm:gap-4 md:gap-10">
         <div className="hidden md:flex flex-col justify-between py-6">
-          {story.chapters.map((post, idx) => (
-            <Link href={post.slug} key={idx}>
+          {story.chapters.map((chapter, idx) => (
+            <Link
+              href={`arte-y-literatura/${story.slug}/${chapter.slug}`}
+              key={idx}
+            >
               <a className="flex noDecoration hover:opacity-90 transition-all duration-150">
                 <Image
                   width={100}
                   height={100}
                   className="rounded-xl"
                   objectFit="cover"
-                  src={post.image.src ?? '/images/fallback.png'}
-                  alt={post.title}
+                  src={chapter.image.src ?? '/images/fallback.png'}
+                  alt={chapter.title}
                 />
                 <p className="text-18 font-medium ml-4 mt-2">
-                  {idx + 1}. {post.title}
+                  {idx + 1}. {chapter.title}
                 </p>
               </a>
             </Link>
@@ -51,19 +54,19 @@ const Story = ({ story }: { story: StoryProps }) => {
         />
         <div className="flex md:hidden">
           <div className="grid -mt-4 sm:mt-2 grid-cols-2 gap-y-10 gap-x-5 lg:gap-x-10 justify-items-center w-full">
-            {story.chapters.map((post, idx) => (
-              <Link href={post.slug} key={idx}>
+            {story.chapters.map((chapter, idx) => (
+              <Link href={chapter.slug} key={idx}>
                 <a className="flex flex-col sm:flex-row noDecoration">
                   <Image
                     width={200}
                     height={120}
                     className="rounded-xl"
                     objectFit="cover"
-                    src={post.image.src ?? '/images/fallback.png'}
-                    alt={post.title}
+                    src={chapter.image.src ?? '/images/fallback.png'}
+                    alt={chapter.title}
                   />
                   <p className="text-16 sm:text-18 font-medium sm:ml-4 mt-2">
-                    {idx + 1}. {post.title}
+                    {idx + 1}. {chapter.title}
                   </p>
                 </a>
               </Link>
