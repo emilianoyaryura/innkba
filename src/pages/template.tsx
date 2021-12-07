@@ -27,6 +27,10 @@ const Template = ({
   const post = posts?.filter((p) => p.slug === query)[0]
   const story = stories?.filter((s) => s.slug === query)[0]
 
+  const keepReadingPosts = posts
+    ?.filter((e) => e.category === post.category)
+    .filter((p) => p.slug !== query)
+
   if (post) {
     return (
       <PageLayout
@@ -202,13 +206,18 @@ const Template = ({
               Seguir leyendo
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-x-4 lg:gap-x-8">
-              {posts
-                ?.filter((e) => e.category === post.category)
-                .filter((p) => p.slug !== query)
-                .slice(0, 6)
-                .map((each, idx) => (
-                  <Post key={idx} post={each} withoutCategory />
-                ))}
+              {keepReadingPosts.length > 0
+                ? keepReadingPosts
+                    .slice(0, 6)
+                    .map((each, idx) => (
+                      <Post key={idx} post={each} withoutCategory />
+                    ))
+                : posts
+                    .filter((p) => p.slug !== post.slug)
+                    .slice(0, 6)
+                    .map((each, idx) => (
+                      <Post key={idx} post={each} withoutCategory />
+                    ))}
             </div>
           </div>
         </Container>
