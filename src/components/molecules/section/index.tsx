@@ -13,7 +13,7 @@ const Section = ({
       id={section.toLocaleLowerCase()}
       className="flex flex-col mb-5 pt-28 md:pt-32 lg:pt-36"
     >
-      <Container size="large" className="flex flex-col mb-12 sm:mb-16">
+      <Container size="large" className="flex flex-col">
         <p className="text-15 sm:text-16 uppercase font-bold mb-2">{section}</p>
         <div
           style={{
@@ -22,8 +22,8 @@ const Section = ({
             background: 'rgba(0, 0, 0, 0.5)'
           }}
         />
+        <div className="mt-12 sm:mt-16">{children}</div>
       </Container>
-      {children}
     </div>
   )
 }
