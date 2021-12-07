@@ -20,11 +20,13 @@ const HomePage = ({
         principalPost={page.mainFeaturedPost ?? page.featuredPosts[0]}
         posts={page.featuredPosts.slice(0, 4)}
       />
-      <Quote
-        quote={page.weeklyQuote?.quote ?? ''}
-        // @ts-ignore
-        author={page.weeklyQuote?.author}
-      />
+      {page.weeklyQuote?.quote && (
+        <Quote
+          quote={page.weeklyQuote?.quote ?? ''}
+          // @ts-ignore
+          author={page.weeklyQuote?.author}
+        />
+      )}
       <SectionLayout title="Recomendado">
         <PostGrid id="recomendado" posts={page.featuredPosts.slice(4, 20)} />
       </SectionLayout>
