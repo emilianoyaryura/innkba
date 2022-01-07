@@ -39,7 +39,7 @@ const PostGrid = ({ posts, id, withoutMargins }: Props) => {
       })}
     >
       <Container withoutPadding size="large">
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 lg:gap-x-10">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 lg:gap-y-16 gap-x-5 lg:gap-x-10">
           {!spotifyPost
             ? regularGridPosts.map((post, idx) => (
                 <Post key={idx} post={post} />

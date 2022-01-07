@@ -2,45 +2,45 @@ export const getDate = (date: string) => {
   let month = ''
   switch (date.split('-')[1]) {
     case '01':
-      month = 'Enero'
+      month = 'En'
       break
     case '02':
-      month = 'Febrero'
+      month = 'Febr'
       break
     case '03':
-      month = 'Marzo'
+      month = 'Mzo'
       break
     case '04':
-      month = 'Abril'
+      month = 'Abr'
       break
     case '05':
-      month = 'Mayo'
+      month = 'My'
       break
     case '06':
-      month = 'Junio'
+      month = 'Jun'
       break
     case '07':
-      month = 'Julio'
+      month = 'Jul'
       break
     case '08':
-      month = 'Agosto'
+      month = 'Ag'
       break
     case '09':
-      month = 'Septiembre'
+      month = 'Sept'
       break
     case '10':
-      month = 'Octubre'
+      month = 'Oct'
       break
     case '11':
-      month = 'Noviembre'
+      month = 'Nov'
       break
     case '12':
-      month = 'Diciembre'
+      month = 'Dic'
       break
     default:
       break
   }
   const year = date.split('-')[0]
-  const fullDate = `${month}, ${year}`
+  const fullDate = `${month} ${year}`
   return fullDate
 }

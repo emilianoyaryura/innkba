@@ -3,6 +3,8 @@ import { getAllStories, getPosts } from 'lib/api'
 import { useRouter } from 'next/router'
 import { ContentfulPost, ShortStory, Story } from 'ts/models'
 import Container from 'components/layout/container'
+import Link from 'next/link'
+import { getDate } from 'lib/utils/date'
 
 const ChapterPage = ({
   stories,
@@ -23,7 +25,21 @@ const ChapterPage = ({
         ogImage: story?.image.src ?? 'https://innkba.com/og.png'
       }}
     >
-      <Container size="large">{chapter.title}</Container>
+      <Container size="small">
+        <div className="mt-16">
+          <h1 className="text-32 font-medium">{chapter.title}</h1>
+          <div className="flex justify-between pt-2 mt-2 border-t border-solid border-gray-300">
+            <p className="text-14 text-gray-600 flex items-center">
+              <span>{getDate(chapter.date)}</span>
+              <span className="mx-2">-</span>
+              <span>{story.author.name}</span>
+            </p>
+            <Link href={`/arte-y-literatura/${story.slug}`}>
+              <a className="text-14 text-violet">{story.title}</a>
+            </Link>
+          </div>
+        </div>
+      </Container>
     </PageLayout>
   )
 }

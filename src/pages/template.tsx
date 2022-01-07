@@ -28,7 +28,7 @@ const Template = ({
   const story = stories?.filter((s) => s.slug === query)[0]
 
   const keepReadingPosts = posts
-    ?.filter((e) => e.category === post.category)
+    ?.filter((e) => e.category === post?.category)
     .filter((p) => p.slug !== query)
 
   if (post) {
@@ -305,12 +305,13 @@ const Template = ({
                   <Image
                     src={c.image.src ?? ''}
                     alt={c.title}
-                    width={200}
-                    height={120}
+                    width={400}
+                    height={240}
                     className="rounded-lg"
                   />
-                  <p className="mt-2 text-18">
-                    {idx + 1}.<b className="ml-2">{c.title}</b>
+                  <p className="mt-2 text-18 lg:text-22">
+                    {idx + 1}.
+                    <span className="ml-2 font-medium">{c.title}</span>
                   </p>
                 </a>
               </Link>
