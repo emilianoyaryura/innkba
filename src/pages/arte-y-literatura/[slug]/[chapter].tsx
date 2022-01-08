@@ -4,7 +4,12 @@ import { useRouter } from 'next/router'
 import { ContentfulPost, ShortStory, Story } from 'ts/models'
 import Container from 'components/layout/container'
 import Link from 'next/link'
+import Image from 'next/image'
 import { getDate } from 'lib/utils/date'
+import Share from 'components/atoms/share'
+import clsx from 'clsx'
+import { renderBody } from 'lib/renderer'
+import PostAuthor from 'components/atoms/author'
 
 const ChapterPage = ({
   stories,
@@ -38,6 +43,28 @@ const ChapterPage = ({
               <a className="text-14 text-violet">{story.title}</a>
             </Link>
           </div>
+          {chapter.image.src && (
+            <div className="mt-8">
+              <Image
+                width={900}
+                height={520}
+                src={chapter.image.src ?? ''}
+                objectFit="cover"
+                className="rounded-xl sm:rounded-2xl"
+              />
+            </div>
+          )}
+        </div>
+        <Share
+          title={chapter.title}
+          slug={chapter.slug}
+          authorName={story.author.name}
+          category="Arte y Literatura"
+          className="justify-end mt-3"
+        />
+        <div className={clsx('mt-8 sm:mt-12 md:mt-16 max-w-2xl mx-auto')}>
+          {renderBody(chapter.content, false)}
+          <PostAuthor author={[story.author]} />
         </div>
       </Container>
     </PageLayout>

@@ -7,13 +7,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { renderBody } from 'lib/renderer'
 import Post from 'components/atoms/post'
-import Author from 'components/atoms/author'
 import FacebookIcon from 'components/atoms/icons/facebook'
 import TwitterIcon from 'components/atoms/icons/twitter'
 import WhatsAppIcon from 'components/atoms/icons/whatsapp'
 import clsx from 'clsx'
 import InlineSpotify from 'components/molecules/spotify/inline'
 import { getSectionSlug } from 'lib/utils/section'
+import Share from 'components/atoms/share'
+import PostAuthor from 'components/atoms/author'
 
 const Template = ({
   posts,
@@ -137,60 +138,12 @@ const Template = ({
               objectFit="cover"
               className="rounded-xl sm:rounded-2xl"
             />
-            <div className="flex flex-col mt-3 sm:hidden items-center mx-auto">
-              <p className="text-16 text-gray-700 mb-3">Compartir en</p>
-              <div className="flex items-center space-x-6 -mb-2">
-                <Link
-                  href={`https://twitter.com/intent/tweet?text=${
-                    post.title
-                  }&url=https://innkba.com/${post.category.toLocaleLowerCase()}/${
-                    post.slug
-                  }`}
-                  passHref
-                >
-                  <a target="_blank" rel="noopener noreferrer">
-                    <Image
-                      src="/icons/twitter.svg"
-                      width={22}
-                      height={18}
-                      alt="share twitter mobile"
-                    />
-                  </a>
-                </Link>
-                <Link
-                  href={`https://www.facebook.com/sharer/sharer.php?u=https://innkba.com/${post.category.toLocaleLowerCase()}/${
-                    post.slug
-                  }`}
-                  passHref
-                >
-                  <a target="_blank" rel="noopener noreferrer">
-                    <Image
-                      src="/icons/facebook.svg"
-                      alt="share facebook mobile"
-                      width={14}
-                      height={20}
-                    />
-                  </a>
-                </Link>
-                <Link
-                  href={`https://api.whatsapp.com/send?text=Mirá este artículo ${
-                    post.author[0].name
-                  } en Innk ba: https://innkba.com/${post.category.toLocaleLowerCase()}/${
-                    post.slug
-                  }`}
-                  passHref
-                >
-                  <a target="_blank" rel="noopener noreferrer">
-                    <Image
-                      src="/icons/whatsapp.svg"
-                      alt="share whatsapp mobile"
-                      width={22}
-                      height={22}
-                    />
-                  </a>
-                </Link>
-              </div>
-            </div>
+            <Share
+              title={post.title}
+              authorName={post.author[0].name}
+              category={post.category}
+              slug={post.slug}
+            />
           </div>
           {post.spotify?.link && <InlineSpotify link={post.spotify?.link} />}
           <div
@@ -199,7 +152,7 @@ const Template = ({
             })}
           >
             {renderBody(post.content, post.bigImages)}
-            <Author author={post.author} />
+            <PostAuthor author={post.author} />
           </div>
           <div className="mt-32">
             <p className="text-26 text-center sm:text-left sm:text-32 font-semibold mb-8 sm:mb-5">
