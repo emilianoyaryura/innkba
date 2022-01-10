@@ -1,0 +1,7 @@
+.keepReading {
+    background-image: linear-gradient(to right, rgba(151, 51, 238, 0.1), rgba(151, 51, 238, 0.1));
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-size: 100% 16px;
+    margin-left: 10px;
+}

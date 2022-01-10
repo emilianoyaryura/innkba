@@ -10,6 +10,7 @@ import Share from 'components/atoms/share'
 import clsx from 'clsx'
 import { renderBody } from 'lib/renderer'
 import PostAuthor from 'components/atoms/author'
+import s from './chapter.module.css'
 
 const ChapterPage = ({
   stories,
@@ -22,6 +23,10 @@ const ChapterPage = ({
   const query = router.query
   const story = stories?.filter((s) => s.slug === query.slug)[0]
   const chapter = story.chapters.filter((c) => c.slug === query.chapter)[0]
+  const keepReadingChapters = story.chapters.filter(
+    (c) => c.slug !== chapter.slug
+  )
+
   return (
     <PageLayout
       posts={posts}
@@ -31,20 +36,20 @@ const ChapterPage = ({
       }}
     >
       <Container size="small">
-        <div className="mt-16">
-          <h1 className="text-32 font-medium">{chapter.title}</h1>
-          <div className="flex justify-between pt-2 mt-2 border-t border-solid border-gray-300">
+        <div className="mt-10 sm:mt-16">
+          <h1 className="text-28 sm:text-32 font-medium">{chapter.title}</h1>
+          <div className="flex flex-col sm:flex-row sm:justify-between pt-3 sm:pt-2 mt-2 border-t border-solid border-gray-300">
             <p className="text-14 text-gray-600 flex items-center">
               <span>{getDate(chapter.date)}</span>
               <span className="mx-2">-</span>
               <span>{story.author.name}</span>
             </p>
             <Link href={`/arte-y-literatura/${story.slug}`}>
-              <a className="text-14 text-violet">{story.title}</a>
+              <a className="text-14 text-violet mt-2 sm:mt-0">{story.title}</a>
             </Link>
           </div>
           {chapter.image.src && (
-            <div className="mt-8">
+            <div className="mt-5 sm:mt-8">
               <Image
                 width={900}
                 height={520}
@@ -66,6 +71,49 @@ const ChapterPage = ({
           {renderBody(chapter.content, false)}
           <PostAuthor author={[story.author]} />
         </div>
+        {keepReadingChapters && (
+          <div className="mt-32">
+            <p className="text-26 text-center sm:text-left sm:text-32 font-medium mb-8 sm:mb-5">
+              <span>Más de</span>
+              <span className={s.keepReading}>{story.title}</span>
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-x-4 lg:gap-x-8 mt-5">
+              {story.chapters.map((each, idx) => (
+                <Link
+                  href={`/arte-y-literatura/${story.slug}/${each.slug}`}
+                  key={idx}
+                >
+                  <a className="flex flex-col noDecoration transition-all duration-150 hover:opacity-90">
+                    <Image
+                      src={each.image.src ?? story.image.src ?? ''}
+                      alt={each.title}
+                      width={300}
+                      height={220}
+                      objectFit="cover"
+                      className="rounded-xl"
+                    />
+                    <div className="mt-3 text-18 font-medium inline-flex">
+                      <p
+                        className={clsx(
+                          'mr-2 h-6 w-6 rounded-full border flex items-center justify-center',
+                          {
+                            'border-solid border-black text-black':
+                              each.slug !== chapter.slug,
+                            'border-dashed border-green text-green':
+                              each.slug === chapter.slug
+                          }
+                        )}
+                      >
+                        {idx + 1}
+                      </p>
+                      <p>{each.title}</p>
+                    </div>
+                  </a>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </Container>
     </PageLayout>
   )

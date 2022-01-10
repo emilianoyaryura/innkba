@@ -128,3 +128,8 @@
       font-size: 20px;
     }
   }
+
+  .paragraph u {
+    background-color: #fdff77;
+    text-decoration: none;
+  }

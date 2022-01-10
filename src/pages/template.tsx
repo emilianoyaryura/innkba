@@ -75,60 +75,13 @@ const Template = ({
                 <p className="text-16 font-medium">{post.author[0].name}</p>
                 <p className="text-14 text-gray-700">{getDate(post.date)}</p>
               </div>
-              <div className="absolute right-0 hidden sm:flex items-center">
-                <span className="text-14 text-gray-700 mr-6">Compartir en</span>
-                <div className="flex items-center space-x-4">
-                  <Link
-                    href={`https://twitter.com/intent/tweet?text=${
-                      post.title
-                    }&url=https://innkba.com/${post.category.toLocaleLowerCase()}/${
-                      post.slug
-                    }`}
-                    passHref
-                  >
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="share on twitter"
-                      className="text-black hover:text-violet transition-all duration-150"
-                    >
-                      <TwitterIcon />
-                    </a>
-                  </Link>
-                  <Link
-                    href={`https://www.facebook.com/sharer/sharer.php?u=https://innkba.com/${post.category.toLocaleLowerCase()}/${
-                      post.slug
-                    }`}
-                    passHref
-                  >
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="share on facebook"
-                      className="text-black hover:text-violet transition-all duration-150"
-                    >
-                      <FacebookIcon />
-                    </a>
-                  </Link>
-                  <Link
-                    href={`https://api.whatsapp.com/send?text=Mirá este artículo ${
-                      post.author[0].name
-                    } en Innk ba: https://innkba.com/${post.category.toLocaleLowerCase()}/${
-                      post.slug
-                    }`}
-                    passHref
-                  >
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="share on whatsapp"
-                      className="text-black hover:text-violet transition-all duration-150"
-                    >
-                      <WhatsAppIcon />
-                    </a>
-                  </Link>
-                </div>
-              </div>
+              <Share
+                title={post.title}
+                authorName={post.author[0].name}
+                category={post.category}
+                slug={post.slug}
+                className="absolute right-0 hidden sm:flex"
+              />
             </div>
             <Image
               src={post.image.src ?? ''}
@@ -143,6 +96,7 @@ const Template = ({
               authorName={post.author[0].name}
               category={post.category}
               slug={post.slug}
+              className="flex sm:hidden"
             />
           </div>
           {post.spotify?.link && <InlineSpotify link={post.spotify?.link} />}
