@@ -5,7 +5,6 @@ import clsx from 'clsx'
 import { getSectionSlug } from 'lib/utils/section'
 import s from './bigPost/bigPost.module.css'
 import Link from 'next/link'
-import Container from 'components/layout/container'
 
 type Props = {
   post: ContentfulPost
@@ -16,7 +15,7 @@ const FullScreenPost = ({ post, className }: Props) => {
   const section = getSectionSlug(post.category)
   return (
     <Link href={`/${section}/${post.slug}`}>
-      <Container size="large" className={clsx('cursor-pointer', className)}>
+      <div className={clsx('cursor-pointer', className)}>
         <div className="flex flex-col md:flex-row md:items-center group">
           <div className="xl:min-w-max">
             <Image
@@ -55,7 +54,7 @@ const FullScreenPost = ({ post, className }: Props) => {
             <Button className="max-w-max">Seguir Leyendo</Button>
           </div>
         </div>
-      </Container>
+      </div>
     </Link>
   )
 }
