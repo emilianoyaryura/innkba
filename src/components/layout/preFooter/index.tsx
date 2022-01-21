@@ -45,7 +45,7 @@ const PreFooter = () => {
               <button
                 aria-label="Submit button"
                 type="submit"
-                className="px-9 py-4 rounded-lg text-white font-semibold text-14 cursor-pointer text-center transition-all duration-150 bg-blue hover:opacity-95"
+                className="px-9 py-4 max-w-max mx-auto rounded-lg text-white font-semibold text-14 cursor-pointer text-center transition-all duration-150 bg-blue hover:opacity-95"
               >
                 Suscribirse
               </button>

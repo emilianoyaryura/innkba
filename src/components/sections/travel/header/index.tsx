@@ -111,7 +111,7 @@ const TravelHeader = () => {
               const value = e.target.value
               setEmail(value)
             }}
-            className="text-gray-600 w-80 bg-gray-200 rounded-md py-3 px-4 text-14 font-normal"
+            className="text-gray-600 w-80 bg-gray-200 rounded-md py-3 px-4 text-14 font-normal placeholder-gray-500"
           />
           <Button
             onClick={handleSend}
