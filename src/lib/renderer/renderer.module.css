@@ -1,5 +1,5 @@
 .heading {
-    margin: 36px auto 22px auto;
+    margin: 80px auto 22px auto;
     font-weight: bold;
     font-size: 28px;
     line-height: 1.1;
@@ -7,7 +7,7 @@
   }
   
   .heading__3 {
-    margin: 32px auto 18px auto;
+    margin: 42px auto 18px auto;
     font-weight: bold;
     font-size: 24px;
     line-height: 1.2;
@@ -126,6 +126,10 @@
   @media (max-width: 640px) {
     .heading__3 {
       font-size: 20px;
+      margin: 32px auto 18px auto;
+    }
+    .heading {
+      margin: 52px auto 22px auto;
     }
   }
 

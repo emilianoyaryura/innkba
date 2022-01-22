@@ -19,7 +19,7 @@ const Section = ({
           style={{
             width: '100%',
             height: '1px',
-            background: 'rgba(0, 0, 0, 0.5)'
+            background: 'rgba(0, 0, 0, 0.1)'
           }}
         />
         <div className="mt-12 sm:mt-16">{children}</div>
