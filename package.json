@@ -17,7 +17,6 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@algolia/autocomplete-core": "^1.5.1",
     "@contentful/rich-text-react-renderer": "^15.3.5",
     "@contentful/rich-text-types": "^15.3.5",
     "@radix-ui/react-polymorphic": "^0.0.12",
