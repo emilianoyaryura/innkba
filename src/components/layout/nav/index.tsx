@@ -146,7 +146,7 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
               </Link>
             ))}
           </div>
-          <div
+          <form
             className={clsx(
               'flex items-center border-solid border-b transition-all duration-200 relative',
               {
@@ -222,7 +222,7 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
                 ))}
               </div>
             )}
-          </div>
+          </form>
         </Container>
         <Container
           size="large"
