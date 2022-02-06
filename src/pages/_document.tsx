@@ -21,6 +21,7 @@ class MyDocument extends Document {
           <GAScript />
           <Main />
           <NextScript />
+          <script src="https://cdn.jsdelivr.net/npm/@docsearch/react@alpha"></script>
         </body>
       </Html>
     )

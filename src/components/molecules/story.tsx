@@ -28,7 +28,7 @@ const Story = ({ story }: { story: StoryProps }) => {
               href={`arte-y-literatura/${story.slug}/${chapter.slug}`}
               key={idx}
             >
-              <a className="flex noDecoration hover:opacity-90 transition-all duration-150">
+              <a className="flex noDecoration hover:opacity-90 transition-all duration-150 max-w-max">
                 <Image
                   width={100}
                   height={100}
