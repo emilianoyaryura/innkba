@@ -1,0 +1,14 @@
+.searcher::-webkit-calendar-picker-indicator {
+    color: transparent;
+    cursor: text;
+}
+
+.list {
+    max-height: 350px;
+    overflow: auto;
+}
+
+.option {
+    padding: 12px;
+    font-size: 26px !important;
+}

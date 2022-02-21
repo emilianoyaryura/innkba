@@ -6,9 +6,8 @@ import clsx from 'clsx'
 import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { ContentfulPost } from 'ts/models'
-import { useRef } from 'react'
 import { MobileHeader, MobileSearcher } from './mobileHeader'
-import { getSectionSlug } from 'lib/utils/section'
+import Searcher from 'components/atoms/searcher'
 
 export type Menu = {
   label: string
@@ -45,13 +44,6 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
   const [scrollsDown, setScrollsDown] = useState<boolean>(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [mobileSearcherOpen, setMobileSearcherOpen] = useState(false)
-  const [inputFocusState, setInputFocusState] = useState(false)
-  const [search, setSearch] = useState('')
-  const [searcherFilter, setSearcherFilter] = useState<ContentfulPost[] | null>(
-    null
-  )
-  const [searcherFocused, setSearcherFocused] = useState(false)
-  const searcherRef = useRef<any>(null)
 
   const handleScroll = useCallback(() => {
     if (window.scrollY > 60) {
@@ -78,31 +70,6 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
       : document.body.style.removeProperty('overflow')
   }, [menuOpen])
 
-  useEffect(() => {
-    const filteredPosts = posts.filter((post) =>
-      post.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-    )
-    return setSearcherFilter(filteredPosts)
-  }, [posts, search])
-
-  useEffect(() => {
-    /**
-     * Alert if clicked on outside of element
-     */
-    function handleClickOutside(e: any) {
-      if (searcherRef.current && !searcherRef.current.contains(e.target)) {
-        setSearcherFocused(false)
-      }
-    }
-
-    // Bind the event listener
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      // Unbind the event listener on clean up
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [searcherRef])
-
   const selected = router.asPath
 
   return (
@@ -126,7 +93,6 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
               />
             </a>
           </Link>
-
           <div>
             {menu.map((item, idx) => (
               <Link key={idx} href={item.route}>
@@ -146,83 +112,7 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
               </Link>
             ))}
           </div>
-          <form
-            className={clsx(
-              'flex items-center border-solid border-b transition-all duration-200 relative',
-              {
-                'border-black': inputFocusState,
-                'border-gray-300': !inputFocusState
-              }
-            )}
-          >
-            <label htmlFor="search">
-              {/* Search icon */}
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 18 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 4.93629 14.25 8.25 14.25Z"
-                  style={{ transition: 'all 0.2s' }}
-                  stroke={inputFocusState ? '#000' : '#A0A0A0'}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M15.7498 15.7498L12.4873 12.4873"
-                  style={{ transition: 'all 0.2s' }}
-                  stroke={inputFocusState ? '#000' : '#A0A0A0'}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </label>
-            <input
-              id="search"
-              className="focus:outline-none ml-4 mb-1"
-              onFocus={() => {
-                setInputFocusState(true)
-                setSearcherFocused(true)
-              }}
-              onBlur={() => setInputFocusState(false)}
-              onChange={(e) => {
-                const value = e.target.value
-                setSearcherFocused(true)
-                setSearch(value)
-              }}
-            />
-            {search && searcherFocused && (
-              <div
-                style={{ maxHeight: '450px', width: '400px' }}
-                ref={searcherRef}
-                className="absolute right-0 top-8 bg-white rounded-lg shadow-xl overflow-y-auto p-2 border border-solid border-gray-300"
-              >
-                {searcherFilter?.map((post, idx) => (
-                  <Link
-                    href={`/${getSectionSlug(post.category)}/${post.slug}`}
-                    key={idx}
-                  >
-                    <a
-                      onClick={() => setMobileSearcherOpen(false)}
-                      className="flex p-4 transition-all duration-150 hover:bg-gray-200 rounded-md noDecoration"
-                    >
-                      <img
-                        src={post.image.src ?? ''}
-                        alt={post.title}
-                        className="object-cover h-20 w-24 rounded"
-                      />
-                      <p className="ml-2 mt-2 text-15 leading-tight font-medium">
-                        {post.title}
-                      </p>
-                    </a>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </form>
+          <Searcher posts={posts} />
         </Container>
         <Container
           size="large"
