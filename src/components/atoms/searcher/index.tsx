@@ -54,18 +54,18 @@ const Searcher = ({ posts }: { posts: ContentfulPost[] }) => {
   }, [searcherRef])
 
   useEffect(() => {
-    const filter = posts?.filter(
-      (p) =>
-        p.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
-        p.author[0].name
-          .toLocaleLowerCase()
-          .includes(search.toLocaleLowerCase()) ||
-        p.tag.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-    )
+    const filter = search
+      ? posts?.filter(
+          (p) =>
+            p.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
+            p.author[0].name
+              .toLocaleLowerCase()
+              .includes(search.toLocaleLowerCase()) ||
+            p.tag.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+        )
+      : null
     setFilteredPosts(filter)
   }, [search])
-
-  console.log(filteredPosts)
 
   return (
     <div ref={searcherRef} className="hidden lg:flex flex-col relative">
