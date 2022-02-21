@@ -60,7 +60,7 @@ const Head = (props: HeadProps) => {
           rel="preconnect"
           href="https://YOUR_APP_ID-dsn.algolia.net"
           // @ts-ignore
-          crossOrigin
+          crossOrigin="true"
         />
       </NextHead>
     </>
