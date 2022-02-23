@@ -154,7 +154,7 @@ const Nav = ({ posts }: { posts: ContentfulPost[] }) => {
             </button>
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="flex items-center justify-center p-2"
+              className="flex items-center justify-center p-2 w-10"
             >
               {!menuOpen ? (
                 <Image
