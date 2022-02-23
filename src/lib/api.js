@@ -88,7 +88,7 @@ export async function getHomePage() {
     story: {
       title: story.title,
       slug: story.slug,
-      copy: story.copy ?? '',
+      copy: story.copy,
       image: {
         src: story.image ? `https:${story.image?.fields.file.url}` : null,
         title: story.image.fields.title
@@ -111,12 +111,14 @@ export async function getHomePage() {
           slug: chapter.fields.slug,
           date: chapter.fields.date,
           content: chapter.fields.content,
-          image: {
-            src: chapter.fields.image
-              ? `https:${chapter.fields.image?.fields.file.url}`
-              : null,
-            title: chapter.fields.title
-          }
+          image: chapter.fields.image
+            ? {
+                src: chapter.fields.image
+                  ? `https:${chapter.fields.image?.fields.file.url}`
+                  : null,
+                title: chapter.fields.title
+              }
+            : null
         }
       })
     }

@@ -1,80 +1,57 @@
-import SectionLayout from 'components/layout/sectionLayout'
 import { Story as StoryProps } from 'ts/models'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from 'components/primitives/button'
+import Container from 'components/layout/container'
 
 const Story = ({ story }: { story: StoryProps }) => {
   return (
-    <SectionLayout title={story.title} copy={story.copy ?? ''}>
-      <div className="flex flex-col -mt-6 -mb-4 sm:mb-8">
-        <p className="text-14 sm:text-16 text-gray-700 font-medium mb-3">
-          Por <b className="text-black">{story.author.name}</b>
-        </p>
-        <Button
-          type="alternative"
-          className="max-w-max group"
-          href={`/arte-y-literatura/${story.slug}`}
-        >
-          <span className="group-hover:text-violet transition-all duration-150">
-            {`-->`} Ver más
-          </span>
-        </Button>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 sm:gap-4 md:gap-10">
-        <div className="hidden md:flex flex-col justify-between py-6">
-          {story.chapters.map((chapter, idx) => (
-            <Link
-              href={`arte-y-literatura/${story.slug}/${chapter.slug}`}
-              key={idx}
+    <div className="px-4">
+      <Container
+        size="large"
+        className="my-36 border-2 border-solid border-gray-800 grid grid-cols-1 lg:grid-cols-2 gap-12 box-border px-8 py-16 sm:px-16 rounded-2xl"
+      >
+        <div className="flex flex-col justify-between">
+          <Link href="/arte-y-literatura">
+            <a
+              aria-label="Story - Arte y Literatura"
+              className="uppercase text-yellow text-14 font-bold"
             >
-              <a className="flex noDecoration hover:opacity-90 transition-all duration-150 max-w-max">
-                <Image
-                  width={100}
-                  height={100}
-                  className="rounded-xl"
-                  objectFit="cover"
-                  src={chapter.image.src ?? '/images/fallback.png'}
-                  alt={chapter.title}
-                />
-                <p className="text-18 font-medium ml-4 mt-2">
-                  {idx + 1}. {chapter.title}
-                </p>
-              </a>
-            </Link>
-          ))}
+              Arte y literatura
+            </a>
+          </Link>
+          <h1 className="mt-3 text-22 sm:text-28 font-bold leading-normal">
+            {story.title}
+          </h1>
+          <p className="mt-3">
+            Por <b>{story.author.name}</b>
+          </p>
+          <p className="mt-3 text-gray-700 text-15 sm:text-16">{story.copy}</p>
+          <Button
+            type="custom"
+            className="hidden lg:flex border-yellow text-yellow hover:bg-yellow hover:text-white mt-12 max-w-max"
+            href={`/arte-y-literatura/${story.slug}`}
+          >
+            Leer más
+          </Button>
         </div>
-        <Image
-          src={story.image.src ?? '/images/fallback.png'}
-          alt={story.title}
-          height={540}
-          width={414}
-          className="rounded-xl"
-          // objectFit="cover"
-        />
-        <div className="flex md:hidden">
-          <div className="grid -mt-4 sm:mt-2 grid-cols-2 gap-y-10 gap-x-5 lg:gap-x-10 justify-items-center w-full">
-            {story.chapters.map((chapter, idx) => (
-              <Link href={chapter.slug} key={idx}>
-                <a className="flex flex-col sm:flex-row noDecoration">
-                  <Image
-                    width={200}
-                    height={120}
-                    className="rounded-xl"
-                    objectFit="cover"
-                    src={chapter.image.src ?? '/images/fallback.png'}
-                    alt={chapter.title}
-                  />
-                  <p className="text-16 sm:text-18 font-medium sm:ml-4 mt-2">
-                    {idx + 1}. {chapter.title}
-                  </p>
-                </a>
-              </Link>
-            ))}
-          </div>
+        <div className="justify-items-center mx-auto self-center">
+          <Image
+            src={story.image.src ?? ''}
+            alt={story.image.title}
+            width={500}
+            height={300}
+          />
+          <Button
+            type="custom"
+            className="flex lg:hidden border-yellow text-yellow hover:bg-yellow hover:text-white mt-12 max-w-max outline-none focus:outline-none focus:border-yellow"
+            href={`/arte-y-literatura/${story.slug}`}
+          >
+            Leer más
+          </Button>
         </div>
-      </div>
-    </SectionLayout>
+      </Container>
+    </div>
   )
 }
 

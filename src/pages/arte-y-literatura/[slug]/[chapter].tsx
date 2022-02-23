@@ -48,7 +48,7 @@ const ChapterPage = ({
               <a className="text-14 text-violet mt-2 sm:mt-0">{story.title}</a>
             </Link>
           </div>
-          {chapter.image.src && (
+          {chapter.image?.src && (
             <div className="mt-5 sm:mt-8">
               <Image
                 width={900}
@@ -65,7 +65,10 @@ const ChapterPage = ({
           slug={chapter.slug}
           authorName={story.author.name}
           category="Arte y Literatura"
-          className="justify-end mt-3"
+          className={clsx('justify-end', {
+            'mt-3': chapter.image?.src,
+            'mt-8': !chapter.image?.src
+          })}
         />
         <div className={clsx('mt-8 sm:mt-12 md:mt-16 max-w-2xl mx-auto')}>
           {renderBody(chapter.content, false)}
@@ -77,37 +80,29 @@ const ChapterPage = ({
               <span>Más de</span>
               <span className={s.keepReading}>{story.title}</span>
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-x-4 lg:gap-x-8 mt-5">
-              {story.chapters.map((each, idx) => (
+            <div className="flex flex-col mt-5">
+              {story.chapters.map((c, idx) => (
                 <Link
-                  href={`/arte-y-literatura/${story.slug}/${each.slug}`}
                   key={idx}
+                  href={`/arte-y-literatura/${story.slug}/${c.slug}`}
                 >
-                  <a className="flex flex-col noDecoration transition-all duration-150 hover:opacity-90">
-                    <Image
-                      src={each.image.src ?? story.image.src ?? ''}
-                      alt={each.title}
-                      width={300}
-                      height={220}
-                      objectFit="cover"
-                      className="rounded-xl"
-                    />
-                    <div className="mt-3 text-18 font-medium inline-flex">
-                      <p
+                  <a className="noDecoration transition-all transform hover:translate-x-4 duration-150 py-5 border-b border-solid border-gray-400">
+                    <p className="text-18 lg:text-22 inline-flex">
+                      <span
                         className={clsx(
-                          'mr-2 h-6 w-6 rounded-full border flex items-center justify-center',
+                          'border h-8 w-8 flex items-center justify-center rounded-full',
                           {
                             'border-solid border-black text-black':
-                              each.slug !== chapter.slug,
+                              c.slug !== story.slug,
                             'border-dashed border-green text-green':
-                              each.slug === chapter.slug
+                              c.slug === story.slug
                           }
                         )}
                       >
                         {idx + 1}
-                      </p>
-                      <p>{each.title}</p>
-                    </div>
+                      </span>
+                      <span className="ml-6 font-medium">{c.title}</span>
+                    </p>
                   </a>
                 </Link>
               ))}

@@ -74,7 +74,7 @@ export type ShortStory = {
   tag: Tag
   date: string
   content: any
-  image: {
+  image?: {
     src: string | null
     title: string
   }
@@ -83,7 +83,7 @@ export type ShortStory = {
 export type Story = {
   title: string
   slug: string
-  copy?: string
+  copy: string
   image: {
     src: string | null
     title: string

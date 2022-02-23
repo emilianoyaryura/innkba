@@ -3,7 +3,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 
 type Props = {
-  type?: 'primary' | 'secondary' | 'tertiary' | 'alternative'
+  type?: 'primary' | 'secondary' | 'tertiary' | 'alternative' | 'custom'
   children: ReactNode
   href?: string
   isExternal?: boolean
@@ -35,6 +35,7 @@ const Button = ({
             type === 'secondary',
           'bg-gray-100 hover:opacity-70 text-black': type === 'tertiary',
           'bg-transparent text-black hover:opacity-80': type === 'alternative',
+          'border-2 border-solid': type === 'custom',
           'px-7 py-4': size === 'medium' && type !== 'alternative',
           'px-6 py-3': size === 'small' && type !== 'alternative'
         }

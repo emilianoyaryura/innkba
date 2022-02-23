@@ -11,7 +11,7 @@ type Props = {
 
 const HeaderPosts = ({ posts, principalPost }: Props) => {
   return (
-    <SectionLayout classname="-mt-4">
+    <SectionLayout>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-4 lg:gap-16">
         <BigPost post={principalPost} />
         <div className="hidden md:flex flex-col justify-between space-y-6">

@@ -202,23 +202,18 @@ const Template = ({
               className="w-full h-auto max-w-md lg:max-w-xl object-cover"
             />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 max-w-max mx-auto mt-44">
+          <div className="flex flex-col mx-auto mt-20 sm:mt-32 md:mt-44 max-w-2xl">
             {story.chapters.map((c, idx) => (
               <Link
                 key={idx}
                 href={`/arte-y-literatura/${story.slug}/${c.slug}`}
               >
-                <a className="noDecoration">
-                  <Image
-                    src={c.image.src ?? ''}
-                    alt={c.title}
-                    width={400}
-                    height={240}
-                    className="rounded-lg"
-                  />
-                  <p className="mt-2 text-18 lg:text-22">
-                    {idx + 1}.
-                    <span className="ml-2 font-medium">{c.title}</span>
+                <a className="noDecoration transition-all transform hover:translate-x-4 duration-150 py-5 border-b border-solid border-gray-400">
+                  <p className="text-18 lg:text-22 inline-flex">
+                    <span className="border-solid border-black border h-8 w-8 flex items-center justify-center rounded-full">
+                      {idx + 1}
+                    </span>
+                    <span className="ml-6 font-medium">{c.title}</span>
                   </p>
                 </a>
               </Link>
