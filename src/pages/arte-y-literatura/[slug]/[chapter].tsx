@@ -93,9 +93,9 @@ const ChapterPage = ({
                           'border h-8 w-8 flex items-center justify-center rounded-full',
                           {
                             'border-solid border-black text-black':
-                              c.slug !== story.slug,
+                              c.slug !== chapter.slug,
                             'border-dashed border-green text-green':
-                              c.slug === story.slug
+                              c.slug === chapter.slug
                           }
                         )}
                       >
