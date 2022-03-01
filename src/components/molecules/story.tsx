@@ -20,7 +20,7 @@ const Story = ({ story }: { story: StoryProps }) => {
               Arte y literatura
             </a>
           </Link>
-          <h1 className="mt-3 text-22 sm:text-28 font-bold leading-normal">
+          <h1 className="mt-5 text-22 sm:text-28 font-bold leading-normal">
             {story.title}
           </h1>
           <p className="mt-3">
@@ -44,7 +44,7 @@ const Story = ({ story }: { story: StoryProps }) => {
           />
           <Button
             type="custom"
-            className="flex lg:hidden border-yellow text-yellow hover:bg-yellow hover:text-white mt-12 max-w-max outline-none focus:outline-none focus:border-yellow"
+            className="flex lg:hidden border-yellow text-yellow hover:bg-yellow hover:text-white mt-12 max-w-max focus:outline-yellow"
             href={`/arte-y-literatura/${story.slug}`}
           >
             Leer más

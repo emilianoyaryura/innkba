@@ -1,6 +1,6 @@
-import { ReactNode } from 'react'
-import Link from 'next/link'
+import { ReactNode, useCallback } from 'react'
 import clsx from 'clsx'
+import { useRouter } from 'next/router'
 
 type Props = {
   type?: 'primary' | 'secondary' | 'tertiary' | 'alternative' | 'custom'
@@ -17,16 +17,23 @@ const Button = ({
   size = 'medium',
   children,
   href,
-  isExternal = false,
+  // isExternal = false,
   className,
   onClick
 }: Props) => {
+  const router = useRouter()
+
+  const handleClick = useCallback(() => {
+    if (onClick === undefined) {
+      router.push(href ?? '/')
+    } else onClick
+  }, [href, onClick, router])
   return (
     <button
-      onClick={onClick}
+      onClick={handleClick}
       style={{ minWidth: type !== 'alternative' ? '120px' : '' }}
       className={clsx(
-        'rounded-lg flex items-center justify-center font-semibold text-14 cursor-pointer text-center transition-all duration-150',
+        'rounded-lg flex items-center justify-center font-semibold text-14 cursor-pointer text-center transition-all duration-150 outline-none',
         className,
         {
           'bg-blue hover:opacity-90 group-hover:opacity-90 text-white':
@@ -41,35 +48,7 @@ const Button = ({
         }
       )}
     >
-      {!isExternal && href ? (
-        <Link href={href}>
-          <a
-            aria-label="internal button"
-            className="noDecoration font-semibold"
-          >
-            {children}
-          </a>
-        </Link>
-      ) : isExternal && href ? (
-        <Link href={href} passHref>
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="external button"
-            className="noDecoration font-semibold"
-          >
-            {children}
-          </a>
-        </Link>
-      ) : (
-        <a
-          aria-label="no link button"
-          className="flex items-center justify-center noDecoration font-semibold"
-        >
-          {children}
-        </a>
-      )}
+      {children}
     </button>
   )
 }

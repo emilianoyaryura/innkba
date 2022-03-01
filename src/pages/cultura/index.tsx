@@ -40,10 +40,7 @@ const Cultura = ({ posts, page }: { posts: ContentfulPost[]; page: Page }) => {
           {page.featuredPosts && (
             <>
               <div className="hidden md:flex flex-col">
-                <FullScreenPost
-                  className="mb-14"
-                  post={page.featuredPosts[0]}
-                />
+                <FullScreenPost post={page.featuredPosts[0]} />
                 <PostGrid
                   withoutMargins
                   id="LoMasDestacado"

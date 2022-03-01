@@ -37,6 +37,11 @@ body {
   color: #081623;
 }
 
+button,
+a {
+  outline: none;
+}
+
 a:not(.noDecoration) {
   transition: all 0.15s;
 }

@@ -50,10 +50,7 @@ const ArteyLiteratura = ({
           {page.featuredPosts && (
             <>
               <div className="hidden md:flex flex-col">
-                <FullScreenPost
-                  className="mb-14"
-                  post={page.featuredPosts[0]}
-                />
+                <FullScreenPost post={page.featuredPosts[0]} />
                 <PostGrid
                   withoutMargins
                   id="LoMasDestacado"
@@ -73,7 +70,7 @@ const ArteyLiteratura = ({
       </Section>
       {page.weeklyQuote && (
         <Quote
-          className="-mb-28 -mt-8 border border-red border-solid"
+          className="-mb-28 md:-mb-32 lg:-mb-36"
           quote={page.weeklyQuote?.quote}
           author={page.weeklyQuote?.author}
         />

@@ -136,59 +136,64 @@ export const MobileHeader = ({
           </Link>
         ))}
       </div>
-      <div style={{ height: '1px' }} className="w-full bg-gray-300 my-8" />
-      <div className="flex items-center space-x-6 justify-center">
-        <Link href="https://twitter.com/innkba" passHref>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center noDecoration"
+      <div>
+        <div style={{ height: '1px' }} className="w-full bg-gray-300 my-8" />
+        <div className="flex items-center space-x-6 justify-center">
+          <Link href="https://twitter.com/innkba" passHref>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center noDecoration"
+            >
+              <Image
+                src="/icons/twitter.svg"
+                alt="twitter"
+                width={22}
+                height={22}
+              />
+            </a>
+          </Link>
+          <Link
+            href="https://www.facebook.com/Innk-ba-102751985452293"
+            passHref
           >
-            <Image
-              src="/icons/twitter.svg"
-              alt="twitter"
-              width={22}
-              height={22}
-            />
-          </a>
-        </Link>
-        <Link href="https://www.facebook.com/Innk-ba-102751985452293" passHref>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center noDecoration"
-          >
-            <Image
-              src="/icons/facebook.svg"
-              alt="facebook"
-              width={22}
-              height={22}
-            />
-          </a>
-        </Link>
-        <Link href="https://www.instagram.com/innkba/?hl=es-la" passHref>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center noDecoration"
-          >
-            <Image
-              src="/icons/instagram.svg"
-              alt="instagram"
-              width={22}
-              height={22}
-            />
-          </a>
-        </Link>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center noDecoration"
+            >
+              <Image
+                src="/icons/facebook.svg"
+                alt="facebook"
+                width={22}
+                height={22}
+              />
+            </a>
+          </Link>
+          <Link href="https://www.instagram.com/innkba/?hl=es-la" passHref>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center noDecoration"
+            >
+              <Image
+                src="/icons/instagram.svg"
+                alt="instagram"
+                width={22}
+                height={22}
+              />
+            </a>
+          </Link>
+        </div>
+        <a
+          className="text-16 flex flex-col max-w-max mx-auto mt-6 noDecoration"
+          href="mailto:innkba@gmail.com"
+          aria-label="contact mail"
+        >
+          <span>innkba@gmail.com</span>
+          <span style={{ height: '2px' }} className="w-full bg-black" />
+        </a>
       </div>
-      <a
-        className="text-16 flex flex-col max-w-max mx-auto mt-6 noDecoration"
-        href="mailto:innkba@gmail.com"
-        aria-label="contact mail"
-      >
-        <span>innkba@gmail.com</span>
-        <span style={{ height: '2px' }} className="w-full bg-black" />
-      </a>
     </div>
   )
 }

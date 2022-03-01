@@ -11,6 +11,10 @@
   position: fixed;
   top: 62px;
   background: white;
+  padding-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   transition: all 0.3s;
   z-index: 100;
 }
