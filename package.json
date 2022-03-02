@@ -26,6 +26,7 @@
     "autoprefixer": "^10.3.1",
     "clsx": "^1.1.1",
     "contentful": "^8.4.2",
+    "framer-motion": "^6.2.8",
     "keen-slider": "^5.5.1",
     "next": "^11.1.2",
     "next-seo": "^4.26.0",

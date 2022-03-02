@@ -5,6 +5,7 @@ import SectionHeader from 'components/molecules/sectionHeader'
 import PostGrid from 'components/molecules/postGrid'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
 import Section from 'components/molecules/section'
+import clsx from 'clsx'
 
 const Cultura = ({ posts, page }: { posts: ContentfulPost[]; page: Page }) => {
   const sections = [
@@ -40,7 +41,12 @@ const Cultura = ({ posts, page }: { posts: ContentfulPost[]; page: Page }) => {
           {page.featuredPosts && (
             <>
               <div className="hidden md:flex flex-col">
-                <FullScreenPost post={page.featuredPosts[0]} />
+                <FullScreenPost
+                  post={page.featuredPosts[0]}
+                  className={clsx('', {
+                    'mb-12': page.featuredPosts.length > 1
+                  })}
+                />
                 <PostGrid
                   withoutMargins
                   id="LoMasDestacado"

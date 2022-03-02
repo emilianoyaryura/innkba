@@ -6,6 +6,7 @@ import PostGrid from 'components/molecules/postGrid'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
 import Section from 'components/molecules/section'
 import Quote from 'components/atoms/quote'
+import clsx from 'clsx'
 
 const ArteyLiteratura = ({
   posts,
@@ -50,7 +51,12 @@ const ArteyLiteratura = ({
           {page.featuredPosts && (
             <>
               <div className="hidden md:flex flex-col">
-                <FullScreenPost post={page.featuredPosts[0]} />
+                <FullScreenPost
+                  post={page.featuredPosts[0]}
+                  className={clsx('', {
+                    'mb-12': page.featuredPosts.length > 1
+                  })}
+                />
                 <PostGrid
                   withoutMargins
                   id="LoMasDestacado"

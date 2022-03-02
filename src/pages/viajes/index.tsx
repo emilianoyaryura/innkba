@@ -5,6 +5,7 @@ import { ContentfulPost, Page } from 'ts/models'
 import Section from 'components/molecules/section'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
 import PostGrid from 'components/molecules/postGrid'
+import clsx from 'clsx'
 
 const Viajes = ({ posts, page }: { posts: ContentfulPost[]; page: Page }) => {
   const sections = [
@@ -21,7 +22,12 @@ const Viajes = ({ posts, page }: { posts: ContentfulPost[]; page: Page }) => {
           {page.featuredPosts && (
             <>
               <div className="hidden md:flex flex-col">
-                <FullScreenPost post={page.featuredPosts[0]} />
+                <FullScreenPost
+                  post={page.featuredPosts[0]}
+                  className={clsx('', {
+                    'mb-12': page.featuredPosts.length > 1
+                  })}
+                />
                 <PostGrid
                   withoutMargins
                   id="LoMasDestacado"
