@@ -10,15 +10,17 @@ import WebsiteIcon from './icons/website'
 const PostAuthor = ({ author }: Pick<ContentfulPost, 'author'>) => {
   return (
     <div className="w-full max-w-2xl mx-auto flex flex-col sm:flex-row items-center border border-solid border-black p-5 rounded-xl mt-20">
-      <div className="min-w-max">
-        <Image
-          src={author[0].image ?? '/images/brand/logo.svg'}
-          alt={author[0].name}
-          width={190}
-          height={160}
-          className="rounded-lg"
-        />
-      </div>
+      {author[0].image && (
+        <div className="min-w-max">
+          <Image
+            src={author[0].image}
+            alt={author[0].name}
+            width={190}
+            height={160}
+            className="rounded-lg"
+          />
+        </div>
+      )}
       <div className="flex flex-grow flex-col sm:ml-8 mt-4 justify-between">
         <div className="mb-5">
           <p className="mb-2 font-medium text-22">{author[0].name}</p>

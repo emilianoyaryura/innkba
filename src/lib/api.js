@@ -19,7 +19,7 @@ function getCleanPost(post) {
         name: author.fields.name,
         image: author.fields.frontImage?.fields?.file
           ? `https:${author.fields.frontImage?.fields.file.url}`
-          : '/images/brand/logo.svg',
+          : null,
         shortDescription: author.fields.shortDescription ?? '',
         instagram: author.fields.instagram ?? '',
         linkedin: author.fields.linkedin ?? '',
