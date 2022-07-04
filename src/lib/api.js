@@ -17,7 +17,7 @@ function getCleanPost(post) {
     author: post.fields.author?.map((author) => {
       return {
         name: author.fields.name,
-        image: author.fields.frontImage
+        image: author.fields.frontImage?.fields?.file
           ? `https:${author.fields.frontImage?.fields.file.url}`
           : '/images/brand/logo.svg',
         shortDescription: author.fields.shortDescription ?? '',

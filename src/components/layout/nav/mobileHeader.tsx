@@ -115,7 +115,7 @@ export const MobileHeader = ({
 }) => {
   return (
     <div
-      className={clsx('', s.mobileMenu, {
+      className={clsx('flex lg:hidden', s.mobileMenu, {
         'left-0': menuOpen,
         '-left-full': !menuOpen
       })}
