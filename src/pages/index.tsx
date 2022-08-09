@@ -5,6 +5,7 @@ import PostGrid from 'components/molecules/postGrid'
 import Story from 'components/molecules/story'
 import HeaderPosts from 'components/sections/home/header-posts'
 import { getHomePage, getPosts } from 'lib/api'
+import { getSectionSlug } from 'lib/utils/section'
 import { ContentfulPost, Page } from 'ts/models'
 
 const HomePage = ({
@@ -14,8 +15,18 @@ const HomePage = ({
   contentfulPosts: ContentfulPost[]
   page: Page
 }) => {
+  const tinyPosts = contentfulPosts.map((p) => {
+    const section = getSectionSlug(p.category)
+    return {
+      title: p.title,
+      href: `/${section}/${p.slug}`,
+      category: p.category,
+      tag: p.tag
+    }
+  })
+
   return (
-    <PageLayout posts={contentfulPosts} headProps={{ title: 'Innk ba' }}>
+    <PageLayout posts={tinyPosts} headProps={{ title: 'Innk ba' }}>
       <HeaderPosts
         principalPost={page.mainFeaturedPost ?? page.featuredPosts[0]}
         posts={page.featuredPosts.slice(0, 4)}

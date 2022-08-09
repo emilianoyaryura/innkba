@@ -46,6 +46,7 @@ export type Tag =
   | 'Comdias'
   | 'Trending'
   | 'Sintiendo la Música'
+  | 'Diario de Viaje'
   | 'Fashion'
 
 export type ContentfulPost = {
@@ -66,6 +67,13 @@ export type ContentfulPost = {
     src: string | null
     title: string
   }
+}
+
+export type TinyPost = {
+  title: string
+  href: string
+  category: Category
+  tag: Tag
 }
 
 export type ShortStory = {
