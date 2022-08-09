@@ -4,7 +4,7 @@ import SectionLayout from 'components/layout/sectionLayout'
 import PostGrid from 'components/molecules/postGrid'
 import Story from 'components/molecules/story'
 import HeaderPosts from 'components/sections/home/header-posts'
-import { getHomePage, getPosts } from 'lib/api'
+import { getHomePage, getPostsPreview } from 'lib/api'
 import { getSectionSlug } from 'lib/utils/section'
 import { ContentfulPost, Page } from 'ts/models'
 
@@ -57,7 +57,7 @@ const HomePage = ({
 }
 
 export const getStaticProps = async () => {
-  const posts = await getPosts()
+  const posts = await getPostsPreview()
   const page = await getHomePage()
 
   return {

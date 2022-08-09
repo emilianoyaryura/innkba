@@ -1,21 +1,41 @@
 import PageLayout from 'components/layout/pageLayout'
-import { getCulturePage, getCulturePosts } from 'lib/api'
-import { ContentfulPost, Page } from 'ts/models'
+import { getCulturePage, getCulturePosts, getPostsPreview } from 'lib/api'
+import { Page, PostPreview } from 'ts/models'
 import SectionHeader from 'components/molecules/sectionHeader'
 import PostGrid from 'components/molecules/postGrid'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
 import Section from 'components/molecules/section'
 import clsx from 'clsx'
+import { getSectionSlug } from 'lib/utils/section'
 
-const Cultura = ({ posts, page }: { posts: ContentfulPost[]; page: Page }) => {
+const Cultura = ({
+  posts,
+  page,
+  allPosts
+}: {
+  posts: PostPreview[]
+  page: Page
+  allPosts: PostPreview[]
+}) => {
   const sections = [
     ...new Set(posts.map((item) => item?.tag)) //New array with all years
   ]
   const filteredPosts = posts.filter((p) => {
     return page.featuredPosts?.find((el) => el.title !== p.title)
   })
+
+  const tinyPosts = allPosts.map((p) => {
+    const section = getSectionSlug(p.category)
+    return {
+      title: p.title,
+      href: `/${section}/${p.slug}`,
+      category: p.category,
+      tag: p.tag
+    }
+  })
+
   return (
-    <PageLayout posts={posts} headProps={{ title: 'Innk ba | Cultura' }}>
+    <PageLayout posts={tinyPosts} headProps={{ title: 'Innk ba | Cultura' }}>
       <SectionHeader
         image={{
           src: page.header.illustration.src,
@@ -80,11 +100,13 @@ const Cultura = ({ posts, page }: { posts: ContentfulPost[]; page: Page }) => {
 export const getStaticProps = async () => {
   const posts = await getCulturePosts()
   const page = await getCulturePage()
+  const allPosts = await getPostsPreview()
 
   return {
     props: {
       posts: posts ?? null,
-      page: page ?? null
+      page: page ?? null,
+      allPosts: allPosts ?? null
     }
   }
 }

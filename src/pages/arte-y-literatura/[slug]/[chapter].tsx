@@ -1,7 +1,7 @@
 import PageLayout from 'components/layout/pageLayout'
 import { getAllStories, getPosts } from 'lib/api'
 import { useRouter } from 'next/router'
-import { ContentfulPost, ShortStory, Story } from 'ts/models'
+import { PostPreview, ShortStory, Story } from 'ts/models'
 import Container from 'components/layout/container'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -11,13 +11,14 @@ import clsx from 'clsx'
 import { renderBody } from 'lib/renderer'
 import PostAuthor from 'components/atoms/author'
 import s from './chapter.module.css'
+import { getSectionSlug } from 'lib/utils/section'
 
 const ChapterPage = ({
   stories,
   posts
 }: {
   stories: Story[]
-  posts: ContentfulPost[]
+  posts: PostPreview[]
 }) => {
   const router = useRouter()
   const query = router.query
@@ -27,9 +28,19 @@ const ChapterPage = ({
     (c) => c.slug !== chapter.slug
   )
 
+  const tinyPosts = posts.map((p) => {
+    const section = getSectionSlug(p.category)
+    return {
+      title: p.title,
+      href: `/${section}/${p.slug}`,
+      category: p.category,
+      tag: p.tag
+    }
+  })
+
   return (
     <PageLayout
-      posts={posts}
+      posts={tinyPosts}
       headProps={{
         title: story?.title,
         ogImage: story?.image.src ?? 'https://innkba.com/og.png'

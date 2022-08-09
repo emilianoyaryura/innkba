@@ -69,6 +69,23 @@ export type ContentfulPost = {
   }
 }
 
+export type PostPreview = {
+  title: string
+  slug: string
+  copy: string
+  category: Category
+  tag: Tag
+  date: string
+  spotify?: {
+    link: string
+    iframe: string
+  }
+  image: {
+    src: string | null
+    title: string
+  }
+}
+
 export type TinyPost = {
   title: string
   href: string

@@ -41,6 +41,57 @@ function getCleanPost(post) {
   }
 }
 
+export const getPost = async (slug) => {
+  const posts = await client.getEntries({
+    content_type: 'post',
+    'fields.slug': slug
+  })
+
+  const cleanPost = posts.items.map((p) => {
+    return getCleanPost(p)
+  })
+
+  return cleanPost[0]
+}
+
+export const getPostsPreview = async () => {
+  const posts = await client.getEntries({
+    content_type: 'post',
+    select: [
+      'fields.title',
+      'fields.slug',
+      'fields.date',
+      'fields.copy',
+      'fields.section',
+      'fields.tag',
+      'fields.spotifyLink',
+      'fields.spotifyIframe',
+      'fields.frontImage'
+    ]
+  })
+
+  const cleanPosts = posts.items.map((post) => {
+    return {
+      title: post.fields.title,
+      slug: post.fields.slug,
+      copy: post.fields.copy,
+      category: post.fields.section,
+      tag: post.fields.tag,
+      date: post.fields.date,
+      spotify: {
+        link: post.fields.spotifyLink ?? '',
+        iframe: post.fields.spotifyIframe ?? ''
+      },
+      image: {
+        src: `https:${post.fields.frontImage?.fields.file.url}` ?? null,
+        title: post.fields.frontImage?.fields.title ?? ''
+      }
+    }
+  })
+
+  return cleanPosts
+}
+
 function getSectionHeader(header) {
   if (!header) return
   return {
@@ -208,13 +259,13 @@ export async function getPosts() {
 }
 
 export const getLifestylePosts = async () => {
-  const allPosts = await getPosts()
+  const allPosts = await getPostsPreview()
   const posts = allPosts.filter((e) => e.category === 'Lifestyle')
   return posts
 }
 
 export const getTravelPosts = async () => {
-  const allPosts = await getPosts()
+  const allPosts = await getPostsPreview()
   const posts = allPosts.filter(
     (e) => (e.category === 'Viajes') | (e.category === 'Diario de Viaje')
   )
@@ -222,13 +273,13 @@ export const getTravelPosts = async () => {
 }
 
 export const getArtandLiteraturePosts = async () => {
-  const allPosts = await getPosts()
+  const allPosts = await getPostsPreview()
   const posts = allPosts.filter((e) => e.category === 'Arte y Literatura')
   return posts
 }
 
 export const getCulturePosts = async () => {
-  const allPosts = await getPosts()
+  const allPosts = await getPostsPreview()
   const posts = allPosts.filter((e) => e.category === 'Cultura')
   return posts
 }

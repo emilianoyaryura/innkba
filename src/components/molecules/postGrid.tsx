@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { useState } from 'react'
-import { ContentfulPost } from 'ts/models'
+import { PostPreview } from 'ts/models'
 import Post from '../atoms/post'
 import Button from '../primitives/button'
 import Container from 'components/layout/container'
@@ -8,7 +8,7 @@ import Spotify from './spotify'
 import { getSectionSlug } from 'lib/utils/section'
 
 type Props = {
-  posts: ContentfulPost[]
+  posts: PostPreview[]
   id: string
   withoutMargins?: boolean
 }

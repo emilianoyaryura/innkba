@@ -1,4 +1,8 @@
-import { getAllStories, getArtandLiteraturePosts, getPosts } from 'lib/api'
+import {
+  getAllStories,
+  getArtandLiteraturePosts,
+  getPostsPreview
+} from 'lib/api'
 import LiteraturePostPage from 'pages/template'
 import { Story } from 'ts/models'
 
@@ -18,7 +22,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async () => {
-  const posts = await getPosts()
+  const posts = await getPostsPreview()
   const stories = await getAllStories()
 
   return {

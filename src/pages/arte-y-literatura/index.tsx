@@ -1,18 +1,25 @@
 import PageLayout from 'components/layout/pageLayout'
-import { getArtandLiteraturePosts, getLiteraturePage } from 'lib/api'
-import { ContentfulPost, Page } from 'ts/models'
+import {
+  getArtandLiteraturePosts,
+  getLiteraturePage,
+  getPostsPreview
+} from 'lib/api'
+import { Page, PostPreview } from 'ts/models'
 import SectionHeader from 'components/molecules/sectionHeader'
 import PostGrid from 'components/molecules/postGrid'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
 import Section from 'components/molecules/section'
 import Quote from 'components/atoms/quote'
 import clsx from 'clsx'
+import { getSectionSlug } from 'lib/utils/section'
 
 const ArteyLiteratura = ({
   posts,
+  allPosts,
   page
 }: {
-  posts: ContentfulPost[]
+  posts: PostPreview[]
+  allPosts: PostPreview[]
   page: Page
 }) => {
   const sections = [
@@ -21,9 +28,20 @@ const ArteyLiteratura = ({
   const filteredPosts = posts.filter((p) => {
     return page.featuredPosts?.find((el) => el.title !== p.title)
   })
+
+  const tinyPosts = allPosts.map((p) => {
+    const section = getSectionSlug(p.category)
+    return {
+      title: p.title,
+      href: `/${section}/${p.slug}`,
+      category: p.category,
+      tag: p.tag
+    }
+  })
+
   return (
     <PageLayout
-      posts={posts}
+      posts={tinyPosts}
       headProps={{ title: 'Innk ba | Arte y Literatura' }}
     >
       <SectionHeader
@@ -97,11 +115,13 @@ const ArteyLiteratura = ({
 export const getStaticProps = async () => {
   const posts = await getArtandLiteraturePosts()
   const page = await getLiteraturePage()
+  const allPosts = await getPostsPreview()
 
   return {
     props: {
       posts: posts ?? null,
-      page: page ?? null
+      page: page ?? null,
+      allPosts: allPosts ?? null
     }
   }
 }

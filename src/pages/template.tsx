@@ -1,5 +1,5 @@
 import { useRouter } from 'next/dist/client/router'
-import { ContentfulPost, Story } from 'ts/models'
+import { ContentfulPost, PostPreview, Story } from 'ts/models'
 import Container from 'components/layout/container'
 import PageLayout from 'components/layout/pageLayout'
 import { getDate } from 'lib/utils/date'
@@ -17,28 +17,39 @@ import Share from 'components/atoms/share'
 import PostAuthor from 'components/atoms/author'
 
 const Template = ({
-  posts,
-  stories
+  post,
+  stories,
+  posts
 }: {
-  posts: ContentfulPost[]
+  post: ContentfulPost
+  posts: PostPreview[]
   stories: Story[]
 }) => {
   const router = useRouter()
   const query = router.query.slug
-  const post = posts?.filter((p) => p.slug === query)[0]
   const story = stories?.filter((s) => s.slug === query)[0]
 
   const keepReadingPosts = posts
     ?.filter((e) => e.category === post?.category)
     .filter((p) => p.slug !== query)
 
+  const tinyPosts = posts.map((p) => {
+    const section = getSectionSlug(p.category)
+    return {
+      title: p.title,
+      href: `/${section}/${p.slug}`,
+      category: p.category,
+      tag: p.tag
+    }
+  })
+
   if (post) {
     return (
       <PageLayout
-        posts={posts}
+        posts={tinyPosts}
         headProps={{
           title: post?.title,
-          ogImage: post?.image.src ?? 'https://innkba.com/og.png'
+          ogImage: post?.image?.src ?? 'https://innkba.com/og.png'
         }}
       >
         <Container
@@ -133,7 +144,7 @@ const Template = ({
   } else if (story) {
     return (
       <PageLayout
-        posts={posts}
+        posts={tinyPosts}
         headProps={{
           title: story?.title,
           ogImage: story?.image.src ?? 'https://innkba.com/og.png'

@@ -2,13 +2,13 @@ import clsx from 'clsx'
 import { getSectionSlug } from 'lib/utils/section'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ContentfulPost } from 'ts/models'
+import { PostPreview } from 'ts/models'
 
 const Post = ({
   post,
   withoutCategory
 }: {
-  post: ContentfulPost
+  post: PostPreview
   withoutCategory?: boolean
 }) => {
   const section = getSectionSlug(post.category)

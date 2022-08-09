@@ -1,18 +1,21 @@
 import PageLayout from 'components/layout/pageLayout'
-import { getLifestylePage, getLifestylePosts } from 'lib/api'
-import { ContentfulPost, Page } from 'ts/models'
+import { getLifestylePage, getLifestylePosts, getPostsPreview } from 'lib/api'
+import { Page, PostPreview } from 'ts/models'
 import SectionHeader from 'components/molecules/sectionHeader'
 import PostGrid from 'components/molecules/postGrid'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
 import Section from 'components/molecules/section'
 import clsx from 'clsx'
+import { getSectionSlug } from 'lib/utils/section'
 
 const Lifestyle = ({
   posts,
-  page
+  page,
+  allPosts
 }: {
-  posts: ContentfulPost[]
+  posts: PostPreview[]
   page: Page
+  allPosts: PostPreview[]
 }) => {
   const sections = [
     ...new Set(posts.map((item) => item?.tag)) //New array with all years
@@ -20,8 +23,18 @@ const Lifestyle = ({
   const filteredPosts = posts.filter((p) => {
     return page.featuredPosts?.find((el) => el.title !== p.title)
   })
+
+  const tinyPosts = allPosts.map((p) => {
+    const section = getSectionSlug(p.category)
+    return {
+      title: p.title,
+      href: `/${section}/${p.slug}`,
+      category: p.category,
+      tag: p.tag
+    }
+  })
   return (
-    <PageLayout posts={posts} headProps={{ title: 'Innk ba | Lifestyle' }}>
+    <PageLayout posts={tinyPosts} headProps={{ title: 'Innk ba | Lifestyle' }}>
       <SectionHeader
         image={{
           src: page.header.illustration.src,
@@ -86,11 +99,13 @@ const Lifestyle = ({
 export const getStaticProps = async () => {
   const posts = await getLifestylePosts()
   const page = await getLifestylePage()
+  const allPosts = await getPostsPreview()
 
   return {
     props: {
       posts: posts ?? null,
-      page: page ?? null
+      page: page ?? null,
+      allPosts: allPosts ?? null
     }
   }
 }

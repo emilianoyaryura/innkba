@@ -1,4 +1,4 @@
-import { getPosts, getTravelPosts } from 'lib/api'
+import { getPost, getPostsPreview, getTravelPosts } from 'lib/api'
 import TravelPostPage from 'pages/template'
 
 export const getStaticPaths = async () => {
@@ -12,11 +12,15 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps = async () => {
-  const posts = await getPosts()
+export const getStaticProps = async ({ params }: { params: any }) => {
+  const { slug } = params
+
+  const post = await getPost(slug)
+  const posts = await getPostsPreview()
 
   return {
     props: {
+      post: post ?? null,
       posts: posts ?? null
     }
   }

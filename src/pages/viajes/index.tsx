@@ -1,21 +1,40 @@
 import PageLayout from 'components/layout/pageLayout'
 import TravelHeader from 'components/sections/travel/header'
-import { getTravelPage, getTravelPosts } from 'lib/api'
-import { ContentfulPost, Page } from 'ts/models'
+import { getPostsPreview, getTravelPage, getTravelPosts } from 'lib/api'
+import { Page, PostPreview } from 'ts/models'
 import Section from 'components/molecules/section'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
 import PostGrid from 'components/molecules/postGrid'
 import clsx from 'clsx'
+import { getSectionSlug } from 'lib/utils/section'
 
-const Viajes = ({ posts, page }: { posts: ContentfulPost[]; page: Page }) => {
+const Viajes = ({
+  posts,
+  allPosts,
+  page
+}: {
+  posts: PostPreview[]
+  page: Page
+  allPosts: PostPreview[]
+}) => {
   const sections = [
-    ...new Set(posts.map((item) => item?.tag)) //New array with all years
+    ...new Set(posts.map((item) => item?.tag)) //New array with all tags
   ]
   const filteredPosts = posts.filter((p) => {
     return page.featuredPosts?.find((el) => el.title !== p.title)
   })
+
+  const tinyPosts = allPosts.map((p) => {
+    const section = getSectionSlug(p.category)
+    return {
+      title: p.title,
+      href: `/${section}/${p.slug}`,
+      category: p.category,
+      tag: p.tag
+    }
+  })
   return (
-    <PageLayout posts={posts} headProps={{ title: 'Innk ba | Viajes' }}>
+    <PageLayout posts={tinyPosts} headProps={{ title: 'Innk ba | Viajes' }}>
       <TravelHeader />
       <Section section="Lo más destacado">
         <div>
@@ -61,11 +80,13 @@ const Viajes = ({ posts, page }: { posts: ContentfulPost[]; page: Page }) => {
 export const getStaticProps = async () => {
   const posts = await getTravelPosts()
   const page = await getTravelPage()
+  const allPosts = await getPostsPreview()
 
   return {
     props: {
       posts: posts ?? null,
-      page: page ?? null
+      page: page ?? null,
+      allPosts: allPosts ?? null
     }
   }
 }
