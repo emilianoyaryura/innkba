@@ -75,6 +75,7 @@ const Spotify = ({ title, copy, link, secondLink, iframe }: SpotifyProps) => {
         frameBorder="0"
         allow="encrypted-media"
         className="hidden lg:flex rounded-xl ml-14"
+        title={title}
       />
     </Container>
   )
