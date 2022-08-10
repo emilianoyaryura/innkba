@@ -6,6 +6,7 @@ import TwitterIcon from './icons/twitter'
 import InstagramIcon from './icons/instagram'
 import LinkedinIcon from './icons/linkedin'
 import WebsiteIcon from './icons/website'
+import clsx from 'clsx'
 
 const PostAuthor = ({ author }: Pick<ContentfulPost, 'author'>) => {
   return (
@@ -21,7 +22,11 @@ const PostAuthor = ({ author }: Pick<ContentfulPost, 'author'>) => {
           />
         </div>
       )}
-      <div className="flex flex-grow flex-col sm:ml-8 mt-4 justify-between">
+      <div
+        className={clsx('flex flex-grow flex-col justify-between', {
+          'sm:ml-8 mt-4': author[0].image
+        })}
+      >
         <div className="mb-5">
           <p className="mb-2 font-medium text-22">{author[0].name}</p>
           <p className="text-15">{author[0].shortDescription}</p>
