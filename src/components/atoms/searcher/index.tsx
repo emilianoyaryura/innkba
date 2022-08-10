@@ -88,7 +88,12 @@ export function Searcher({ posts }: { posts: TinyPost[] }) {
                 {postsDividedByCategory.map((c, idx) => (
                   <Command.Group heading={c.category} key={idx}>
                     {c.posts.map((p) => (
-                      <Item value={p.title} key={p.title} post={p}>
+                      <Item
+                        setIsOpen={setIsOpen}
+                        value={p.title}
+                        key={p.title}
+                        post={p}
+                      >
                         {p.title}
                       </Item>
                     ))}
@@ -106,15 +111,23 @@ export function Searcher({ posts }: { posts: TinyPost[] }) {
 function Item({
   children,
   value,
-  post
+  post,
+  setIsOpen
 }: {
   children: ReactNode
   value: string
   post: TinyPost
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }) {
   const router = useRouter()
   return (
-    <Command.Item value={value} onSelect={() => router.push(post.href)}>
+    <Command.Item
+      value={value}
+      onSelect={() => {
+        router.push(post.href)
+        setIsOpen(false)
+      }}
+    >
       {post.tag === 'Diario de Viaje' && <PlaneIcon />}
       {children}
       {post?.tag && <span cmdk-raycast-meta="">{post.tag}</span>}
