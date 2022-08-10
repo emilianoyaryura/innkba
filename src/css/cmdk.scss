@@ -193,6 +193,14 @@
       scroll-padding-block-end: 40px;
       transition: 100ms ease;
       transition-property: height;
+
+      @media (max-width: 1024px) {
+        height: 300px;
+      }
+
+      @media (max-width: 640px) {
+        height: 240px;
+      }
     }
 
     [cmdk-list]:first-of-type {

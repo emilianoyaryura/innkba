@@ -1,7 +1,7 @@
 .nav {
-  padding: 50px 0 15px;
+  padding: 50px 0 12px;
   position: sticky;
-  top: -35px;
+  top: -38px;
   z-index: 100;
 }
 

@@ -77,7 +77,7 @@ export function Searcher({ posts }: { posts: TinyPost[] }) {
         </svg>
       </button>
       {isOpen && (
-        <div className="fixed w-screen h-screen flex items-center justify-center left-0 top-0 px-4">
+        <div className="fixed w-screen h-screen flex pt-16 lg:pt-0 lg:items-center justify-center left-0 top-0 px-4">
           <div ref={wrapperRef} className="raycast">
             <Command value={value} onValueChange={(v) => setValue(v)}>
               <div cmdk-raycast-top-shine="" />

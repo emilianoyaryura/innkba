@@ -12,7 +12,7 @@ const Quote = ({ quote, author, className }: QuoteProps) => {
     <div className={clsx('px-4', className)}>
       <Container
         size="large"
-        className="my-36 bg-gray-50 border border-solid border-gray-100 flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-12 box-border px-8 py-8 sm:py-12 md:py-16 sm:px-16 rounded-2xl"
+        className="my-36 bg-offBlue border border-solid border-gray-100 flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-12 box-border px-8 py-8 sm:py-12 md:py-16 sm:px-16 rounded-2xl"
       >
         <div className="max-w-md md:max-w-5xl mx-auto mt-4 flex flex-col items-center md:items-start">
           <h2 className="font-semibold text-14 lg:text-16 uppercase">

@@ -120,7 +120,7 @@ const Template = ({
             <PostAuthor author={post.author} />
           </div>
           <div className="mt-32">
-            <p className="text-26 text-center sm:text-left sm:text-32 font-semibold mb-8 sm:mb-5">
+            <p className="text-22 text-center sm:text-left sm:text-28 font-bold mb-8 sm:mb-5">
               Seguir leyendo
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-x-4 lg:gap-x-8">
