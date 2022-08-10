@@ -33,7 +33,7 @@ const Template = ({
     ?.filter((e) => e.category === post?.category)
     .filter((p) => p.slug !== query)
 
-  const tinyPosts = posts.map((p) => {
+  const tinyPosts = posts?.map((p) => {
     const section = getSectionSlug(p.category)
     return {
       title: p.title,
@@ -127,13 +127,13 @@ const Template = ({
               {keepReadingPosts.length > 0
                 ? keepReadingPosts
                     .slice(0, 6)
-                    .map((each, idx) => (
+                    ?.map((each, idx) => (
                       <Post key={idx} post={each} withoutCategory />
                     ))
                 : posts
                     .filter((p) => p.slug !== post.slug)
                     .slice(0, 6)
-                    .map((each, idx) => (
+                    ?.map((each, idx) => (
                       <Post key={idx} post={each} withoutCategory />
                     ))}
             </div>
@@ -214,7 +214,7 @@ const Template = ({
             />
           </div>
           <div className="flex flex-col mx-auto mt-20 sm:mt-32 md:mt-44 max-w-2xl">
-            {story.chapters.map((c, idx) => (
+            {story.chapters?.map((c, idx) => (
               <Link
                 key={idx}
                 href={`/arte-y-literatura/${story.slug}/${c.slug}`}
