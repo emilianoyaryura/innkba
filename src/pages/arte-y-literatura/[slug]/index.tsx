@@ -1,6 +1,7 @@
 import {
   getAllStories,
   getArtandLiteraturePosts,
+  getPost,
   getPostsPreview
 } from 'lib/api'
 import LiteraturePostPage from 'pages/template'
@@ -21,12 +22,16 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps = async ({ params }: { params: any }) => {
+  const { slug } = params
+
   const posts = await getPostsPreview()
+  const post = await getPost(slug)
   const stories = await getAllStories()
 
   return {
     props: {
+      post: post ?? null,
       posts: posts ?? null,
       stories: stories ?? null
     }
