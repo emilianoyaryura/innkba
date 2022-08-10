@@ -7,6 +7,7 @@ import 'css/cmdk.scss'
 
 const App = ({ Component, pageProps }: AppProps) => {
   useAppGA()
+  // @ts-ignore
   return <Component {...pageProps} />
 }
 
