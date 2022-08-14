@@ -116,7 +116,7 @@ const Template = ({
               'max-w-2xl': !post.bigImages
             })}
           >
-            {renderBody(post.content, post.bigImages)}
+            {renderBody(post.content, post.bigImages, post.category)}
             <PostAuthor author={post.author} />
           </div>
           <div className="mt-32">

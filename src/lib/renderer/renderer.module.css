@@ -57,6 +57,10 @@
   border-radius: 10px;
 }
 
+.customVideo {
+  margin: 32px 0;
+}
+
 .bigVideo {
   width: 100%;
   height: auto;

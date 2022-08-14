@@ -1,3 +1,13 @@
+export interface VideoProps {
+  src: string
+  className?: string
+  poster?: string
+  name?: string
+  color?: string
+  title?: string
+  description?: string
+}
+
 export type Quote = {
   quote: string
   author: {

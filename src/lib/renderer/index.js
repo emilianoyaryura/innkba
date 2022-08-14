@@ -9,8 +9,28 @@ import clsx from 'clsx'
 import Button from 'components/primitives/button'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import Video from 'components/atoms/video'
 
-const renderBody = (document, size) => {
+const renderBody = (document, size, category) => {
+  let color
+  switch (category) {
+    case 'Lifestyle':
+      color = '#1A5AFF'
+      break
+    case 'Arte y Literatura':
+      color = '#F9A826'
+      break
+    case 'Cultura':
+      color = '#9733EE'
+      break
+    case 'Viajes':
+      color = '#D84B4B'
+      break
+    default:
+      color = '#1A5AFF'
+      break
+  }
+
   const options = {
     renderNode: {
       [BLOCKS.HEADING_1]: (node, children) => (
@@ -115,6 +135,18 @@ const renderBody = (document, size) => {
                 {node.data.target.fields.ctaLabel}
               </Button>
             </div>
+          )
+        } else if (node.data.target.sys.contentType?.sys.id === 'video') {
+          return (
+            <Video
+              src={node.data.target.fields.videoUrl}
+              name={node.data.target.fields.name}
+              poster={{
+                src: `https:${node.data.target.fields.poster.fields.file.url}`
+              }}
+              className={styles.customVideo}
+              color={color}
+            />
           )
         }
       },
