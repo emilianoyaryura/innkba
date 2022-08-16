@@ -1,6 +1,11 @@
 .raycast {
     width: 100%;
     max-width: 640px;
+    margin-top: -120px;
+
+    @media (max-width: 1024px) {
+      margin-top: 0;
+    }
 
     [cmdk-root] {
       width: 100%;

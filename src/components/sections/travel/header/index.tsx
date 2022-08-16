@@ -100,7 +100,7 @@ const TravelHeader = () => {
       </h1>
       <div className="flex flex-col items-center mt-6 -mb-8 sm:mb-20 md:mb-12 lg:-mb-12 z-50">
         <p className="text-14 sm:text-16 font-medium text-center text-black mb-4">
-          Te gustaría compartir tus viajes en Innk BA?
+          Te gustaría compartir tus viajes en Innk ba?
         </p>
         <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-5">
           <input
