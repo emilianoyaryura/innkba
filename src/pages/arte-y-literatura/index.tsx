@@ -55,7 +55,7 @@ const ArteyLiteratura = ({
         copy={page.header.copy}
         ctas={[
           {
-            href: '/arte-y-literatura',
+            href: '#lo-mas-destacado',
             label: 'Seguí leyendo'
           },
           {
@@ -64,7 +64,7 @@ const ArteyLiteratura = ({
           }
         ]}
       />
-      <Section section="Lo más destacado">
+      <Section section="Lo mas destacado">
         <div>
           {page.featuredPosts && (
             <>

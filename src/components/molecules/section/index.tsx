@@ -10,7 +10,7 @@ const Section = ({
 }) => {
   return (
     <div
-      id={section.toLocaleLowerCase()}
+      id={section.toLocaleLowerCase().replace(/ /g, '-')}
       className="flex flex-col mb-5 pt-28 md:pt-32 lg:pt-36"
     >
       <Container size="large" className="flex flex-col">

@@ -46,16 +46,16 @@ const Lifestyle = ({
         copy={page.header.copy}
         ctas={[
           {
-            href: '/lifestyle',
+            href: `#lo-mas-destacado`,
             label: 'Seguí leyendo'
           },
           {
-            href: 'mailto:test@example.com?subject=Hola, quiero escribir en la sección de lifestyle!',
+            href: 'mailto:innkba@gmail.com?subject=Hola! Me gustaría escribir en la sección de lifestyle!',
             label: 'Escribí en Innk'
           }
         ]}
       />
-      <Section section="Lo más destacado">
+      <Section section="Lo mas destacado">
         <div>
           {page.featuredPosts && (
             <>

@@ -47,7 +47,7 @@ const Cultura = ({
         copy={page.header.copy}
         ctas={[
           {
-            href: '/cultura',
+            href: '#lo-mas-destacado',
             label: 'Seguí leyendo'
           },
           {
@@ -56,7 +56,7 @@ const Cultura = ({
           }
         ]}
       />
-      <Section section="Lo más destacado">
+      <Section section="Lo mas destacado">
         <div>
           {page.featuredPosts && (
             <>
