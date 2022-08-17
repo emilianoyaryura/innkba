@@ -9,7 +9,7 @@ const Story = ({ story }: { story: StoryProps }) => {
     <div className="px-4">
       <Container
         size="large"
-        className="my-36 border-2 border-solid border-gray-800 grid grid-cols-1 lg:grid-cols-2 gap-12 box-border px-8 py-16 sm:px-16 rounded-2xl"
+        className="my-36 bg-gray-50 border border-solid border-gray-200 grid grid-cols-1 lg:grid-cols-2 gap-12 box-border px-8 py-16 sm:px-16 rounded-2xl"
       >
         <div className="flex flex-col justify-between">
           <Link href="/arte-y-literatura">
