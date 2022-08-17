@@ -49,7 +49,8 @@ const Template = ({
         posts={tinyPosts}
         headProps={{
           title: post?.title,
-          ogImage: post?.image?.src ?? 'https://innkba.com/og.png'
+          ogImage: post?.image?.src ?? 'https://innkba.com/og.png',
+          description: post?.copy ?? null
         }}
       >
         <Container
