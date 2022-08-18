@@ -23,14 +23,13 @@ const Button = ({
 }: Props) => {
   const router = useRouter()
 
-  const handleClick = useCallback(() => {
-    if (onClick === undefined) {
-      router.push(href ?? '/')
-    } else onClick
-  }, [href, onClick, router])
+  const handleHref = useCallback(() => {
+    router.push(href ?? '/')
+  }, [href, router])
+
   return (
     <button
-      onClick={handleClick}
+      onClick={href ? handleHref : onClick}
       style={{ minWidth: type !== 'alternative' ? '120px' : '' }}
       className={clsx(
         'rounded-lg flex items-center justify-center font-semibold text-14 cursor-pointer text-center transition-all duration-150 outline-none',
