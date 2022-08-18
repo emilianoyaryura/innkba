@@ -56,7 +56,7 @@ const Share = ({
           </a>
         </Link>
         <Link
-          href={`https://api.whatsapp.com/send?text=Mirá este artículo ${authorName} en Innk ba: https://innkba.com/${getSectionSlug(
+          href={`https://api.whatsapp.com/send?text=Mirá el artículo que esribió ${authorName} en https://innkba.com/${getSectionSlug(
             category
           )}/${slug}`}
           passHref

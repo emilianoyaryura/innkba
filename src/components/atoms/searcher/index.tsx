@@ -122,7 +122,7 @@ function Item({
   const router = useRouter()
   return (
     <Command.Item
-      value={value}
+      value={value.normalize('NFD').replace(/[\u0300-\u036f]/g, '')}
       onSelect={() => {
         router.push(post.href)
         setIsOpen(false)
