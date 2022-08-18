@@ -96,6 +96,19 @@ export type PostPreview = {
   }
 }
 
+export type StoryPreview = {
+  title: string
+  slug: string
+  copy?: string
+  author: {
+    name: string
+  }
+  image: {
+    src: string | null
+    title: string
+  }
+}
+
 export type TinyPost = {
   title: string
   href: string

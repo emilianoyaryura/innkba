@@ -14,7 +14,10 @@ const Post = ({
   const section = getSectionSlug(post.category)
   return (
     <Link href={`/${section}/${post.slug}`}>
-      <a className="flex flex-col cursor-pointer noDecoration group">
+      <a
+        className="flex flex-col cursor-pointer noDecoration group"
+        aria-label="go to post"
+      >
         <Image
           src={post.image.src ?? ''}
           alt={post.image.title ?? ''}

@@ -284,6 +284,34 @@ export const getCulturePosts = async () => {
   return posts
 }
 
+export const getAllStoriesPreview = async () => {
+  const stories = await client.getEntries({
+    content_type: 'story',
+    select: [
+      'fields.title',
+      'fields.slug',
+      'fields.copy',
+      'fields.author',
+      'fields.image'
+    ]
+  })
+
+  return stories.items.map((s) => {
+    return {
+      title: s.fields.title,
+      slug: s.fields.slug,
+      copy: s.fields.copy ?? '',
+      image: {
+        src: s.fields.image ? `https:${s.fields.image?.fields.file.url}` : null,
+        title: s.fields.title
+      },
+      author: {
+        name: s.fields.author.fields.name
+      }
+    }
+  })
+}
+
 export const getAllStories = async () => {
   const stories = await client.getEntries({ content_type: 'story' })
   return stories.items.map((s) => {

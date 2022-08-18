@@ -49,3 +49,11 @@ a:not(.noDecoration) {
 a:not(.noDecoration):hover {
   color: #9733ee;
 }
+
+.ellipsis2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
