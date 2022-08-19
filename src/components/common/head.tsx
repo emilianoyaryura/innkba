@@ -53,10 +53,6 @@ const Head = (props: HeadProps) => {
         <link rel="icon" href={isDark ? '/favicon-dark.svg' : '/favicon.svg'} />
         <link rel="mask-icon" href="/favicon.svg" color="#000" />
         <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
-        />
-        <link
           rel="preconnect"
           href="https://YOUR_APP_ID-dsn.algolia.net"
           // @ts-ignore

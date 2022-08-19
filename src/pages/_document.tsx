@@ -16,7 +16,12 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+          />
+        </Head>
         <body>
           <GAScript />
           <Main />

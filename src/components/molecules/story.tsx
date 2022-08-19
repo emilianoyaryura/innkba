@@ -41,6 +41,7 @@ const Story = ({ story }: { story: StoryProps }) => {
             alt={story.image.title}
             width={500}
             height={300}
+            objectFit="contain"
           />
           <Button
             type="custom"
