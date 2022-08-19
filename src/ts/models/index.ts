@@ -143,7 +143,7 @@ export type Story = {
 export type Page = {
   header: {
     title: string
-    copy: string
+    author?: string
     ctas: {
       href: string
       label: string

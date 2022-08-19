@@ -21,7 +21,7 @@ const TravelHeader = () => {
           Te gustaría compartir tus viajes en Innk ba?
         </p>
         <p className="text-14 sm:text-16 font-medium text-center text-gray-700 mb-20 sm:mb-0">
-          Escribínos a{' '}
+          Escribinos a{' '}
           <Link href="mailto:innkba@gmail.com" passHref>
             <a
               aria-label="contacto para escribir en Viajes"
@@ -30,7 +30,7 @@ const TravelHeader = () => {
               innkba@gmail.com
             </a>
           </Link>{' '}
-          y contános tus ideas!
+          y contanos tus ideas!
         </p>
       </div>
       <div className="hidden sm:flex">

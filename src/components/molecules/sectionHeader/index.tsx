@@ -11,18 +11,18 @@ type SectionHeaderProps = {
     height?: number | string | undefined
   }
   title: string
-  copy: string
+  author?: string
   ctas: {
     label: string
     href: string
   }[]
 }
 
-const SectionHeader = ({ image, title, copy, ctas }: SectionHeaderProps) => {
+const SectionHeader = ({ image, title, author, ctas }: SectionHeaderProps) => {
   return (
     <div
       className={clsx(
-        'w-full max-w-screen-2xl mx-auto flex flex-col items-center lg:grid grid-cols-10 lg:px-28',
+        'w-full -mt-8 sm:mt-12 lg:mt-0 max-w-screen-2xl mx-auto flex flex-col items-center lg:grid grid-cols-10 lg:px-28',
         s.container
       )}
     >
@@ -34,22 +34,24 @@ const SectionHeader = ({ image, title, copy, ctas }: SectionHeaderProps) => {
           height={image.height ?? 525}
         />
       </div>
-      <div className="flex flex-col mx-auto lg:mx-0 lg:col-start-6 lg:col-end-11 max-w-lg lg:max-w-xl lg:ml-16 lg:my-auto mb-12">
-        <h1 className="text-22 sm:text-28 font-bold leading-tight">{title}</h1>
-        <p className="mt-3 text-14 sm:text-15 font-medium mb-6 sm:mb-9 max-w-lg text-gray-800">
-          {copy}
+      <div className="flex flex-col mx-auto items-center lg:items-start lg:mx-0 lg:col-start-6 lg:col-end-11 max-w-lg lg:max-w-xl lg:ml-16 lg:my-auto mb-12">
+        <p className="mb-2 text-14 sm:text-15 font-medium text-gray-800 text-center lg:text-left">
+          {author}
         </p>
+        <h1 className="text-22 text-center lg:text-left sm:text-28 font-bold leading-tight mb-9">
+          {title}
+        </h1>
         <div className="flex">
           {ctas.map((cta, idx) =>
             idx === 0 ? (
-              <Button key={idx} href={cta.href}>
+              <Button type="tertiary" key={idx} href={cta.href}>
                 {cta.label}
               </Button>
             ) : (
               <Button
-                type="alternative"
                 key={idx}
                 href={cta.href}
+                type="alternative"
                 className="ml-4 sm:ml-6"
               >
                 {cta.label}

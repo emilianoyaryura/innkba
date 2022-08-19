@@ -58,15 +58,15 @@ const ArteyLiteratura = ({
           height: page.header.illustration.height
         }}
         title={page.header.title}
-        copy={page.header.copy}
+        author={page.header.author}
         ctas={[
-          {
-            href: '#lo-mas-destacado',
-            label: 'Seguí leyendo'
-          },
           {
             href: 'mailto:test@example.com?subject=Hola, quiero escribir en la sección de Arte y Literatura!',
             label: 'Escribí en Innk'
+          },
+          {
+            href: '#lo-mas-destacado',
+            label: 'Seguí leyendo'
           }
         ]}
       />

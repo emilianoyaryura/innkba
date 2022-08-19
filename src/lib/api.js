@@ -96,7 +96,7 @@ function getSectionHeader(header) {
   if (!header) return
   return {
     title: header.fields.title,
-    copy: header.fields.copy,
+    author: header.fields.author,
     illustration: {
       src: header.fields.headerIllustration
         ? `https:${header.fields.headerIllustration?.fields.file.url}`

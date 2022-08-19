@@ -43,15 +43,15 @@ const Lifestyle = ({
           height: page.header.illustration.height
         }}
         title={page.header.title}
-        copy={page.header.copy}
+        author={page.header.author}
         ctas={[
-          {
-            href: `#lo-mas-destacado`,
-            label: 'Seguí leyendo'
-          },
           {
             href: 'mailto:innkba@gmail.com?subject=Hola! Me gustaría escribir en la sección de lifestyle!',
             label: 'Escribí en Innk'
+          },
+          {
+            href: `#lo-mas-destacado`,
+            label: 'Seguí leyendo'
           }
         ]}
       />
