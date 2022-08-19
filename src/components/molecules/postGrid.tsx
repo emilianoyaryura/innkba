@@ -18,13 +18,15 @@ const PostGrid = ({ posts, id, withoutMargins }: Props) => {
   const [morePosts, setMorePosts] = useState(spotifyPost ? 7 : 6)
 
   const postsLimit = posts.length
-  const regularGridPosts = posts.slice(spotifyPost ? 4 : 0, morePosts)
+  const useSpotifyPost = spotifyPost && postsLimit > 3 ? true : false
+
+  const regularGridPosts = posts.slice(useSpotifyPost ? 4 : 0, morePosts)
 
   const handlePosts = () => {
     if (morePosts < postsLimit) {
       setMorePosts((prev) => prev + 6)
     } else if (morePosts >= postsLimit) {
-      setMorePosts(spotifyPost ? 7 : 6)
+      setMorePosts(useSpotifyPost ? 7 : 6)
       // @ts-ignore
       const element = document.getElementById(id)
       element?.scrollIntoView()
@@ -40,7 +42,7 @@ const PostGrid = ({ posts, id, withoutMargins }: Props) => {
     >
       <Container withoutPadding size="large">
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-12 sm:gap-y-10 lg:gap-y-16 gap-x-5 lg:gap-x-10">
-          {!spotifyPost
+          {!useSpotifyPost
             ? regularGridPosts.map((post, idx) => (
                 <Post key={idx} post={post} />
               ))
@@ -48,7 +50,7 @@ const PostGrid = ({ posts, id, withoutMargins }: Props) => {
                 .filter((p) => p.title !== spotifyPost.title)
                 .slice(0, 3)
                 .map((post, idx) => <Post key={idx} post={post} />)}
-          {spotifyPost && (
+          {useSpotifyPost && (
             <Spotify
               title={spotifyPost.title}
               copy={spotifyPost.copy}
@@ -61,7 +63,7 @@ const PostGrid = ({ posts, id, withoutMargins }: Props) => {
               }}
             />
           )}
-          {spotifyPost &&
+          {useSpotifyPost &&
             regularGridPosts.map((post, idx) => <Post key={idx} post={post} />)}
         </div>
         {posts.length > 6 && (

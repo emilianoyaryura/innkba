@@ -46,7 +46,7 @@ const Video = ({ src, poster, className, name, color }: VideoProps) => {
   return (
     <div
       className={clsx(
-        'rounded overflow-hidden relative flex',
+        'rounded-xl overflow-hidden relative flex',
         className,
         s.wrapper
       )}
