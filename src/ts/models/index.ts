@@ -23,7 +23,7 @@ export type Quote = {
 
 export type Author = {
   name: string
-  image?: string
+  image: string | null
   shortDescription: string
   twitter?: string
   instagram?: string
