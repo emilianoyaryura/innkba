@@ -327,7 +327,7 @@ export const getAllStories = async () => {
         name: s.fields.author.fields.name,
         image: s.fields.author.fields.frontImage
           ? `https:${s.fields.author.fields.frontImage?.fields.file.url}`
-          : '/images/brand/logo.svg',
+          : null,
         shortDescription: s.fields.author.fields.shortDescription ?? '',
         instagram: s.fields.author.fields.instagram ?? '',
         linkedin: s.fields.author.fields.linkedin ?? '',
