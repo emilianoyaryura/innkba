@@ -29,7 +29,7 @@ const Post = ({
         <div className="mt-5 pr-3">
           {!withoutCategory && (
             <p
-              className={clsx('mb-2 text-14 font-semibold capitalize', {
+              className={clsx('mb-2 text-14 font-semibold', {
                 'text-blue': post.category === 'Lifestyle',
                 'text-yellow': post.category === 'Arte y Literatura',
                 'text-violet': post.category === 'Cultura',
