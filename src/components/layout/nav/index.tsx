@@ -92,10 +92,8 @@ const Nav = ({ posts }: { posts: TinyPost[] }) => {
                   className={clsx(
                     'px-4 py-3 mr-2 last-of-type:mr-0 rounded-md text-15 font-medium noDecoration',
                     {
-                      'bg-gray-200':
-                        selected === `/${item.label.toLowerCase()}`,
-                      'hover:bg-gray-50':
-                        selected !== `/${item.label.toLowerCase()}`
+                      'bg-gray-200': selected === item.route,
+                      'hover:bg-gray-50': selected !== item.route
                     }
                   )}
                 >
