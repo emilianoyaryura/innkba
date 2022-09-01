@@ -25,7 +25,7 @@ const PreFooter = () => {
       </h1>
       <MailchimpSubscribe
         url={mailchimpUrl}
-        render={({ message, status, subscribe }) => (
+        render={({ status, subscribe }) => (
           <form
             className="mt-8 sm:mt-14 flex flex-col w-full"
             onSubmit={(e) => {
@@ -44,7 +44,6 @@ const PreFooter = () => {
                   icon: '🖤'
                 })
               } else if (status === 'error' || validateEmail(email) === false) {
-                console.log(message)
                 toast('Oops, el mail debe ser válido', {
                   duration: 4000,
                   position: 'top-center',
