@@ -20,9 +20,6 @@ const Cultura = ({
   const sections = [
     ...new Set(posts.map((item) => item?.tag)) //New array with all years
   ]
-  const filteredPosts = posts.filter((p) => {
-    return page.featuredPosts?.find((el) => el.title !== p.title)
-  })
 
   const tinyPosts = allPosts.map((p) => {
     const section = getSectionSlug(p.category)
@@ -89,7 +86,7 @@ const Cultura = ({
           <PostGrid
             withoutMargins
             id="LoMasDestacado"
-            posts={filteredPosts.filter((p) => p.tag === section)}
+            posts={posts.filter((p) => p.tag === section)}
           />
         </Section>
       ))}

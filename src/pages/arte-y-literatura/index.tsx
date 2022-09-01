@@ -31,9 +31,6 @@ const ArteyLiteratura = ({
   const sections = [
     ...new Set(posts.map((item) => item?.tag)) //New array with all years
   ]
-  const filteredPosts = posts.filter((p) => {
-    return page.featuredPosts?.find((el) => el.title !== p.title)
-  })
 
   const tinyPosts = allPosts.map((p) => {
     const section = getSectionSlug(p.category)
@@ -98,6 +95,15 @@ const ArteyLiteratura = ({
           )}
         </div>
       </Section>
+      {sections.slice(0, 1).map((section, idx) => (
+        <Section key={idx} section={section}>
+          <PostGrid
+            withoutMargins
+            id="LoMasDestacado"
+            posts={posts.filter((p) => p.tag === section)}
+          />
+        </Section>
+      ))}
       {allStories && (
         <Section section="Libros">
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-12 sm:gap-y-10 lg:gap-y-16 gap-x-5 lg:gap-x-10">
@@ -137,12 +143,12 @@ const ArteyLiteratura = ({
           author={page.weeklyQuote?.author}
         />
       )}
-      {sections.map((section, idx) => (
+      {sections.slice(1, 10).map((section, idx) => (
         <Section key={idx} section={section}>
           <PostGrid
             withoutMargins
             id="LoMasDestacado"
-            posts={filteredPosts.filter((p) => p.tag === section)}
+            posts={posts.filter((p) => p.tag === section)}
           />
         </Section>
       ))}

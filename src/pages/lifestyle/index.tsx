@@ -18,11 +18,8 @@ const Lifestyle = ({
   allPosts: PostPreview[]
 }) => {
   const sections = [
-    ...new Set(posts.map((item) => item?.tag)) //New array with all years
+    ...new Set(posts.map((item) => item?.tag)) //New array with all tags
   ]
-  const filteredPosts = posts.filter((p) => {
-    return page.featuredPosts?.find((el) => el.title !== p.title)
-  })
 
   const tinyPosts = allPosts.map((p) => {
     const section = getSectionSlug(p.category)
@@ -88,7 +85,7 @@ const Lifestyle = ({
           <PostGrid
             withoutMargins
             id="LoMasDestacado"
-            posts={filteredPosts.filter((p) => p.tag === section)}
+            posts={posts.filter((p) => p.tag === section)}
           />
         </Section>
       ))}
