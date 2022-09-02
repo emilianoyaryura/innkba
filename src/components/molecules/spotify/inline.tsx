@@ -3,7 +3,13 @@ import SpotifyIcon from 'components/atoms/icons/spotify'
 import Link from 'next/link'
 import s from './spotify.module.css'
 
-const InlineSpotify = ({ link }: { link: string }) => {
+const InlineSpotify = ({
+  link,
+  className
+}: {
+  link: string
+  className?: string
+}) => {
   return (
     <Link href={link} passHref>
       <a
@@ -12,6 +18,7 @@ const InlineSpotify = ({ link }: { link: string }) => {
         aria-label="Escuchar en spotify"
         className={clsx(
           'text-black hover:text-white noDecoration rounded mt-12',
+          className,
           s.inline__container
         )}
         rel="noreferrer"

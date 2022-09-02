@@ -135,7 +135,9 @@ const Template = ({
               className="flex sm:hidden"
             />
           </div>
-          {post.spotify?.link && <InlineSpotify link={post.spotify?.link} />}
+          {post.spotify?.link && (
+            <InlineSpotify className="sm:-mt-9" link={post.spotify?.link} />
+          )}
           <div
             className={clsx('mt-8 sm:mt-10', {
               'max-w-2xl': !post.bigImages,
