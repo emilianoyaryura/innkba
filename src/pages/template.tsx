@@ -15,6 +15,9 @@ import InlineSpotify from 'components/molecules/spotify/inline'
 import { getSectionSlug } from 'lib/utils/section'
 import Share from 'components/atoms/share'
 import PostAuthor from 'components/atoms/author'
+import TextLeftIcon from 'components/atoms/icons/text-left'
+import { useState } from 'react'
+import TextCenterIcon from 'components/atoms/icons/text-center'
 
 const Template = ({
   post,
@@ -25,6 +28,7 @@ const Template = ({
   posts: PostPreview[]
   stories: Story[]
 }) => {
+  const [textCenter, setTextCenter] = useState(false)
   const router = useRouter()
   const query = router.query.slug
   const story = stories?.filter((s) => s.slug === query)[0]
@@ -103,6 +107,26 @@ const Template = ({
               objectFit="cover"
               className="rounded-xl sm:rounded-2xl"
             />
+            <div className="hidden sm:flex items-center space-x-1 justify-end mt-5">
+              <button
+                onClick={() => setTextCenter(false)}
+                aria-label="justify text left"
+                className={clsx('rounded p-2', {
+                  'bg-gray-200': !textCenter
+                })}
+              >
+                <TextLeftIcon />
+              </button>
+              <button
+                onClick={() => setTextCenter(true)}
+                aria-label="justify text center"
+                className={clsx('rounded p-2', {
+                  'bg-gray-200': textCenter
+                })}
+              >
+                <TextCenterIcon />
+              </button>
+            </div>
             <Share
               title={post.title}
               authorName={post.author[0].name}
@@ -113,8 +137,9 @@ const Template = ({
           </div>
           {post.spotify?.link && <InlineSpotify link={post.spotify?.link} />}
           <div
-            className={clsx('mt-8 sm:mt-12 md:mt-16', {
-              'max-w-2xl': !post.bigImages
+            className={clsx('mt-8 sm:mt-10', {
+              'max-w-2xl': !post.bigImages,
+              'text-justify': textCenter
             })}
           >
             {renderBody(post.content, post.bigImages, post.category)}
