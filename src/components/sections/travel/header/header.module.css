@@ -1,3 +1,4 @@
 .container {
-    height: calc(100vh - 120px);
+  height: calc(100vh - 120px);
+  max-height: 800px;
 }
