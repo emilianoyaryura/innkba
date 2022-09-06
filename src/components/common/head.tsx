@@ -31,6 +31,7 @@ const Head = ({ headProps }: { headProps: HeadProps }) => {
         {/* Open Graph */}
         <meta property="og:url" content={headProps.cannonical} key="ogurl" />
         <meta property="og:image" content={headProps.ogImage} key="ogimage" />
+        <meta property="og:type" content="website" />
         <meta
           property="og:site_name"
           content={headProps.title}
