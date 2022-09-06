@@ -20,7 +20,7 @@ const PageLayout = ({
 }: Props) => {
   return (
     <div>
-      <Head {...headProps} />
+      <Head headProps={headProps} />
       <Nav posts={posts} />
       {children}
       {!withoutPreFooter && <PreFooter />}
