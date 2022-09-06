@@ -21,7 +21,7 @@ const Head = ({ headProps }: { headProps: HeadProps }) => {
         <title>{headProps.title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="language" content="es_ES" />
-        <meta property="fb:app_id" content="700702790744238" />
+        <meta property="fb:app_id" content="866902667619914" />
 
         <meta name="author" content={headProps.title} />
         <link rel="icon" type="image/svg" href="/favicon.svg" />
@@ -42,12 +42,13 @@ const Head = ({ headProps }: { headProps: HeadProps }) => {
           content={headProps.description}
           key="ogdesc"
         />
-        <meta property="og:image:width" content="400" />
-        <meta property="og:image:height" content="400" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="1200" />
 
         {/* Twitter */}
-        <meta name="twitter:card" content="summary" key="twcard" />
-        <meta name="twitter:creator" content={headProps.title} key="twhandle" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@innkba" />
+        <meta name="twitter:creator" content="@innkba" />
       </NextHead>
     </>
   )

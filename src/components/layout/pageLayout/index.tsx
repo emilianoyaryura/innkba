@@ -28,8 +28,7 @@ const PageLayout = ({
           title: headProps?.title ?? defaultMeta.title,
           description: headProps?.description ?? defaultMeta.description,
           ogImage: headProps?.ogImage ?? defaultMeta.title,
-          cannonical:
-            headProps?.cannonical ?? `https://www.innkba.com${router.asPath}`
+          cannonical: `https://www.innkba.com${router.asPath}`
         }}
       />
       <Nav posts={posts} />
