@@ -1,4 +1,5 @@
-import Head, { HeadProps } from 'components/common/head'
+import Head, { defaultMeta, HeadProps } from 'components/common/head'
+import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 import { TinyPost } from 'ts/models'
 import Footer from '../footer'
@@ -7,7 +8,7 @@ import PreFooter from '../preFooter'
 
 type Props = {
   children: ReactNode
-  headProps: HeadProps
+  headProps?: HeadProps
   withoutPreFooter?: boolean
   posts: TinyPost[]
 }
@@ -18,9 +19,19 @@ const PageLayout = ({
   withoutPreFooter = false,
   posts
 }: Props) => {
+  const router = useRouter()
+
   return (
     <div>
-      <Head headProps={headProps} />
+      <Head
+        headProps={{
+          title: headProps?.title ?? defaultMeta.title,
+          description: headProps?.description ?? defaultMeta.description,
+          ogImage: headProps?.ogImage ?? defaultMeta.title,
+          cannonical:
+            headProps?.cannonical ?? `https://www.innkba.com${router.asPath}`
+        }}
+      />
       <Nav posts={posts} />
       {children}
       {!withoutPreFooter && <PreFooter />}

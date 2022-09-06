@@ -26,7 +26,7 @@ const HomePage = ({
   })
 
   return (
-    <PageLayout posts={tinyPosts} headProps={{ title: 'Innk ba' }}>
+    <PageLayout posts={tinyPosts}>
       <HeaderPosts
         principalPost={page.mainFeaturedPost ?? page.featuredPosts[0]}
         posts={page.featuredPosts.slice(0, 4)}

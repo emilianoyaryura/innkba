@@ -7,14 +7,14 @@ export type HeadProps = {
   ogImage?: string
 }
 
-const defaultMeta: HeadProps = {
+export const defaultMeta: HeadProps = {
   title: 'Innk Ba',
   description: `Un nuevo espacio para nuevas historias`,
   cannonical: 'https://www.innkba.com/',
   ogImage: 'https://www.innkba.com/og.png'
 }
 
-const Head = ({ headProps = defaultMeta }: { headProps?: HeadProps }) => {
+const Head = ({ headProps }: { headProps: HeadProps }) => {
   return (
     <>
       <NextHead>
