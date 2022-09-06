@@ -49,6 +49,8 @@ const Head = ({ headProps }: { headProps: HeadProps }) => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@innkba" />
         <meta name="twitter:creator" content="@innkba" />
+        <meta name="twitter:image" content={headProps.ogImage} />
+        <meta name="twitter:title" content={headProps.title} />
       </NextHead>
     </>
   )
