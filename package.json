@@ -31,7 +31,6 @@
     "framer-motion": "^6.2.8",
     "keen-slider": "^5.5.1",
     "next": "^12.2.4",
-    "next-seo": "^4.26.0",
     "next-svgr": "^0.0.2",
     "postcss": "^8.3.6",
     "react": "^18.2.0",

@@ -53,6 +53,7 @@ const Template = ({
         posts={tinyPosts}
         headProps={{
           title: post?.title,
+          cannonical: `https://innkba.com/${post?.slug}`,
           ogImage: post?.image?.src ?? 'https://innkba.com/og.png',
           description: post?.copy ?? null
         }}

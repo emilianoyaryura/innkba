@@ -1,62 +1,47 @@
-import { NextSeo, NextSeoProps } from 'next-seo'
-import { useRouter } from 'next/dist/client/router'
-import { useMemo } from 'react'
 import NextHead from 'next/head'
-import { useMedia } from 'hooks/use-media'
 
-const defaultMeta = {
-  title: 'Innk Ba',
-  description: `Un nuevo espacio para nuevas historias`
-}
-
-type Meta = {
-  title: string
+export type HeadProps = {
+  title?: string
   description?: string
+  cannonical?: string
   ogImage?: string
-  noIndex?: boolean
 }
 
-export type HeadProps = Meta & { rawNextSeoProps?: NextSeoProps }
+const defaultMeta: HeadProps = {
+  title: 'Innk Ba',
+  description: `Un nuevo espacio para nuevas historias`,
+  cannonical: 'https://www.innkba.com/',
+  ogImage: 'https://www.innkba.com/og.png'
+}
 
-const Head = (props: HeadProps) => {
-  const router = useRouter()
-  const isDark = useMedia('(prefers-color-scheme: dark)')
-
-  const nextSeoProps: NextSeoProps = useMemo(() => {
-    return {
-      ...props.rawNextSeoProps,
-      title: props.title ?? defaultMeta.title,
-      description: props.description ?? defaultMeta.description,
-      canonical: `https://innkba.com/${router.pathname}`,
-      openGraph: {
-        images: [
-          {
-            url: props.ogImage ?? 'https://innkba.com/og.png'
-          }
-        ]
-      },
-      noindex: props.noIndex
-    }
-  }, [props, router.pathname])
-
+const Head = ({ headProps = defaultMeta }: { headProps?: HeadProps }) => {
   return (
     <>
-      <NextSeo {...nextSeoProps} />
       <NextHead>
-        <meta charSet="utf-8" />
+        <title>{headProps.title}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <meta name="author" content={headProps.title} />
+        <link rel="icon" type="image/svg" href="/favicon.svg" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <meta name="description" content={headProps.description} />
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" key="twcard" />
+        <meta name="twitter:creator" content={headProps.title} key="twhandle" />
+
+        {/* Open Graph */}
+        <meta property="og:url" content={headProps.cannonical} key="ogurl" />
+        <meta property="og:image" content={headProps.ogImage} key="ogimage" />
         <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
+          property="og:site_name"
+          content={headProps.title}
+          key="ogsitename"
         />
-        <meta name="description" content="Innk ba | Blog" />
-        <meta name="theme-color" content="#ffffff" />
-        <link rel="icon" href={isDark ? '/favicon-dark.svg' : '/favicon.svg'} />
-        <link rel="mask-icon" href="/favicon.svg" color="#000" />
-        <link
-          rel="preconnect"
-          href="https://YOUR_APP_ID-dsn.algolia.net"
-          // @ts-ignore
-          crossOrigin="true"
+        <meta property="og:title" content={headProps.title} key="ogtitle" />
+        <meta
+          property="og:description"
+          content={headProps.description}
+          key="ogdesc"
         />
       </NextHead>
     </>
