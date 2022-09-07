@@ -8,7 +8,7 @@ export type HeadProps = {
 }
 
 export const defaultMeta: HeadProps = {
-  title: 'Innk Ba',
+  title: 'Innk ba',
   description: `Un nuevo espacio para nuevas historias`,
   cannonical: 'https://www.innkba.com/',
   ogImage: 'https://www.innkba.com/og.png'
