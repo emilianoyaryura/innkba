@@ -68,7 +68,7 @@ const Nav = ({ posts }: { posts: TinyPost[] }) => {
     <>
       <div
         className={clsx('bg-white transition-all duration-200', s.nav, {
-          'shadow-sm': scrollsDown && !menuOpen
+          'border-b border-solid border-gray-300': scrollsDown && !menuOpen
         })}
       >
         <Container
