@@ -52,7 +52,7 @@ const Footer = () => {
       </div>
       <div>
         <h1 className="uppercase font-semibold text-18 mb-5">Contacto</h1>
-        <a href="mailto:innkba@gmail.com">innkba@gmail.com</a>
+        <a href="mailto:contacto@innkba.com">contacto@innkba.com</a>
       </div>
       <div>
         <h1 className="uppercase font-semibold text-18 mb-5">Blog</h1>

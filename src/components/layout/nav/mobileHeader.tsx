@@ -87,10 +87,10 @@ export const MobileHeader = ({
         </div>
         <a
           className="text-16 flex flex-col max-w-max mx-auto mt-6 noDecoration"
-          href="mailto:innkba@gmail.com"
+          href="mailto:contacto@innkba.com"
           aria-label="contact mail"
         >
-          <span>innkba@gmail.com</span>
+          <span>contacto@innkba.com</span>
           <span style={{ height: '2px' }} className="w-full bg-black" />
         </a>
       </div>

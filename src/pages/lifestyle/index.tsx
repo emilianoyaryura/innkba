@@ -43,7 +43,7 @@ const Lifestyle = ({
         author={page.header.author}
         ctas={[
           {
-            href: 'mailto:innkba@gmail.com?subject=Hola! Me gustaría escribir en la sección de lifestyle!',
+            href: 'mailto:contacto@innkba.com?subject=Hola! Me gustaría escribir en la sección de lifestyle!',
             label: 'Escribí en Innk'
           },
           {
