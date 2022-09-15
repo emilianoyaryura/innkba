@@ -73,9 +73,9 @@ const Template = ({
               </a>
             </Link>
             <Link
-              href={`/${getSectionSlug(
-                post.category
-              )}#${post.tag.toLocaleLowerCase()}`}
+              href={`/${getSectionSlug(post.category)}#${post.tag
+                .toLocaleLowerCase()
+                .replace(/ /g, '-')}`}
               passHref
             >
               <a className="flex items-center justify-center py-2 px-4 rounded bg-lightBlue">
