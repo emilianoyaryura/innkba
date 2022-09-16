@@ -48,6 +48,7 @@ const Template = ({
   })
 
   if (post) {
+    const ogImg = post.image?.src ? post.image.src : undefined
     return (
       <PageLayout
         posts={tinyPosts}
@@ -56,7 +57,7 @@ const Template = ({
           cannonical: `https://innkba.com/${getSectionSlug(post.category)}/${
             post?.slug
           }`,
-          ogImage: post?.image?.src ?? undefined,
+          ogImage: ogImg,
           description: post?.copy
         }}
       >
