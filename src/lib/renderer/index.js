@@ -148,6 +148,17 @@ const renderBody = (document, size, category) => {
               color={color}
             />
           )
+        } else if (node.data.target.sys.contentType?.sys.id === 'postQuote') {
+          return (
+            <div className={styles.quote}>
+              <p className={styles.quote_quote}>
+                {node.data.target.fields.quote}
+              </p>
+              <p className={styles.quote_author}>
+                {node.data.target.fields.author}, {node.data.target.fields.year}
+              </p>
+            </div>
+          )
         }
       },
       [MARKS.BOLD]: (node, children) => (
