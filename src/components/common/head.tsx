@@ -47,7 +47,7 @@ const Head = ({ headProps }: { headProps: HeadProps }) => {
         <meta property="og:image:height" content="1200" />
 
         {/* Twitter */}
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@innkba" />
         <meta name="twitter:creator" content="@innkba" />
         <meta name="twitter:image" content={headProps.ogImage} />
