@@ -14,6 +14,14 @@
   letter-spacing: -0.04em;
 }
 
+.heading__4 {
+  margin: 32px auto 16px auto;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
 .paragraph {
   font-weight: normal;
   font-size: 16px;
@@ -154,6 +162,11 @@
   .heading__3 {
     font-size: 20px;
     margin: 32px auto 18px auto;
+  }
+
+  .heading__4 {
+    font-size: 18px;
+    margin: 32px auto 16px auto;
   }
 
   .heading {

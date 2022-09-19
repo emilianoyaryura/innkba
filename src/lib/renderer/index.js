@@ -39,6 +39,9 @@ const renderBody = (document, size, category) => {
       [BLOCKS.HEADING_3]: (node, children) => (
         <p className={clsx('max-w-2xl', styles.heading__3)}>{children}</p>
       ),
+      [BLOCKS.HEADING_4]: (node, children) => (
+        <p className={clsx('max-w-2xl', styles.heading__4)}>{children}</p>
+      ),
       [BLOCKS.QUOTE]: (node, children) => <blockquote>{children}</blockquote>,
       [BLOCKS.PARAGRAPH]: (node, children) => (
         <p className={clsx('max-w-2xl', styles.paragraph)}>{children}</p>
