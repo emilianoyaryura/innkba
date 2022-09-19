@@ -9,7 +9,7 @@ const ReactPlayer = dynamic(() => import('react-player'), { ssr: false })
 
 const Play = ({
   onClick,
-  color = '#F0E708'
+  color = '#000'
 }: {
   onClick: React.MouseEventHandler<HTMLDivElement>
   color?: string
@@ -69,7 +69,6 @@ const Video = ({ src, poster, className, name, color }: VideoProps) => {
         url={src}
         width="100%"
         height="100%"
-        fileconfig={{ attributes: { poster: poster } }}
         className={s.player}
         playing={isPlaying}
         controls

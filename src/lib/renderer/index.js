@@ -141,9 +141,11 @@ const renderBody = (document, size, category) => {
             <Video
               src={node.data.target.fields.videoUrl}
               name={node.data.target.fields.name}
-              poster={{
-                src: `https:${node.data.target.fields.poster.fields.file.url}`
-              }}
+              poster={
+                node.data.target.fields.poster
+                  ? `https:${node.data.target.fields.poster.fields.file.url}`
+                  : null
+              }
               className={styles.customVideo}
               color={color}
             />
