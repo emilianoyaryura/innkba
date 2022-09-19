@@ -7,6 +7,7 @@ import InstagramIcon from './icons/instagram'
 import LinkedinIcon from './icons/linkedin'
 import WebsiteIcon from './icons/website'
 import clsx from 'clsx'
+import MailIcon from './icons/mail'
 
 const PostAuthor = ({ author }: Pick<ContentfulPost, 'author'>) => {
   return (
@@ -31,7 +32,7 @@ const PostAuthor = ({ author }: Pick<ContentfulPost, 'author'>) => {
           <p className="mb-2 font-medium text-22">{author[0].name}</p>
           <p className="text-15">{author[0].shortDescription}</p>
         </div>
-        <div className="ml-auto flex space-x-3">
+        <div className="sm:ml-auto flex items-center space-x-3">
           {author[0].facebook && (
             <Link href={author[0].facebook} passHref>
               <a
@@ -89,6 +90,18 @@ const PostAuthor = ({ author }: Pick<ContentfulPost, 'author'>) => {
                 aria-label="Autho's website"
               >
                 <WebsiteIcon />
+              </a>
+            </Link>
+          )}
+          {author[0].email && (
+            <Link href={`mailto:${author[0].email}`}>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-black hover:text-violet transition-all duration-150"
+                aria-label="Autho's website"
+              >
+                <MailIcon />
               </a>
             </Link>
           )}

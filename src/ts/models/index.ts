@@ -30,6 +30,7 @@ export type Author = {
   facebook?: string
   linkedin?: string
   website?: string
+  email?: string
 }
 
 export type PostWithoutImagePreview = {
