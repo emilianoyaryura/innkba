@@ -2,6 +2,7 @@ import PageLayout from 'components/layout/pageLayout'
 import { getPostsPreview } from 'lib/api'
 import { getSectionSlug } from 'lib/utils/section'
 import Image from 'next/image'
+import Link from 'next/link'
 import { ContentfulPost } from 'ts/models'
 
 const Nosotros = ({
@@ -41,7 +42,18 @@ const Nosotros = ({
             que cuenten los demás, seguro te servirá a vos.
           </p>
           <p>
-            Dicho esto, <b>te invitamos a que escribas con nosotros.</b>
+            Dicho esto,{' '}
+            <Link href="mailto:contacto@innkba.com" passHref>
+              <a
+                aria-label="contact"
+                href="mailto:contacto@innkba.com"
+                target="_blank"
+                rel="noopener"
+                className="noDecoration font-semibold"
+              >
+                te invitamos a que escribas con nosotros.
+              </a>
+            </Link>
           </p>
         </div>
         <Image
