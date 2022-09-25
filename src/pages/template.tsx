@@ -16,8 +16,9 @@ import { getSectionSlug } from 'lib/utils/section'
 import Share from 'components/atoms/share'
 import PostAuthor from 'components/atoms/author'
 import TextLeftIcon from 'components/atoms/icons/text-left'
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import TextCenterIcon from 'components/atoms/icons/text-center'
+import { supabase } from '../lib/supabase-client'
 
 const Template = ({
   post,
@@ -31,6 +32,37 @@ const Template = ({
   const [textCenter, setTextCenter] = useState(false)
   const router = useRouter()
   const query = router.query.slug
+
+  const handleViews = useCallback(async () => {
+    try {
+      const { data } = await supabase
+        .from('Page Views')
+        .select()
+        .eq('slug', query)
+      try {
+        // @ts-ignore
+        if (data?.length < 1 || !data) {
+          return await supabase
+            .from('Page Views')
+            .insert({ slug: query, views: 1 })
+        } else {
+          const views = data[0]?.views
+          return await supabase
+            .from('Page Views')
+            .update({ slug: query, views: views + 1 })
+        }
+      } catch (err) {
+        console.log(err, 'error')
+      }
+    } catch (err) {
+      console.log(err, 'error')
+    }
+  }, [query])
+
+  useEffect(() => {
+    handleViews()
+  }, [handleViews])
+
   const story = stories?.filter((s) => s.slug === query)[0]
 
   const keepReadingPosts = posts
