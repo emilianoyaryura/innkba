@@ -19,6 +19,7 @@ import TextLeftIcon from 'components/atoms/icons/text-left'
 import { useCallback, useEffect, useState } from 'react'
 import TextCenterIcon from 'components/atoms/icons/text-center'
 import { supabase } from '../lib/supabase-client'
+import EyeIcon from 'components/atoms/icons/eye'
 
 const Template = ({
   post,
@@ -33,8 +34,6 @@ const Template = ({
   const [views, setViews] = useState<null | number>(null)
   const router = useRouter()
   const query = router.query.slug
-
-  console.log(views)
 
   const handleViews = useCallback(async () => {
     try {
@@ -129,7 +128,11 @@ const Template = ({
             {post.title}
           </h1>
           <div>
-            <div className="flex items-center justify-center sm:justify-start md:justify-center mb-6 relative">
+            <div className="flex items-end justify-center sm:justify-start md:justify-center mb-6 relative">
+              <div className="flex items-center text-black absolute left-0">
+                <EyeIcon />
+                <p className="ml-1">{views}</p>
+              </div>
               <div className="flex flex-col items-center sm:items-start md:items-center">
                 <p className="text-16 font-medium">{post.author[0].name}</p>
                 <p className="text-14 text-gray-700">{getDate(post.date)}</p>
