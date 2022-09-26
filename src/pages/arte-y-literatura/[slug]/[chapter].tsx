@@ -12,6 +12,8 @@ import { renderBody } from 'lib/renderer'
 import PostAuthor from 'components/atoms/author'
 import s from './chapter.module.css'
 import { getSectionSlug } from 'lib/utils/section'
+import { useCallback, useEffect } from 'react'
+import { supabase } from 'lib/supabase-client'
 
 const ChapterPage = ({
   stories,
@@ -22,11 +24,42 @@ const ChapterPage = ({
 }) => {
   const router = useRouter()
   const query = router.query
+
   const story = stories?.filter((s) => s.slug === query.slug)[0]
   const chapter = story.chapters.filter((c) => c.slug === query.chapter)[0]
   const keepReadingChapters = story.chapters.filter(
     (c) => c.slug !== chapter.slug
   )
+
+  const handleViews = useCallback(async () => {
+    try {
+      const { data } = await supabase
+        .from('Page Views')
+        .select()
+        .eq('slug', `${story.slug}/${chapter.slug}`)
+      try {
+        // @ts-ignore
+        if (data?.length < 1 || !data) {
+          return await supabase
+            .from('Page Views')
+            .insert({ slug: `${story.slug}/${chapter.slug}`, views: 1 })
+        } else {
+          const views = data[0]?.views
+          return await supabase
+            .from('Page Views')
+            .update({ slug: `${story.slug}/${chapter.slug}`, views: views + 1 })
+        }
+      } catch (err) {
+        console.log(err, 'error')
+      }
+    } catch (err) {
+      console.log(err, 'error')
+    }
+  }, [query])
+
+  useEffect(() => {
+    handleViews()
+  }, [handleViews])
 
   const tinyPosts = posts.map((p) => {
     const section = getSectionSlug(p.category)
