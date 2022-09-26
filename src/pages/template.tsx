@@ -30,8 +30,11 @@ const Template = ({
   stories: Story[]
 }) => {
   const [textCenter, setTextCenter] = useState(false)
+  const [views, setViews] = useState<null | number>(null)
   const router = useRouter()
   const query = router.query.slug
+
+  console.log(views)
 
   const handleViews = useCallback(async () => {
     try {
@@ -42,14 +45,18 @@ const Template = ({
       try {
         // @ts-ignore
         if (data?.length < 1 || !data) {
-          return await supabase
+          const a = await supabase
             .from('Page Views')
             .insert({ slug: query, views: 1 })
+          const b = setViews(1)
+          return a && b
         } else {
           const views = data[0]?.views
-          return await supabase
+          const a = await supabase
             .from('Page Views')
             .update({ slug: query, views: views + 1 })
+          const b = setViews(views + 1)
+          return a && b
         }
       } catch (err) {
         console.log(err, 'error')
