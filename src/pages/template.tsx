@@ -77,7 +77,7 @@ const Template = ({
     ?.filter((e) => e.category === post?.category)
     .filter((p) => p.slug !== query)
 
-  const tinyPosts = posts.map((p) => {
+  const tinyPosts = posts?.map((p) => {
     const section = getSectionSlug(p.category)
     return {
       title: p.title,
@@ -97,7 +97,7 @@ const Template = ({
   })
 
   // @ts-ignore
-  const searcher = tinyPosts.concat(authorsSearcher)
+  const searcher = tinyPosts?.concat(authorsSearcher)
 
   if (post) {
     const ogImg = post.image?.src ? post.image.src : undefined
