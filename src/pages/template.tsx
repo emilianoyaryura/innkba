@@ -1,5 +1,5 @@
 import { useRouter } from 'next/dist/client/router'
-import { ContentfulPost, PostPreview, Story } from 'ts/models'
+import { AuthorPreview, ContentfulPost, PostPreview, Story } from 'ts/models'
 import Container from 'components/layout/container'
 import PageLayout from 'components/layout/pageLayout'
 import { getDate } from 'lib/utils/date'
@@ -24,11 +24,13 @@ import EyeIcon from 'components/atoms/icons/eye'
 const Template = ({
   post,
   stories,
-  posts
+  posts,
+  authors
 }: {
   post: ContentfulPost
   posts: PostPreview[]
   stories: Story[]
+  authors: AuthorPreview[]
 }) => {
   const [textCenter, setTextCenter] = useState(false)
   const [views, setViews] = useState<null | number>(null)
@@ -75,7 +77,7 @@ const Template = ({
     ?.filter((e) => e.category === post?.category)
     .filter((p) => p.slug !== query)
 
-  const tinyPosts = posts?.map((p) => {
+  const tinyPosts = posts.map((p) => {
     const section = getSectionSlug(p.category)
     return {
       title: p.title,
@@ -85,11 +87,23 @@ const Template = ({
     }
   })
 
+  const authorsSearcher = authors?.map((au) => {
+    return {
+      title: au.name,
+      href: `/escritores/${au.slug}`,
+      category: 'Escritores',
+      tag: ''
+    }
+  })
+
+  // @ts-ignore
+  const searcher = tinyPosts.concat(authorsSearcher)
+
   if (post) {
     const ogImg = post.image?.src ? post.image.src : undefined
     return (
       <PageLayout
-        posts={tinyPosts}
+        posts={searcher}
         headProps={{
           title: post?.title,
           cannonical: `https://innkba.com/${getSectionSlug(post.category)}/${

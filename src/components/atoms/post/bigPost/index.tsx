@@ -2,11 +2,11 @@ import clsx from 'clsx'
 import Button from 'components/primitives/button'
 import { getSectionSlug } from 'lib/utils/section'
 import Image from 'next/image'
-import { ContentfulPost } from 'ts/models'
+import { PostPreview } from 'ts/models'
 import s from './bigPost.module.css'
 import Link from 'next/link'
 
-const BigPost = ({ post }: { post: ContentfulPost }) => {
+const BigPost = ({ post }: { post: PostPreview }) => {
   const section = getSectionSlug(post.category)
   return (
     <Link href={`/${section}/${post.slug}`}>

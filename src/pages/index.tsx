@@ -4,16 +4,18 @@ import SectionLayout from 'components/layout/sectionLayout'
 import PostGrid from 'components/molecules/postGrid'
 import Story from 'components/molecules/story'
 import HeaderPosts from 'components/sections/home/header-posts'
-import { getHomePage, getPostsPreview } from 'lib/api'
+import { getAllAuthors, getHomePage, getPostsPreview } from 'lib/api'
 import { getSectionSlug } from 'lib/utils/section'
-import { ContentfulPost, Page } from 'ts/models'
+import { AuthorPreview, Page, PostPreview } from 'ts/models'
 
 const HomePage = ({
   contentfulPosts,
-  page
+  page,
+  authors
 }: {
-  contentfulPosts: ContentfulPost[]
+  contentfulPosts: PostPreview[]
   page: Page
+  authors: AuthorPreview[]
 }) => {
   const tinyPosts = contentfulPosts.map((p) => {
     const section = getSectionSlug(p.category)
@@ -25,8 +27,20 @@ const HomePage = ({
     }
   })
 
+  const authorsSearcher = authors?.map((au) => {
+    return {
+      title: au.name,
+      href: `/escritores/${au.slug}`,
+      category: 'Escritores',
+      tag: ''
+    }
+  })
+
+  // @ts-ignore
+  const searcher = tinyPosts.concat(authorsSearcher)
+
   return (
-    <PageLayout posts={tinyPosts}>
+    <PageLayout posts={searcher}>
       <HeaderPosts
         principalPost={page.mainFeaturedPost ?? page.featuredPosts[0]}
         posts={page.featuredPosts.slice(0, 4)}
@@ -59,11 +73,13 @@ const HomePage = ({
 export const getStaticProps = async () => {
   const posts = await getPostsPreview()
   const page = await getHomePage()
+  const authors = await getAllAuthors()
 
   return {
     props: {
       contentfulPosts: posts ?? null,
-      page: page ?? null
+      page: page ?? null,
+      authors: authors ?? null
     }
   }
 }

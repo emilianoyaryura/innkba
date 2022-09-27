@@ -67,7 +67,8 @@ export const getPostsPreview = async () => {
       'fields.tag',
       'fields.spotifyLink',
       'fields.spotifyIframe',
-      'fields.frontImage'
+      'fields.frontImage',
+      'fields.author'
     ]
   })
 
@@ -79,6 +80,10 @@ export const getPostsPreview = async () => {
       category: post.fields.section,
       tag: post.fields.tag,
       date: post.fields.date,
+      author: {
+        name: post.fields.author[0].fields.name,
+        slug: post.fields.author[0].fields.slug ?? ''
+      },
       spotify: {
         link: post.fields.spotifyLink ?? '',
         iframe: post.fields.spotifyIframe ?? ''
@@ -309,6 +314,22 @@ export const getAllStoriesPreview = async () => {
       author: {
         name: s.fields.author.fields.name
       }
+    }
+  })
+}
+
+export const getAllAuthors = async () => {
+  const authors = await client.getEntries({
+    content_type: 'author',
+    select: ['fields.name', 'fields.slug']
+  })
+
+  const real = authors.items.filter((au) => au.fields.slug)
+
+  return real.map((author) => {
+    return {
+      name: author.fields.name,
+      slug: author.fields.slug
     }
   })
 }
