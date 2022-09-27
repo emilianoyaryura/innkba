@@ -334,6 +334,29 @@ export const getAllAuthors = async () => {
   })
 }
 
+export const getSingleAuthor = async (slug) => {
+  const authors = await client.getEntries({
+    content_type: 'author',
+    'fields.slug': slug
+  })
+
+  return authors.items.map((author) => {
+    return {
+      name: author.fields.name,
+      image: author.fields.frontImage
+        ? `https:${author.fields.frontImage?.fields.file.url}`
+        : null,
+      shortDescription: author.fields.shortDescription ?? '',
+      instagram: author.fields.instagram ?? '',
+      linkedin: author.fields.linkedin ?? '',
+      facebook: author.fields.facebook ?? '',
+      twitter: author.fields.twitter ?? '',
+      website: author.fields.website ?? '',
+      background: author.fields.background ?? ''
+    }
+  })
+}
+
 export const getAllStories = async () => {
   const stories = await client.getEntries({ content_type: 'story' })
   return stories.items.map((s) => {

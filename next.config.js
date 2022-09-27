@@ -8,6 +8,15 @@ module.exports = withPlugins(
     withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' }),
     withTM([]),
     withSvgr({
+      async redirects() {
+        return [
+          {
+            source: '/escritores',
+            destination: '/', // Matched parameters can be used in the destination
+            permanent: true
+          }
+        ]
+      },
       images: {
         domains: ['images.ctfassets.net', 'images.unsplash.com']
       },
