@@ -247,7 +247,7 @@ const Template = ({
   } else if (story) {
     return (
       <PageLayout
-        posts={tinyPosts}
+        posts={searcher}
         headProps={{
           title: story?.title,
           ogImage: story?.image.src ?? 'https://innkba.com/og.png'

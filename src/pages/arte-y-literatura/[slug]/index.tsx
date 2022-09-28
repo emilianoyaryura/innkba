@@ -1,4 +1,5 @@
 import {
+  getAllAuthors,
   getAllStories,
   getArtandLiteraturePosts,
   getPost,
@@ -28,12 +29,14 @@ export const getStaticProps = async ({ params }: { params: any }) => {
   const posts = await getPostsPreview()
   const post = await getPost(slug)
   const stories = await getAllStories()
+  const authors = await getAllAuthors()
 
   return {
     props: {
       post: post ?? null,
       posts: posts ?? null,
-      stories: stories ?? null
+      stories: stories ?? null,
+      authors: authors ?? null
     }
   }
 }

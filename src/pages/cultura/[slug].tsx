@@ -1,4 +1,9 @@
-import { getCulturePosts, getPost, getPostsPreview } from 'lib/api'
+import {
+  getAllAuthors,
+  getCulturePosts,
+  getPost,
+  getPostsPreview
+} from 'lib/api'
 import CulturePostPage from '../template'
 
 export const getStaticPaths = async () => {
@@ -17,11 +22,13 @@ export const getStaticProps = async ({ params }: { params: any }) => {
 
   const post = await getPost(slug)
   const posts = await getPostsPreview()
+  const authors = await getAllAuthors()
 
   return {
     props: {
       post: post ?? null,
-      posts: posts ?? null
+      posts: posts ?? null,
+      authors: authors ?? null
     }
   }
 }

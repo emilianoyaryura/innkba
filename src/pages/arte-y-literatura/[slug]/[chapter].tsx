@@ -1,7 +1,7 @@
 import PageLayout from 'components/layout/pageLayout'
-import { getAllStories, getPosts } from 'lib/api'
+import { getAllAuthors, getAllStories, getPosts } from 'lib/api'
 import { useRouter } from 'next/router'
-import { PostPreview, ShortStory, Story } from 'ts/models'
+import { AuthorPreview, PostPreview, ShortStory, Story } from 'ts/models'
 import Container from 'components/layout/container'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -17,9 +17,11 @@ import { supabase } from 'lib/supabase-client'
 
 const ChapterPage = ({
   stories,
-  posts
+  posts,
+  authors
 }: {
   stories: Story[]
+  authors: AuthorPreview[]
   posts: PostPreview[]
 }) => {
   const [views, setViews] = useState<null | number>(null)
@@ -78,9 +80,21 @@ const ChapterPage = ({
     }
   })
 
+  const authorsSearcher = authors?.map((au) => {
+    return {
+      title: au.name,
+      href: `/escritores/${au.slug}`,
+      category: 'Escritores',
+      tag: ''
+    }
+  })
+
+  // @ts-ignore
+  const searcher = tinyPosts?.concat(authorsSearcher)
+
   return (
     <PageLayout
-      posts={tinyPosts}
+      posts={searcher}
       headProps={{
         title: story?.title,
         ogImage: story?.image.src ?? 'https://innkba.com/og.png'
@@ -192,11 +206,13 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async () => {
   const stories = await getAllStories()
   const posts = await getPosts()
+  const authors = await getAllAuthors()
 
   return {
     props: {
       stories: stories ?? null,
-      posts: posts ?? null
+      posts: posts ?? null,
+      authors: authors ?? null
     }
   }
 }
