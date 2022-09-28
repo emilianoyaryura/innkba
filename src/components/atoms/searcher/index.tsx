@@ -88,7 +88,7 @@ export function Searcher({ posts }: { posts: TinyPost[] }) {
                 <Command.Empty>No se encontraron resultados.</Command.Empty>
                 {postsDividedByCategory.map((c, idx) => (
                   <Command.Group heading={c.category} key={idx}>
-                    {c.posts.map((p) => (
+                    {c.posts?.map((p) => (
                       <Item
                         setIsOpen={setIsOpen}
                         value={p.title}

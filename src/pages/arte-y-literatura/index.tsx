@@ -55,7 +55,7 @@ const ArteyLiteratura = ({
   })
 
   // @ts-ignore
-  const searcher = tinyPosts.concat(authorsSearcher)
+  const searcher = tinyPosts?.concat(authorsSearcher)
 
   return (
     <PageLayout

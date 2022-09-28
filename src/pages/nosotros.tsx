@@ -32,7 +32,7 @@ const Nosotros = ({
   })
 
   // @ts-ignore
-  const searcher = tinyPosts.concat(authorsSearcher)
+  const searcher = tinyPosts?.concat(authorsSearcher)
   return (
     <PageLayout posts={searcher} headProps={{ title: 'Innk ba | Nosotros' }}>
       <div className="flex flex-col mt-12 sm:mt-20 max-w-3xl mx-auto px-4 relative">

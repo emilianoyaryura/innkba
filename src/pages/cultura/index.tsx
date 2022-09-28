@@ -48,7 +48,7 @@ const Cultura = ({
   })
 
   // @ts-ignore
-  const searcher = tinyPosts.concat(authorsSearcher)
+  const searcher = tinyPosts?.concat(authorsSearcher)
 
   return (
     <PageLayout posts={searcher} headProps={{ title: 'Innk ba | Cultura' }}>
