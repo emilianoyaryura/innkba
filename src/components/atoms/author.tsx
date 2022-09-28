@@ -2,6 +2,7 @@ import { ContentfulPost } from 'ts/models'
 import Image from 'next/image'
 import clsx from 'clsx'
 import AuthorSocial from './author-social'
+import Link from 'next/link'
 
 const PostAuthor = ({ author }: Pick<ContentfulPost, 'author'>) => {
   return (
@@ -23,7 +24,18 @@ const PostAuthor = ({ author }: Pick<ContentfulPost, 'author'>) => {
         })}
       >
         <div className="mb-5">
-          <p className="mb-2 font-medium text-22">{author[0].name}</p>
+          {author[0].slug ? (
+            <Link
+              aria-label="go to author"
+              href={`/escritores/${author[0].slug}`}
+            >
+              <a aria-label="go to author" className="mb-2 font-medium text-22">
+                {author[0].name}
+              </a>
+            </Link>
+          ) : (
+            <p className="mb-2 font-medium text-22">{author[0].name}</p>
+          )}
           <p className="text-15">{author[0].shortDescription}</p>
         </div>
         <AuthorSocial author={author[0]} />
