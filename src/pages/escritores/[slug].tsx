@@ -71,10 +71,16 @@ const WriterPage = ({
     handleViews()
   }, [handleViews])
 
+  const ogImage = author?.image ? author.image : '/og.png'
+
   return (
     <PageLayout
       posts={searcher}
-      headProps={{ title: `Innk ba | ${author?.name}` }}
+      headProps={{
+        title: `Innk ba | ${author?.name}`,
+        description: 'Escritor',
+        ogImage: ogImage
+      }}
     >
       <div className="max-w-4xl mx-auto flex flex-col items-center mb-14">
         <div className="w-full flex flex-col">
