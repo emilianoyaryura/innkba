@@ -78,7 +78,8 @@ const WriterPage = ({
       posts={searcher}
       headProps={{
         title: `Innk ba | ${author?.name}`,
-        description: 'Escritor',
+        description:
+          'Escribo en Innk ba. Revista digital. Nuevo espacio. Nuevas ideas.',
         ogImage: ogImage
       }}
     >
