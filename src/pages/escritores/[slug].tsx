@@ -1,4 +1,3 @@
-// import AuthorSocial from 'components/atoms/author-social'
 import Container from 'components/layout/container'
 import PageLayout from 'components/layout/pageLayout'
 import PostGrid from 'components/molecules/postGrid'
@@ -9,6 +8,7 @@ import { Author, AuthorPreview, PostPreview } from 'ts/models'
 import { supabase } from 'lib/supabase-client'
 import EyeIcon from 'components/atoms/icons/eye'
 import { useCallback, useEffect, useState } from 'react'
+import AuthorSocial from 'components/atoms/author-social'
 
 const WriterPage = ({
   author,
@@ -125,7 +125,7 @@ const WriterPage = ({
           <p className="text-16 text-center mt-2 text-gray-700 max-w-md">
             {author.shortDescription}
           </p>
-          {/* <AuthorSocial author={author} className="mx-auto mt-6" /> */}
+          <AuthorSocial author={author} className="mx-auto mt-6" />
         </div>
       </div>
       <Container size="large">
