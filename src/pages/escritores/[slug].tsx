@@ -45,7 +45,7 @@ const WriterPage = ({
 
   const authorPosts = posts.filter((e) => e.author.name === author.name)
 
-  const authorPostsSlug = authorPosts.map((e) => e.slug)
+  const authorPostsSlug = authorPosts?.map((e) => e.slug)
 
   const handleViews = useCallback(async () => {
     try {
@@ -137,7 +137,7 @@ const WriterPage = ({
 
 export const getStaticPaths = async () => {
   const authors = await getAllAuthors()
-  const paths = authors.map((each: any) => ({
+  const paths = authors?.map((each: any) => ({
     params: { slug: each.slug as string }
   }))
   return {
