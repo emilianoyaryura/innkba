@@ -26,7 +26,8 @@ function getCleanPost(post) {
         facebook: author.fields.facebook ?? '',
         twitter: author.fields.twitter ?? '',
         website: author.fields.website ?? '',
-        email: author.fields.email ?? ''
+        email: author.fields.email ?? '',
+        slug: author.fields.slug ?? ''
       }
     }),
     spotify: {
@@ -67,7 +68,8 @@ export const getPostsPreview = async () => {
       'fields.tag',
       'fields.spotifyLink',
       'fields.spotifyIframe',
-      'fields.frontImage'
+      'fields.frontImage',
+      'fields.author'
     ]
   })
 
@@ -79,6 +81,10 @@ export const getPostsPreview = async () => {
       category: post.fields.section,
       tag: post.fields.tag,
       date: post.fields.date,
+      author: {
+        name: post.fields.author[0].fields.name,
+        slug: post.fields.author[0].fields.slug ?? ''
+      },
       spotify: {
         link: post.fields.spotifyLink ?? '',
         iframe: post.fields.spotifyIframe ?? ''
@@ -309,6 +315,45 @@ export const getAllStoriesPreview = async () => {
       author: {
         name: s.fields.author.fields.name
       }
+    }
+  })
+}
+
+export const getAllAuthors = async () => {
+  const authors = await client.getEntries({
+    content_type: 'author',
+    select: ['fields.name', 'fields.slug']
+  })
+
+  const real = authors.items.filter((au) => au.fields.slug)
+
+  return real.map((author) => {
+    return {
+      name: author.fields.name,
+      slug: author.fields.slug
+    }
+  })
+}
+
+export const getSingleAuthor = async (slug) => {
+  const authors = await client.getEntries({
+    content_type: 'author',
+    'fields.slug': slug
+  })
+
+  return authors.items.map((author) => {
+    return {
+      name: author.fields.name,
+      image: author.fields.frontImage
+        ? `https:${author.fields.frontImage?.fields.file.url}`
+        : null,
+      shortDescription: author.fields.shortDescription ?? '',
+      instagram: author.fields.instagram ?? '',
+      linkedin: author.fields.linkedin ?? '',
+      facebook: author.fields.facebook ?? '',
+      twitter: author.fields.twitter ?? '',
+      website: author.fields.website ?? '',
+      background: author.fields.background ?? ''
     }
   })
 }

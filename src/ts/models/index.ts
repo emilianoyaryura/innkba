@@ -31,6 +31,13 @@ export type Author = {
   linkedin?: string
   website?: string
   email?: string
+  background?: string
+  slug?: string
+}
+
+export type AuthorPreview = {
+  name: string
+  slug: string
 }
 
 export type PostWithoutImagePreview = {
@@ -43,6 +50,13 @@ export type PostWithoutImagePreview = {
 }
 
 export type Category = 'Lifestyle' | 'Arte y Literatura' | 'Viajes' | 'Cultura'
+
+export type SearcherCategories =
+  | 'Lifestyle'
+  | 'Arte y Literatura'
+  | 'Viajes'
+  | 'Cultura'
+  | 'Escritores'
 
 export type Tag =
   | 'Hobbies'
@@ -87,6 +101,7 @@ export type PostPreview = {
   category: Category
   tag: Tag
   date: string
+  author: Author
   spotify?: {
     link: string
     iframe: string
@@ -101,13 +116,11 @@ export type StoryPreview = {
   title: string
   slug: string
   copy?: string
-  author: {
-    name: string
-  }
   image: {
     src: string | null
     title: string
   }
+  author?: Author
 }
 
 export type TinyPost = {
@@ -156,8 +169,8 @@ export type Page = {
       height?: string | number
     }
   }
-  featuredPosts: ContentfulPost[]
-  mainFeaturedPost?: ContentfulPost
+  featuredPosts: PostPreview[]
+  mainFeaturedPost?: PostPreview
   weeklyQuote?: Quote
   story: Story
 }

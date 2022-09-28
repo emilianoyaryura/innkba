@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import { Command } from 'cmdk'
-import { Category, TinyPost } from 'ts/models'
+import { SearcherCategories, TinyPost } from 'ts/models'
 import { useRouter } from 'next/router'
 import PlaneIcon from '../icons/plane'
 
@@ -43,17 +43,18 @@ export function Searcher({ posts }: { posts: TinyPost[] }) {
 
   useOutsideAlerter(wrapperRef)
 
-  const categories: Category[] = [
+  const categories: SearcherCategories[] = [
     'Lifestyle',
     'Arte y Literatura',
     'Viajes',
-    'Cultura'
+    'Cultura',
+    'Escritores'
   ]
 
   const postsDividedByCategory = categories.map((c) => {
     return {
       category: c,
-      posts: posts.filter((p) => p.category === c)
+      posts: posts.filter((p) => p?.category === c)
     }
   })
 
@@ -87,7 +88,7 @@ export function Searcher({ posts }: { posts: TinyPost[] }) {
                 <Command.Empty>No se encontraron resultados.</Command.Empty>
                 {postsDividedByCategory.map((c, idx) => (
                   <Command.Group heading={c.category} key={idx}>
-                    {c.posts.map((p) => (
+                    {c.posts?.map((p) => (
                       <Item
                         setIsOpen={setIsOpen}
                         value={p.title}

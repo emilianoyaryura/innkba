@@ -1,7 +1,12 @@
 import PageLayout from 'components/layout/pageLayout'
 import TravelHeader from 'components/sections/travel/header'
-import { getPostsPreview, getTravelPage, getTravelPosts } from 'lib/api'
-import { Page, PostPreview } from 'ts/models'
+import {
+  getAllAuthors,
+  getPostsPreview,
+  getTravelPage,
+  getTravelPosts
+} from 'lib/api'
+import { AuthorPreview, Page, PostPreview } from 'ts/models'
 import Section from 'components/molecules/section'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
 import PostGrid from 'components/molecules/postGrid'
@@ -11,10 +16,12 @@ import { getSectionSlug } from 'lib/utils/section'
 const Viajes = ({
   posts,
   allPosts,
-  page
+  page,
+  authors
 }: {
   posts: PostPreview[]
   page: Page
+  authors: AuthorPreview[]
   allPosts: PostPreview[]
 }) => {
   const sections = [
@@ -30,8 +37,21 @@ const Viajes = ({
       tag: p.tag
     }
   })
+
+  const authorsSearcher = authors?.map((au) => {
+    return {
+      title: au.name,
+      href: `/escritores/${au.slug}`,
+      category: 'Escritores',
+      tag: ''
+    }
+  })
+
+  // @ts-ignore
+  const searcher = tinyPosts?.concat(authorsSearcher)
+
   return (
-    <PageLayout posts={tinyPosts} headProps={{ title: 'Innk ba | Viajes' }}>
+    <PageLayout posts={searcher} headProps={{ title: 'Innk ba | Viajes' }}>
       <TravelHeader />
       <Section section="Lo más destacado">
         <div>
@@ -78,12 +98,14 @@ export const getStaticProps = async () => {
   const posts = await getTravelPosts()
   const page = await getTravelPage()
   const allPosts = await getPostsPreview()
+  const authors = await getAllAuthors()
 
   return {
     props: {
       posts: posts ?? null,
       page: page ?? null,
-      allPosts: allPosts ?? null
+      allPosts: allPosts ?? null,
+      authors: authors ?? null
     }
   }
 }

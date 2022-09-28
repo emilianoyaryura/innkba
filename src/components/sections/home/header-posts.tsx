@@ -1,12 +1,12 @@
 import SectionLayout from 'components/layout/sectionLayout'
 import BigPost from 'components/atoms/post/bigPost'
-import { ContentfulPost } from 'ts/models'
+import { PostPreview } from 'ts/models'
 import HorizonalPost from 'components/atoms/post/horizontal'
 import RegularPost from 'components/atoms/post'
 
 type Props = {
-  principalPost: ContentfulPost
-  posts: ContentfulPost[]
+  principalPost: PostPreview
+  posts: PostPreview[]
 }
 
 const HeaderPosts = ({ posts, principalPost }: Props) => {

@@ -1,14 +1,16 @@
 import PageLayout from 'components/layout/pageLayout'
-import { getPostsPreview } from 'lib/api'
+import { getAllAuthors, getPostsPreview } from 'lib/api'
 import { getSectionSlug } from 'lib/utils/section'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ContentfulPost } from 'ts/models'
+import { AuthorPreview, ContentfulPost } from 'ts/models'
 
 const Nosotros = ({
-  contentfulPosts
+  contentfulPosts,
+  authors
 }: {
   contentfulPosts: ContentfulPost[]
+  authors: AuthorPreview[]
 }) => {
   const tinyPosts = contentfulPosts.map((p) => {
     const section = getSectionSlug(p.category)
@@ -19,8 +21,20 @@ const Nosotros = ({
       tag: p.tag
     }
   })
+
+  const authorsSearcher = authors?.map((au) => {
+    return {
+      title: au.name,
+      href: `/escritores/${au.slug}`,
+      category: 'Escritores',
+      tag: ''
+    }
+  })
+
+  // @ts-ignore
+  const searcher = tinyPosts?.concat(authorsSearcher)
   return (
-    <PageLayout posts={tinyPosts} headProps={{ title: 'Innk ba | Nosotros' }}>
+    <PageLayout posts={searcher} headProps={{ title: 'Innk ba | Nosotros' }}>
       <div className="flex flex-col mt-12 sm:mt-20 max-w-3xl mx-auto px-4 relative">
         <p className="text-22 sm:text-26 font-bold uppercase">Nosotros</p>
         <div className="h-px w-full bg-gray-300 mt-2 mb-6" />
@@ -69,10 +83,12 @@ const Nosotros = ({
 
 export const getStaticProps = async () => {
   const posts = await getPostsPreview()
+  const authors = await getAllAuthors()
 
   return {
     props: {
-      contentfulPosts: posts ?? null
+      contentfulPosts: posts ?? null,
+      authors: authors ?? null
     }
   }
 }

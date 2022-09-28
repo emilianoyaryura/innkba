@@ -2,9 +2,9 @@ import clsx from 'clsx'
 import { getSectionSlug } from 'lib/utils/section'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ContentfulPost } from 'ts/models'
+import { PostPreview } from 'ts/models'
 
-const HorizontalPost = ({ post }: { post: ContentfulPost }) => {
+const HorizontalPost = ({ post }: { post: PostPreview }) => {
   const section = getSectionSlug(post.category)
   return (
     <Link href={`/${section}/${post.slug}`}>

@@ -1,4 +1,4 @@
-import { ContentfulPost } from 'ts/models'
+import { PostPreview } from 'ts/models'
 import Image from 'next/image'
 import Button from 'components/primitives/button'
 import clsx from 'clsx'
@@ -7,7 +7,7 @@ import s from './bigPost/bigPost.module.css'
 import Link from 'next/link'
 
 type Props = {
-  post: ContentfulPost
+  post: PostPreview
   className?: string
 }
 

@@ -1,11 +1,12 @@
 import PageLayout from 'components/layout/pageLayout'
 import {
+  getAllAuthors,
   getAllStoriesPreview,
   getArtandLiteraturePosts,
   getLiteraturePage,
   getPostsPreview
 } from 'lib/api'
-import { Page, PostPreview, StoryPreview } from 'ts/models'
+import { AuthorPreview, Page, PostPreview, StoryPreview } from 'ts/models'
 import SectionHeader from 'components/molecules/sectionHeader'
 import PostGrid from 'components/molecules/postGrid'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
@@ -21,11 +22,13 @@ const ArteyLiteratura = ({
   posts,
   allPosts,
   page,
-  allStories
+  allStories,
+  authors
 }: {
   posts: PostPreview[]
   allPosts: PostPreview[]
   allStories: StoryPreview[]
+  authors: AuthorPreview[]
   page: Page
 }) => {
   const sections = [
@@ -42,9 +45,21 @@ const ArteyLiteratura = ({
     }
   })
 
+  const authorsSearcher = authors?.map((au) => {
+    return {
+      title: au.name,
+      href: `/escritores/${au.slug}`,
+      category: 'Escritores',
+      tag: ''
+    }
+  })
+
+  // @ts-ignore
+  const searcher = tinyPosts?.concat(authorsSearcher)
+
   return (
     <PageLayout
-      posts={tinyPosts}
+      posts={searcher}
       headProps={{ title: 'Innk ba | Arte y Literatura' }}
     >
       <SectionHeader
@@ -128,7 +143,7 @@ const ArteyLiteratura = ({
                     </p>
                   )}
                   <p className="text-gray-700 mt-3">
-                    Por <b className="text-black">{s.author.name}</b>
+                    Por <b className="text-black">{s.author?.name}</b>
                   </p>
                 </a>
               </Link>
@@ -161,13 +176,15 @@ export const getStaticProps = async () => {
   const page = await getLiteraturePage()
   const allPosts = await getPostsPreview()
   const allStories = await getAllStoriesPreview()
+  const authors = await getAllAuthors()
 
   return {
     props: {
       posts: posts ?? null,
       page: page ?? null,
       allPosts: allPosts ?? null,
-      allStories: allStories ?? null
+      allStories: allStories ?? null,
+      authors: authors ?? null
     }
   }
 }

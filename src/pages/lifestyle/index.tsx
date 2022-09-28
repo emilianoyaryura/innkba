@@ -1,6 +1,11 @@
 import PageLayout from 'components/layout/pageLayout'
-import { getLifestylePage, getLifestylePosts, getPostsPreview } from 'lib/api'
-import { Page, PostPreview } from 'ts/models'
+import {
+  getAllAuthors,
+  getLifestylePage,
+  getLifestylePosts,
+  getPostsPreview
+} from 'lib/api'
+import { AuthorPreview, Page, PostPreview } from 'ts/models'
 import SectionHeader from 'components/molecules/sectionHeader'
 import PostGrid from 'components/molecules/postGrid'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
@@ -11,11 +16,13 @@ import { getSectionSlug } from 'lib/utils/section'
 const Lifestyle = ({
   posts,
   page,
-  allPosts
+  allPosts,
+  authors
 }: {
   posts: PostPreview[]
   page: Page
   allPosts: PostPreview[]
+  authors: AuthorPreview[]
 }) => {
   const sections = [
     ...new Set(posts.map((item) => item?.tag)) //New array with all tags
@@ -30,8 +37,21 @@ const Lifestyle = ({
       tag: p.tag
     }
   })
+
+  const authorsSearcher = authors?.map((au) => {
+    return {
+      title: au.name,
+      href: `/escritores/${au.slug}`,
+      category: 'Escritores',
+      tag: ''
+    }
+  })
+
+  // @ts-ignore
+  const searcher = tinyPosts?.concat(authorsSearcher)
+
   return (
-    <PageLayout posts={tinyPosts} headProps={{ title: 'Innk ba | Lifestyle' }}>
+    <PageLayout posts={searcher} headProps={{ title: 'Innk ba | Lifestyle' }}>
       <SectionHeader
         image={{
           src: page.header.illustration.src,
@@ -97,12 +117,14 @@ export const getStaticProps = async () => {
   const posts = await getLifestylePosts()
   const page = await getLifestylePage()
   const allPosts = await getPostsPreview()
+  const authors = await getAllAuthors()
 
   return {
     props: {
       posts: posts ?? null,
       page: page ?? null,
-      allPosts: allPosts ?? null
+      allPosts: allPosts ?? null,
+      authors: authors ?? null
     }
   }
 }
