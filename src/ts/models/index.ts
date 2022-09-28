@@ -32,6 +32,7 @@ export type Author = {
   website?: string
   email?: string
   background?: string
+  slug?: string
 }
 
 export type AuthorPreview = {

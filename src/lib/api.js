@@ -26,7 +26,8 @@ function getCleanPost(post) {
         facebook: author.fields.facebook ?? '',
         twitter: author.fields.twitter ?? '',
         website: author.fields.website ?? '',
-        email: author.fields.email ?? ''
+        email: author.fields.email ?? '',
+        slug: author.fields.slug ?? ''
       }
     }),
     spotify: {

@@ -148,7 +148,22 @@ const Template = ({
                 <p className="ml-1">{views}</p>
               </div>
               <div className="flex flex-col items-center sm:items-start md:items-center">
-                <p className="text-16 font-medium">{post.author[0].name}</p>
+                {post.author[0].slug ? (
+                  <Link
+                    aria-label="go to author"
+                    href={`/escritores/${post.author[0].slug}`}
+                  >
+                    <a
+                      aria-label="go to author"
+                      className="text-16 font-medium"
+                    >
+                      {post.author[0].name}
+                    </a>
+                  </Link>
+                ) : (
+                  <p className="text-16 font-medium">{post.author[0].name}</p>
+                )}
+
                 <p className="text-14 text-gray-700">{getDate(post.date)}</p>
               </div>
               <Share
