@@ -17,7 +17,7 @@ const HomePage = ({
   page: Page
   authors: AuthorPreview[]
 }) => {
-  const tinyPosts = contentfulPosts.map((p) => {
+  const tinyPosts = contentfulPosts?.map((p) => {
     const section = getSectionSlug(p.category)
     return {
       title: p.title,

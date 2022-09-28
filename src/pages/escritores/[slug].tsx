@@ -1,4 +1,4 @@
-import AuthorSocial from 'components/atoms/author-social'
+// import AuthorSocial from 'components/atoms/author-social'
 import Container from 'components/layout/container'
 import PageLayout from 'components/layout/pageLayout'
 import PostGrid from 'components/molecules/postGrid'
@@ -59,12 +59,6 @@ const WriterPage = ({
           ?.map((e) => e.views)
           .reduce((partialSum, a) => partialSum + a, 0)
         setViews(sum)
-        //   const views = data[0]?.views
-        //   const a = await supabase
-        //     .from('Page Views')
-        //     .update({ slug: query, views: views + 1 })
-        //   const b = setViews(views + 1)
-        //   return a && b
       } catch (err) {
         console.log(err, 'error')
       }
@@ -125,7 +119,7 @@ const WriterPage = ({
           <p className="text-16 text-center mt-2 text-gray-700 max-w-md">
             {author.shortDescription}
           </p>
-          <AuthorSocial author={author} className="mx-auto mt-6" />
+          {/* <AuthorSocial author={author} className="mx-auto mt-6" /> */}
         </div>
       </div>
       <Container size="large">
