@@ -19,7 +19,7 @@ import TextLeftIcon from 'components/atoms/icons/text-left'
 import { useCallback, useEffect, useState } from 'react'
 import TextCenterIcon from 'components/atoms/icons/text-center'
 import { supabase } from '../lib/supabase-client'
-import EyeIcon from 'components/atoms/icons/eye'
+// import EyeIcon from 'components/atoms/icons/eye'
 
 const Template = ({
   post,
@@ -33,7 +33,7 @@ const Template = ({
   authors: AuthorPreview[]
 }) => {
   const [textCenter, setTextCenter] = useState(false)
-  const [views, setViews] = useState<null | number>(null)
+  // const [views, setViews] = useState<null | number>(null)
   const router = useRouter()
   const query = router.query.slug
 
@@ -49,15 +49,17 @@ const Template = ({
           const a = await supabase
             .from('Page Views')
             .insert({ slug: query, views: 1 })
-          const b = setViews(1)
-          return a && b
+          // const b = setViews(1)
+          // return a && b
+          return a
         } else {
           const views = data[0]?.views
           const a = await supabase
             .from('Page Views')
             .update({ slug: query, views: views + 1 })
-          const b = setViews(views + 1)
-          return a && b
+          // const b = setViews(views + 1)
+          // return a && b
+          return a
         }
       } catch (err) {
         console.log(err, 'error')
@@ -143,10 +145,10 @@ const Template = ({
           </h1>
           <div>
             <div className="flex items-end justify-center sm:justify-start md:justify-center mb-6 relative">
-              <div className="flex items-center text-black absolute left-0">
+              {/* <div className="flex items-center text-black absolute left-0">
                 <EyeIcon />
                 <p className="ml-1">{views}</p>
-              </div>
+              </div> */}
               <div className="flex flex-col items-center sm:items-start md:items-center">
                 {post.author[0].slug ? (
                   <Link
