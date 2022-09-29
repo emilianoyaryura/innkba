@@ -15,6 +15,7 @@ const PostAuthor = ({ author }: Pick<ContentfulPost, 'author'>) => {
             width={190}
             height={160}
             className="rounded-lg"
+            objectFit="cover"
           />
         </div>
       )}
