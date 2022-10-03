@@ -381,7 +381,9 @@ export const getAllStories = async () => {
         linkedin: s.fields.author.fields.linkedin ?? '',
         facebook: s.fields.author.fields.facebook ?? '',
         twitter: s.fields.author.fields.twitter ?? '',
-        website: s.fields.author.fields.website ?? ''
+        website: s.fields.author.fields.website ?? '',
+        email: s.fields.author.fields.email ?? '',
+        slug: s.fields.author.fields.slug ?? ''
       },
       chapters: s.fields.chapters.map((chapter) => {
         return {

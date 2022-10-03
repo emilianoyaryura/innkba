@@ -1,7 +1,12 @@
 import Container from 'components/layout/container'
 import PageLayout from 'components/layout/pageLayout'
 import PostGrid from 'components/molecules/postGrid'
-import { getAllAuthors, getPostsPreview, getSingleAuthor } from 'lib/api'
+import {
+  getAllAuthors,
+  getAllStoriesPreview,
+  getPostsPreview,
+  getSingleAuthor
+} from 'lib/api'
 import { getSectionSlug } from 'lib/utils/section'
 import Image from 'next/image'
 import { Author, AuthorPreview, PostPreview } from 'ts/models'
@@ -236,10 +241,14 @@ export const getStaticProps = async ({ params }: { params: any }) => {
   const posts = await getPostsPreview()
   const authors = await getAllAuthors()
   const author = await getSingleAuthor(slug)
+  const stories = await getAllStoriesPreview()
+
+  const authorStories = stories.filter((s) => s.author.name === author[0].name)
 
   return {
     props: {
-      posts: posts ?? null,
+      // @ts-ignore
+      posts: posts.concat(authorStories) ?? null,
       authors: authors ?? null,
       author: author[0] ?? null
     }

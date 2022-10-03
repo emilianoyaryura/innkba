@@ -11,7 +11,9 @@ const Post = ({
   post: PostPreview
   withoutCategory?: boolean
 }) => {
-  const section = getSectionSlug(post.category)
+  const section = post.category
+    ? getSectionSlug(post.category)
+    : 'arte-y-literatura'
   return (
     <Link href={`/${section}/${post.slug}`}>
       <a
