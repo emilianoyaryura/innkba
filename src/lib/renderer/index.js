@@ -11,7 +11,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import Video from 'components/atoms/video'
 
-const renderBody = (document, size, category) => {
+const renderBody = (document, size, category, center) => {
   let color
   switch (category) {
     case 'Lifestyle':
@@ -44,7 +44,13 @@ const renderBody = (document, size, category) => {
       ),
       [BLOCKS.QUOTE]: (node, children) => <blockquote>{children}</blockquote>,
       [BLOCKS.PARAGRAPH]: (node, children) => (
-        <p className={clsx('max-w-2xl', styles.paragraph)}>{children}</p>
+        <p
+          className={clsx('max-w-2xl', styles.paragraph, {
+            'text-center': center
+          })}
+        >
+          {children}
+        </p>
       ),
       [BLOCKS.LIST_ITEM]: (node, children) => (
         <li className={clsx('max-w-2xl', styles.list__item)}>

@@ -136,7 +136,7 @@ const ChapterPage = ({
           })}
         />
         <div className={clsx('mt-8 sm:mt-12 md:mt-16 max-w-2xl mx-auto')}>
-          {renderBody(chapter.content, false)}
+          {renderBody(chapter.content, false, '', chapter.center)}
           <PostAuthor author={[story.author]} />
         </div>
         {keepReadingChapters && (

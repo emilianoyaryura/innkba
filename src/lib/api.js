@@ -391,6 +391,7 @@ export const getAllStories = async () => {
           slug: chapter.fields.slug,
           date: chapter.fields.date,
           content: chapter.fields.content,
+          center: chapter.fields.textCenter ?? false,
           image: {
             src: chapter.fields.image
               ? `https:${chapter.fields.image?.fields.file.url}`

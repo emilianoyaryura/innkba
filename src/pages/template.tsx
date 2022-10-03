@@ -221,7 +221,7 @@ const Template = ({
               'text-justify': textCenter
             })}
           >
-            {renderBody(post.content, post.bigImages, post.category)}
+            {renderBody(post.content, post.bigImages, post.category, false)}
             <PostAuthor author={post.author} />
           </div>
           <div className="mt-32">
@@ -267,7 +267,7 @@ const Template = ({
               <p className="text-16 text-gray-700 mt-4 sm:mt-8">
                 Por <b className="text-black">{story.author.name}</b>
               </p>
-              <div className="flex items-center mt-8 sm:mt-14 pt-4 border-t border-solid border-gray-400 w-full justify-center lg:justify-start max-w-md">
+              <div className="flex items-center mt-3 pt-4 border-t border-solid border-gray-400 w-full justify-center lg:justify-start max-w-md">
                 <span className="text-14 text-gray-700 mr-6">Compartir en</span>
                 <div className="flex items-center space-x-4">
                   <Link

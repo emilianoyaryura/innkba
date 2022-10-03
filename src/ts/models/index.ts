@@ -136,6 +136,7 @@ export type ShortStory = {
   tag: Tag
   date: string
   content: any
+  center?: boolean
   image?: {
     src: string | null
     title: string

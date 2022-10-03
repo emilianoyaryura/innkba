@@ -30,14 +30,14 @@ const PostAuthor = ({ author }: Pick<ContentfulPost, 'author'>) => {
               aria-label="go to author"
               href={`/escritores/${author[0].slug}`}
             >
-              <a aria-label="go to author" className="mb-2 font-medium text-22">
+              <a aria-label="go to author" className="font-medium text-22">
                 {author[0].name}
               </a>
             </Link>
           ) : (
-            <p className="mb-2 font-medium text-22">{author[0].name}</p>
+            <p className="font-medium text-22">{author[0].name}</p>
           )}
-          <p className="text-15">{author[0].shortDescription}</p>
+          <p className="text-15 mt-2">{author[0].shortDescription}</p>
         </div>
         <AuthorSocial author={author[0]} />
       </div>
