@@ -353,7 +353,9 @@ export const getSingleAuthor = async (slug) => {
       facebook: author.fields.facebook ?? '',
       twitter: author.fields.twitter ?? '',
       website: author.fields.website ?? '',
-      background: author.fields.background ?? ''
+      email: author.fields.email ?? '',
+      background: author.fields.background ?? '',
+      slug: author.fields.slug ?? ''
     }
   })
 }

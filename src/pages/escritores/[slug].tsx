@@ -7,9 +7,13 @@ import Image from 'next/image'
 import { Author, AuthorPreview, PostPreview } from 'ts/models'
 import { supabase } from 'lib/supabase-client'
 import EyeIcon from 'components/atoms/icons/eye'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import AuthorSocial from 'components/atoms/author-social'
 import clsx from 'clsx'
+import Link from 'next/link'
+import TwitterIcon from 'components/atoms/icons/twitter'
+import FacebookIcon from 'components/atoms/icons/facebook'
+import WhatsAppIcon from 'components/atoms/icons/whatsapp'
 
 const WriterPage = ({
   author,
@@ -21,6 +25,26 @@ const WriterPage = ({
   authors: AuthorPreview[]
 }) => {
   const [views, setViews] = useState<null | number>(null)
+  const [shareOpen, setShareOpen] = useState(false)
+  const shareRef = useRef(null)
+
+  useEffect(() => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(event: any) {
+      // @ts-ignore
+      if (shareRef.current && !shareRef.current.contains(event.target)) {
+        setShareOpen(false)
+      }
+    }
+    // Bind the event listener
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [shareRef])
 
   const tinyPosts = posts?.map((p) => {
     const section = getSectionSlug(p.category)
@@ -101,9 +125,62 @@ const WriterPage = ({
                   : '#CECECE'
             }}
           />
-          <div className="flex items-center self-end mt-2 mr-2 text-gray-800">
-            <EyeIcon />
-            <p>{views}</p>
+          <div className="flex items-center justify-between mt-2 px-2">
+            <button
+              aria-label="share button"
+              className="text-gray-800 relative focus:outline-none"
+              onClick={() => setShareOpen(true)}
+              ref={shareRef}
+            >
+              Compartir
+              {shareOpen && (
+                <div className="absolute left-0 border-2 border-solid border-black rounded px-6 py-5 flex flex-col space-y-3 bg-white z-10 -top-8">
+                  <Link
+                    href={`https://twitter.com/intent/tweet?text=${author.name}&url=https://innkba.com/escritores/${author.slug}`}
+                    passHref
+                  >
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="share on twitter"
+                      className="text-black hover:text-violet transition-all duration-150"
+                    >
+                      <TwitterIcon />
+                    </a>
+                  </Link>
+                  <Link
+                    href={`https://www.facebook.com/sharer/sharer.php?u=https://innkba.com/escritores/${author.slug}`}
+                    passHref
+                  >
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="share on facebook"
+                      className="text-black hover:text-violet transition-all duration-150"
+                    >
+                      <FacebookIcon />
+                    </a>
+                  </Link>
+                  <Link
+                    href={`https://api.whatsapp.com/send?text=Mirá el perfil de ${author.name} en https://innkba.com/escritores/${author.slug}`}
+                    passHref
+                  >
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="share on whatsapp"
+                      className="text-black hover:text-violet transition-all duration-150"
+                    >
+                      <WhatsAppIcon />
+                    </a>
+                  </Link>
+                </div>
+              )}
+            </button>
+            <div className="flex items-center text-gray-800">
+              <EyeIcon />
+              <p>{views}</p>
+            </div>
           </div>
         </div>
         <div className="rounded-full p-1 w-32 h-32 -mt-24 bg-white">

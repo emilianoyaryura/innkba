@@ -16,7 +16,7 @@ const AuthorSocial = ({
   className?: string
 }) => {
   return (
-    <div className={clsx('sm:ml-auto flex items-center space-x-3', className)}>
+    <div className={clsx('sm:ml-auto flex items-center space-x-4', className)}>
       {author.facebook && (
         <Link href={author.facebook} passHref>
           <a
