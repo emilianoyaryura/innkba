@@ -9,6 +9,7 @@ import { supabase } from 'lib/supabase-client'
 import EyeIcon from 'components/atoms/icons/eye'
 import { useCallback, useEffect, useState } from 'react'
 import AuthorSocial from 'components/atoms/author-social'
+import clsx from 'clsx'
 
 const WriterPage = ({
   author,
@@ -123,7 +124,12 @@ const WriterPage = ({
         </div>
         <div className="mt-2 px-4 flex flex-col items-center">
           <p className="text-22 font-medium">{author?.name}</p>
-          <p className="text-16 text-center mt-2 text-gray-700 max-w-md">
+          <p
+            className={clsx('text-16 text-center mt-2 text-gray-700', {
+              'max-w-md': author.shortDescription.length < 80,
+              'max-w-xl': author.shortDescription.length >= 80
+            })}
+          >
             {author.shortDescription}
           </p>
           <AuthorSocial author={author} className="mx-auto mt-6" />
