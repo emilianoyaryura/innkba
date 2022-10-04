@@ -170,6 +170,25 @@ const renderBody = (document, size, category, center) => {
               </p>
             </div>
           )
+        } else if (
+          node.data.target.sys.contentType?.sys.id === 'horizontalImages'
+        ) {
+          return (
+            <div className={styles.horizontal_images}>
+              {node.data.target.fields.images.map((img, idx) => (
+                <div key={idx}>
+                  <img
+                    className={styles.image}
+                    src={img.fields.file.url}
+                    alt={img.fields.file.title ?? 'imagen'}
+                  />
+                  <p className={styles.image__footer}>
+                    {img.fields.description ?? ''}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )
         }
       },
       [MARKS.BOLD]: (node, children) => (

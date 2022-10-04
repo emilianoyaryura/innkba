@@ -158,10 +158,22 @@
   transform-origin: left;
 }
 
+.horizontal_images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: 16px;
+}
+
 @media (max-width: 640px) {
   .heading__3 {
     font-size: 20px;
     margin: 32px auto 18px auto;
+  }
+
+  .horizontal_images {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .heading__4 {
