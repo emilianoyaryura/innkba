@@ -132,7 +132,7 @@ const ChapterPage = ({
         </div>
         <Share
           title={chapter.title}
-          slug={chapter.slug}
+          slug={`${story.slug}/${chapter.slug}`}
           authorName={story.author.name}
           category="Arte y Literatura"
           className={clsx('justify-end', {
