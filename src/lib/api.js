@@ -361,7 +361,7 @@ export const getSingleAuthor = async (slug) => {
 }
 
 export const getAllStories = async () => {
-  const stories = await client.getEntries({ content_type: 'story' })
+  const stories = await client.getEntries({ content_type: 'story', include: 4 })
   return stories.items.map((s) => {
     return {
       title: s.fields.title,

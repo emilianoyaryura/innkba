@@ -170,6 +170,8 @@ const renderBody = (document, size, category, center) => {
               </p>
             </div>
           )
+        } else if (node.data.target.sys.contentType?.sys.id === 'spacing') {
+          return <div className={styles.spacing}></div>
         } else if (
           node.data.target.sys.contentType?.sys.id === 'horizontalImages'
         ) {

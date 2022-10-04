@@ -165,6 +165,12 @@
   gap: 16px;
 }
 
+.spacing {
+  height: 32px;
+  min-height: 32px;
+  max-height: 32px;
+}
+
 @media (max-width: 640px) {
   .heading__3 {
     font-size: 20px;
