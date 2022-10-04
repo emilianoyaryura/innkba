@@ -92,12 +92,17 @@ const ChapterPage = ({
   // @ts-ignore
   const searcher = tinyPosts?.concat(authorsSearcher)
 
+  const ogImage = story?.image.src
+    ? story.image.src
+    : 'https://innkba.com/og.png'
+
   return (
     <PageLayout
       posts={searcher}
       headProps={{
-        title: story?.title,
-        ogImage: story?.image.src ?? 'https://innkba.com/og.png'
+        title: `${story?.title} - ${chapter.title}`,
+        description: `Por ${story?.author.name}`,
+        ogImage: ogImage
       }}
     >
       <Container size="small">
