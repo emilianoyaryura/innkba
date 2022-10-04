@@ -265,7 +265,12 @@ const Template = ({
                 {story.copy}
               </p>
               <p className="text-16 text-gray-700 mt-4 sm:mt-8">
-                Por <b className="text-black">{story.author.name}</b>
+                Por{' '}
+                <Link href={`/escritores/${story.author.slug}`}>
+                  <a aria-label="author" className="text-black font-bold">
+                    {story.author.name}
+                  </a>
+                </Link>
               </p>
               <div className="flex items-center mt-3 pt-4 border-t border-solid border-gray-400 w-full justify-center lg:justify-start max-w-md">
                 <span className="text-14 text-gray-700 mr-6">Compartir en</span>
