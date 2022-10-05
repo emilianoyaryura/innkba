@@ -115,21 +115,34 @@ const WriterPage = ({
     >
       <div className="max-w-4xl mx-auto flex flex-col items-center mb-14">
         <div className="w-full flex flex-col">
-          <div
-            className="w-full h-40 sm:h-48 md:h-64 lg:rounded-2xl"
-            style={{
-              backgroundColor:
-                author?.background === 'violet'
-                  ? '#6C63FF'
-                  : author?.background === 'blue'
-                  ? '#2E8AF6'
-                  : author?.background === 'yellow'
-                  ? '#F9A826'
-                  : author?.background === 'red'
-                  ? '#FF4747'
-                  : '#CECECE'
-            }}
-          />
+          {author.name === 'Innk ba' ? (
+            <div className="w-full h-40 sm:h-48 md:h-64 bg-black lg:rounded-2xl overflow-hidden">
+              <div className="hidden sm:flex w-full h-full relative">
+                <Image
+                  src="/images/escribi-lo-que-quieras.png"
+                  alt="escribi lo que quieras"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            </div>
+          ) : (
+            <div
+              className="w-full h-40 sm:h-48 md:h-64 lg:rounded-2xl"
+              style={{
+                backgroundColor:
+                  author?.background === 'violet'
+                    ? '#6C63FF'
+                    : author?.background === 'blue'
+                    ? '#2E8AF6'
+                    : author?.background === 'yellow'
+                    ? '#F9A826'
+                    : author?.background === 'red'
+                    ? '#FF4747'
+                    : '#CECECE'
+              }}
+            />
+          )}
           <div className="flex items-center justify-between mt-2 px-2">
             <button
               aria-label="share button"
@@ -188,7 +201,7 @@ const WriterPage = ({
             </div>
           </div>
         </div>
-        <div className="rounded-full p-1 w-32 h-32 -mt-24 bg-white">
+        <div className="rounded-full p-1 w-32 h-32 -mt-24 bg-white z-10">
           {author?.image ? (
             <Image
               alt={author?.name}
