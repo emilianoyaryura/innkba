@@ -321,9 +321,10 @@ const Template = ({
               src={story.image.src ?? ''}
               alt={story.title}
               className="w-full h-auto max-w-md lg:max-w-xl object-cover"
+              style={{ maxHeight: '100vh' }}
             />
           </div>
-          <div className="flex flex-col mx-auto mt-20 sm:mt-32 md:mt-44 max-w-2xl">
+          <div className="flex flex-col mx-auto mt-20 sm:mt-32 max-w-2xl">
             {story.chapters?.map((c, idx) => (
               <Link
                 key={idx}
