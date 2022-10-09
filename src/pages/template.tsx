@@ -332,7 +332,12 @@ const Template = ({
               >
                 <a className="text-18 lg:text-22 inline-flex noDecoration transition-all transform hover:translate-x-4 duration-150 py-5 border-b border-solid border-gray-400">
                   <span
-                    style={{ height: '32px', width: '32px' }}
+                    style={{
+                      height: '32px',
+                      width: '32px',
+                      minWidth: '32px',
+                      minHeight: '32px'
+                    }}
                     className="border-solid border-black border flex items-center justify-center rounded-full"
                   >
                     {idx + 1}
