@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <Container
       size="large"
-      className="grid grid-cols-2 gap-8 justify-items-start sm:grid-cols-4 mt-60 mb-28"
+      className="grid grid-cols-2 gap-4 justify-items-start sm:grid-cols-4 mt-60 mb-28"
     >
       <div>
         <h1 className="uppercase font-semibold text-18 mb-5">Social</h1>
@@ -52,7 +52,14 @@ const Footer = () => {
       </div>
       <div>
         <h1 className="uppercase font-semibold text-18 mb-5">Contacto</h1>
-        <a href="mailto:contacto@innkba.com">contacto@innkba.com</a>
+        <div className="flex flex-col">
+          <a href="mailto:contacto@innkba.com">contacto@innkba.com</a>
+          <Link href="/nosotros">
+            <a aria-label="nosotros" className="mt-2">
+              Nosotros
+            </a>
+          </Link>
+        </div>
       </div>
       <div>
         <h1 className="uppercase font-semibold text-18 mb-5">Blog</h1>
@@ -74,11 +81,6 @@ const Footer = () => {
         <p className="mt-4 text-left sm:text-right">
           © {new Date().getFullYear()} Innk ba all rights reserved
         </p>
-        <Link href="/nosotros">
-          <a aria-label="nosotros" className="mt-2">
-            Nosotros
-          </a>
-        </Link>
       </div>
     </Container>
   )
