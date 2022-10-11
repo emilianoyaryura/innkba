@@ -14,7 +14,9 @@ type Props = {
 }
 
 const PostGrid = ({ posts, id, withoutMargins }: Props) => {
-  const spotifyPost = posts.filter((post) => post.spotify?.iframe !== '')[0]
+  const spotifyPost = posts.filter(
+    (post) => post.spotify && post.spotify?.iframe !== ''
+  )[0]
   const [morePosts, setMorePosts] = useState(spotifyPost ? 7 : 6)
 
   const postsLimit = posts.length
