@@ -14,22 +14,21 @@ function getCleanPost(post) {
     category: post.fields.section,
     tag: post.fields.tag,
     date: post.fields.date,
-    author: post.fields.author?.map((author) => {
-      return {
-        name: author.fields.name,
-        image: author.fields.frontImage?.fields?.file
-          ? `https:${author.fields.frontImage?.fields.file.url}`
-          : null,
-        shortDescription: author.fields.shortDescription ?? '',
-        instagram: author.fields.instagram ?? '',
-        linkedin: author.fields.linkedin ?? '',
-        facebook: author.fields.facebook ?? '',
-        twitter: author.fields.twitter ?? '',
-        website: author.fields.website ?? '',
-        email: author.fields.email ?? '',
-        slug: author.fields.slug ?? ''
-      }
-    }),
+    author: {
+      name: post.fields.author[0].fields.name,
+      image: post.fields.author[0].fields.frontImage?.fields?.file
+        ? `https:${post.fields.author[0].fields.frontImage?.fields.file.url}`
+        : null,
+      shortDescription: post.fields.author[0].fields.shortDescription ?? '',
+      instagram: post.fields.author[0].fields.instagram ?? '',
+      linkedin: post.fields.author[0].fields.linkedin ?? '',
+      facebook: post.fields.author[0].fields.facebook ?? '',
+      spotify: post.fields.author[0].fields.spotify ?? '',
+      twitter: post.fields.author[0].fields.twitter ?? '',
+      website: post.fields.author[0].fields.website ?? '',
+      email: post.fields.author[0].fields.email ?? '',
+      slug: post.fields.author[0].fields.slug ?? ''
+    },
     spotify: {
       link: post.fields.spotifyLink ?? '',
       iframe: post.fields.spotifyIframe ?? ''
@@ -160,6 +159,7 @@ export async function getHomePage() {
         instagram: story.author.fields.instagram ?? '',
         linkedin: story.author.fields.linkedin ?? '',
         facebook: story.author.fields.facebook ?? '',
+        spotify: story.author.fields.spotify ?? '',
         twitter: story.author.fields.twitter ?? '',
         website: story.author.fields.website ?? ''
       },
@@ -351,6 +351,7 @@ export const getSingleAuthor = async (slug) => {
       instagram: author.fields.instagram ?? '',
       linkedin: author.fields.linkedin ?? '',
       facebook: author.fields.facebook ?? '',
+      spotify: author.fields.spotify ?? '',
       twitter: author.fields.twitter ?? '',
       website: author.fields.website ?? '',
       email: author.fields.email ?? '',
@@ -380,6 +381,7 @@ export const getAllStories = async () => {
         instagram: s.fields.author.fields.instagram ?? '',
         linkedin: s.fields.author.fields.linkedin ?? '',
         facebook: s.fields.author.fields.facebook ?? '',
+        spotify: s.fields.author.fields.spotify ?? '',
         twitter: s.fields.author.fields.twitter ?? '',
         website: s.fields.author.fields.website ?? '',
         email: s.fields.author.fields.email ?? '',

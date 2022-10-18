@@ -31,6 +31,7 @@ export type Author = {
   linkedin?: string
   website?: string
   email?: string
+  spotify?: string
   background?: string
   slug?: string
 }
@@ -81,7 +82,7 @@ export type ContentfulPost = {
   category: Category
   tag: Tag
   date: string
-  author: Author[]
+  author: Author
   spotify?: {
     link: string
     iframe: string
