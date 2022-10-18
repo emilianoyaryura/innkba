@@ -81,7 +81,7 @@ export type ContentfulPost = {
   category: Category
   tag: Tag
   date: string
-  author: Author[]
+  author: Author
   spotify?: {
     link: string
     iframe: string

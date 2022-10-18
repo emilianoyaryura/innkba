@@ -26,14 +26,22 @@ const HorizontalPost = ({ post }: { post: PostPreview }) => {
               'text-red': post.category === 'Viajes'
             })}
           >
-            {post.category}
+            {post.tag}
           </p>
           <p className="text-18 font-semibold max-w-sm md:leading-smooth lg:leading-tight">
             {post.title}
           </p>
-          <div className="mt-4 max-w-max transition-all duration-150 hover:opacity-70">
-            <span className="text-14 mb-1 font-semibold">Seguir Leyendo</span>
-            <div className="h-px w-full bg-black" />
+          <div className="mt-4 max-w-max">
+            {post.author.name === 'Innk ba' ? (
+              <span className="text-14 mb-1 font-semibold">Seguir Leyendo</span>
+            ) : (
+              <span className="text-14 mb-1 font-normal">
+                Por <span className="font-bold">{post.author.name}</span>
+              </span>
+            )}
+            {post.author.name === 'Innk ba' && (
+              <div className="h-px w-full bg-black" />
+            )}
           </div>
         </div>
       </a>

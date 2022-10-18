@@ -14,22 +14,20 @@ function getCleanPost(post) {
     category: post.fields.section,
     tag: post.fields.tag,
     date: post.fields.date,
-    author: post.fields.author?.map((author) => {
-      return {
-        name: author.fields.name,
-        image: author.fields.frontImage?.fields?.file
-          ? `https:${author.fields.frontImage?.fields.file.url}`
-          : null,
-        shortDescription: author.fields.shortDescription ?? '',
-        instagram: author.fields.instagram ?? '',
-        linkedin: author.fields.linkedin ?? '',
-        facebook: author.fields.facebook ?? '',
-        twitter: author.fields.twitter ?? '',
-        website: author.fields.website ?? '',
-        email: author.fields.email ?? '',
-        slug: author.fields.slug ?? ''
-      }
-    }),
+    author: {
+      name: post.fields.author[0].fields.name,
+      image: post.fields.author[0].fields.frontImage?.fields?.file
+        ? `https:${post.fields.author[0].fields.frontImage?.fields.file.url}`
+        : null,
+      shortDescription: post.fields.author[0].fields.shortDescription ?? '',
+      instagram: post.fields.author[0].fields.instagram ?? '',
+      linkedin: post.fields.author[0].fields.linkedin ?? '',
+      facebook: post.fields.author[0].fields.facebook ?? '',
+      twitter: post.fields.author[0].fields.twitter ?? '',
+      website: post.fields.author[0].fields.website ?? '',
+      email: post.fields.author[0].fields.email ?? '',
+      slug: post.fields.author[0].fields.slug ?? ''
+    },
     spotify: {
       link: post.fields.spotifyLink ?? '',
       iframe: post.fields.spotifyIframe ?? ''

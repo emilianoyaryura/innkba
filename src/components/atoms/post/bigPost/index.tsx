@@ -27,9 +27,9 @@ const BigPost = ({ post }: { post: PostPreview }) => {
             'text-red': post.category === 'Viajes'
           })}
         >
-          {post.category}
+          {post.tag}
         </p>
-        <p className="text-26 sm:text-30 font-bold leading-smooth">
+        <p className="text-22 sm:text-30 md:text-26 lg:text-30 font-bold leading-smooth">
           {post.title}
         </p>
         <p
@@ -40,7 +40,20 @@ const BigPost = ({ post }: { post: PostPreview }) => {
         >
           {post.copy}
         </p>
-        <Button className="max-w-max">Seguir Leyendo</Button>
+
+        <div
+          className={clsx('max-w-max', {
+            'mt-4': post.author.name === 'Innk ba'
+          })}
+        >
+          {post.author.name === 'Innk ba' ? (
+            <Button className="max-w-max">Seguir Leyendo</Button>
+          ) : (
+            <span className="text-14 sm:text-16 mb-1 font-normal -mt-2">
+              Por <span className="font-bold">{post.author.name}</span>
+            </span>
+          )}
+        </div>
       </a>
     </Link>
   )
