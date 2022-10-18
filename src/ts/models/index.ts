@@ -31,6 +31,7 @@ export type Author = {
   linkedin?: string
   website?: string
   email?: string
+  spotify?: string
   background?: string
   slug?: string
 }
