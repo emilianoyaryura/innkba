@@ -79,7 +79,8 @@ const Footer = () => {
           alt="logo"
         />
         <p className="mt-4 text-left sm:text-right">
-          © {new Date().getFullYear()} Innk ba all rights reserved
+          © {new Date().getFullYear()} Innk ba{' '}
+          <Link href="/terminos-y-condiciones">all rights reserved</Link>
         </p>
       </div>
     </Container>
