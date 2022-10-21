@@ -80,7 +80,7 @@ const Footer = () => {
         />
         <p className="mt-4 text-left sm:text-right">
           © {new Date().getFullYear()} Innk ba{' '}
-          <Link href="/terminos-y-condiciones">all rights reserved</Link>
+          <Link href="/terminos-y-condiciones">Términos y Condiciones</Link>
         </p>
       </div>
     </Container>
