@@ -40,7 +40,7 @@ const Nosotros = ({
         <div className="h-px w-full bg-gray-300 mt-2 mb-6" />
         <div className="flex flex-col space-y-3 mb-14">
           <p>
-            Innk ba es una revista digital en la cualquier persona puede
+            Innk ba es una revista digital en la que cualquier persona puede
             expresarse. ¿Los motivos? No existen. O sí, pueden ser todos. Los
             que decidan formar parte de Innk no necesitan encontrar ese “algo”
             que los justifique. Algunos escriben porque les gusta, otros para
