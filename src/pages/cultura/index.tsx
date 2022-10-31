@@ -63,7 +63,7 @@ const Cultura = ({
         author={page.header.author}
         ctas={[
           {
-            href: 'mailto:test@example.com?subject=Hola, quiero escribir en la sección de cultura!',
+            href: 'mailto:contacto@innkba.com?subject=Hola, quiero escribir en la sección de cultura!',
             label: 'Escribí en Innk'
           },
           {

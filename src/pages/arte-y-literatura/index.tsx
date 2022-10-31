@@ -73,7 +73,7 @@ const ArteyLiteratura = ({
         author={page.header.author}
         ctas={[
           {
-            href: 'mailto:test@example.com?subject=Hola, quiero escribir en la sección de Arte y Literatura!',
+            href: 'mailto:contacto@innkba.com?subject=Hola, quiero escribir en la sección de Arte y Literatura!',
             label: 'Escribí en Innk'
           },
           {
