@@ -6,7 +6,7 @@ import {
   getPostsPreview
 } from 'lib/api'
 import { AuthorPreview, Page, PostPreview } from 'ts/models'
-import SectionHeader from 'components/molecules/sectionHeader'
+import SectionHeader from 'components/molecules/sectionHeader/new'
 import PostGrid from 'components/molecules/postGrid'
 import FullScreenPost from 'components/atoms/post/fullScreenPost'
 import Section from 'components/molecules/section'
@@ -53,6 +53,12 @@ const Lifestyle = ({
   return (
     <PageLayout posts={searcher} headProps={{ title: 'Innk ba | Lifestyle' }}>
       <SectionHeader
+        section={{
+          title: 'Lifestyle',
+          tags: [{ label: 'Salud', link: 'salud' }]
+        }}
+      />
+      {/* <SectionHeader
         image={{
           src: page.header.illustration.src,
           title: page.header.illustration.label ?? 'Lifestyle Header Illo',
@@ -71,7 +77,7 @@ const Lifestyle = ({
             label: 'Seguí leyendo'
           }
         ]}
-      />
+      /> */}
       <Section section="Lo mas destacado">
         <div>
           {page.featuredPosts && (
