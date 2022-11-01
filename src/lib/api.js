@@ -58,6 +58,7 @@ export const getPost = async (slug) => {
 export const getPostsPreview = async () => {
   const posts = await client.getEntries({
     content_type: 'post',
+    limit: 1000,
     select: [
       'fields.title',
       'fields.slug',

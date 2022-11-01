@@ -89,6 +89,7 @@ const WriterPage = ({
           ?.map((e) => e.views)
           .reduce((partialSum, a) => partialSum + a, 0)
         setViews(sum)
+        console.log(data)
       } catch (err) {
         console.log(err, 'error')
       }
