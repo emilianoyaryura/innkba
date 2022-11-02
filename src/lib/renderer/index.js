@@ -45,8 +45,9 @@ const renderBody = (document, size, category, center) => {
       [BLOCKS.QUOTE]: (node, children) => <blockquote>{children}</blockquote>,
       [BLOCKS.PARAGRAPH]: (node, children) => (
         <p
-          className={clsx('max-w-2xl', styles.paragraph, {
-            'text-center': center
+          className={clsx('max-w-2xl mx-auto', styles.paragraph, {
+            'text-center mb-2': center,
+            'mb-5': !center
           })}
         >
           {children}

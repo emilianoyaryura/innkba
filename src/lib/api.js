@@ -34,6 +34,7 @@ function getCleanPost(post) {
       iframe: post.fields.spotifyIframe ?? ''
     },
     bigImages: post.fields.bigImages ?? false,
+    textCenter: post.fields.textCenter ?? false,
     content: post.fields.content,
     image: {
       src: `https:${post.fields.frontImage?.fields.file.url}` ?? null,

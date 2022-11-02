@@ -88,6 +88,7 @@ export type ContentfulPost = {
     iframe: string
   }
   bigImages: boolean
+  textCenter: boolean
   content: any
   image: {
     src: string | null

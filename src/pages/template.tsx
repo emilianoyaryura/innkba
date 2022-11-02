@@ -221,7 +221,12 @@ const Template = ({
               'text-justify': textCenter
             })}
           >
-            {renderBody(post.content, post.bigImages, post.category, false)}
+            {renderBody(
+              post.content,
+              post.bigImages,
+              post.category,
+              post.textCenter
+            )}
             <PostAuthor author={post.author} />
           </div>
           <div className="mt-32">
