@@ -406,3 +406,13 @@ export const getAllStories = async () => {
     }
   })
 }
+
+export const getTermsAndConditions = async () => {
+  const data = await client.getEntries({
+    include: 4,
+    content_type: 'termsAndConditions'
+  })
+  const page = data.items[0]
+
+  return page.fields.content
+}
