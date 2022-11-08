@@ -43,24 +43,25 @@ const Template = ({
         .from('Page Views')
         .select()
         .eq('slug', query)
+        .single()
       try {
         // @ts-ignore
-        if (data?.length < 1 || !data) {
+        if (!data) {
           const a = await supabase
             .from('Page Views')
             .insert({ slug: query, views: 1 })
           // const b = setViews(1)
           // return a && b
           return a
-        } else {
-          const views = data[0]?.views
+        } else if (data) {
+          const views = data.views
           const a = await supabase
             .from('Page Views')
             .update({ slug: query, views: views + 1 })
           // const b = setViews(views + 1)
           // return a && b
           return a
-        }
+        } else return null
       } catch (err) {
         console.log(err, 'error')
       }
