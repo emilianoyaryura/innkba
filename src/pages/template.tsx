@@ -55,9 +55,10 @@ const Template = ({
           return a
         } else if (data) {
           const views = data.views
+          const updatedViews = views + 1
           const a = await supabase
             .from('Page Views')
-            .update({ slug: query, views: views + 1 })
+            .update({ slug: query, views: updatedViews })
           // const b = setViews(views + 1)
           // return a && b
           return a
