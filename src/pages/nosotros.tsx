@@ -56,16 +56,25 @@ const Nosotros = ({
             que cuenten los demás, seguro te servirá a vos.
           </p>
           <p>
-            Dicho esto,{' '}
+            Dicho esto, te invitamos a que{' '}
+            <Link href="/">
+              <a
+                aria-label="web"
+                className="noDecoration font-semibold underline text-blue"
+              >
+                navegues la web
+              </a>
+            </Link>{' '}
+            y{' '}
             <Link href="mailto:contacto@innkba.com" passHref>
               <a
                 aria-label="contact"
                 href="mailto:contacto@innkba.com"
                 target="_blank"
                 rel="noopener"
-                className="noDecoration font-semibold"
+                className="noDecoration font-semibold underline text-blue"
               >
-                te invitamos a que escribas con nosotros.
+                escribas con nosotros.
               </a>
             </Link>
           </p>
