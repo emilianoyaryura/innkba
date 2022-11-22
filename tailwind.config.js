@@ -55,7 +55,11 @@ module.exports = {
       34: '34px',
       38: '38px',
       42: '42px',
-      48: '48px'
+      48: '48px',
+      56: '56px',
+      64: '64px',
+      80: '80px',
+      120: '120px'
     },
     boxShadow: {
       sm: '1px 1px 20px rgba(0, 0, 0, 0.05)',
@@ -67,7 +71,15 @@ module.exports = {
     extend: {
       lineHeight: {
         smooth: '110%',
-        normal: '120%'
+        normal: '120%',
+        tight: '0.9'
+      },
+      maxHeight: {
+        720: '720px',
+        820: '820px'
+      },
+      maxWidth: {
+        1440: '1440px'
       }
     }
   },
