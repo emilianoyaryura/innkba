@@ -15,7 +15,7 @@ const Mediakit = () => {
         title: 'Innk ba - Mediakit',
         description: 'Revista digital. Nuevo espacio. Nuevas ideas.',
         cannonical: 'https://www.innkba.com/',
-        ogImage: 'https://www.innkba.com/og.png'
+        ogImage: 'https://www.innkba.com/mediakit-og.png'
       }}
       withoutPreFooter
     >
