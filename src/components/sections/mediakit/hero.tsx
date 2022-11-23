@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import styles from './mediakit.module.css'
 import Image from 'next/image'
-import art from '../../../../public/images/mediakit/art.jpg'
+import art from '../../../../public/images/mediakit/art.jpeg'
 import desktopHero from '../../../../public/images/mediakit/hero-desktop.png'
 import Container from 'components/layout/container'
 
