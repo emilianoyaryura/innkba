@@ -1,0 +1,36 @@
+.wrapper {
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+  width: 100%;
+  height: auto;
+}
+
+.player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.dissapear {
+  animation-name: dissapear;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes dissapear {
+  0% {
+    opacity: 1;
+    display: flex;
+  }
+
+  90% {
+    opacity: 0.1;
+    display: flex;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+    z-index: -1;
+  }
+}
