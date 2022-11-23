@@ -92,10 +92,10 @@ const Counters = () => {
       <Counter
         delay={0.4}
         duration={2.5}
-        to={80}
+        to={100}
         isPurple
         label="escritores"
-        onEnd="+80"
+        onEnd="+100"
       />
     </div>
   )
