@@ -84,9 +84,9 @@ const Counters = () => {
       <Counter
         duration={2}
         delay={0.2}
-        to={16}
+        to={20}
         label="usuarios"
-        onEnd="+16k"
+        onEnd="+20k"
         suffix="k"
       />
       <Counter
