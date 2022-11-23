@@ -10,7 +10,7 @@ type Props = {
   children: ReactNode
   headProps?: HeadProps
   withoutPreFooter?: boolean
-  posts: TinyPost[]
+  posts?: TinyPost[]
 }
 
 const PageLayout = ({
@@ -32,7 +32,7 @@ const PageLayout = ({
             headProps?.cannonical ?? `https://www.innkba.com${router.asPath}`
         }}
       />
-      <Nav posts={posts} />
+      {posts && <Nav posts={posts} />}
       {children}
       {!withoutPreFooter && <PreFooter />}
       <Footer />
