@@ -28,7 +28,7 @@ const HorizontalPost = ({ post }: { post: PostPreview }) => {
           >
             {post.tag}
           </p>
-          <p className="text-18 font-semibold max-w-sm md:leading-smooth lg:leading-tight">
+          <p className="text-18 font-semibold max-w-sm md:leading-smooth">
             {post.title}
           </p>
           <div className="mt-4 max-w-max">
