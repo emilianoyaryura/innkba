@@ -17,6 +17,7 @@ const Mediakit = () => {
         cannonical: 'https://www.innkba.com/',
         ogImage: 'https://www.innkba.com/og.png'
       }}
+      withoutPreFooter
     >
       <div
         style={{ maxWidth: '1440px' }}
@@ -24,17 +25,17 @@ const Mediakit = () => {
       >
         <MediakitHero />
       </div>
-      <FadeIn className="flex max-w-1440 justify-center items-center">
+      <FadeIn className="flex max-w-1440 mx-auto justify-center items-center">
         <Image src={caba} alt="caba" />
       </FadeIn>
       <Container size="large" className="mt-3">
         <div className="h-screen max-h-820 flex items-center justify-center">
           <FadeIn>
-            <p className="text-18 opacity-90 max-w-xl text-center">
+            <p className="text-16 sm:text-18 opacity-90 max-w-xl text-center">
               Innk ba es una revista digital de contenido original. Invita a los
               escritores a compartir su palabra, a los viajeros a compartir sus
               experiencias, a los pensadores a compartir sus ideas y a los
-              artistas a compartir sus obras.
+              artistas a compartir sus obras.{' '}
               <b>
                 Que lo que escribas no quede tirado en un cajón. Compartí lo
                 tuyo. Compartilo en Innk.
@@ -42,16 +43,16 @@ const Mediakit = () => {
             </p>
           </FadeIn>
         </div>
-        <div className="flex justify-between">
+        <div className="grid grid-cols-2 gap-3 sm:gap-8 justify-items-center">
           <FadeIn className="max-w-lg">
             <Image src={art} alt="art" />
           </FadeIn>
-          <FadeIn className="max-w-lg mt-52">
+          <FadeIn className="max-w-lg mt-32 sm:mt-52">
             <Image src={travel} alt="travel" />
           </FadeIn>
         </div>
         <Counters />
-        <div className="flex items-center gap-20">
+        <div className="flex items-center gap-20 flex-col-reverse md:flex-row">
           <FadeIn>
             <video controls src={'/reel.mp4'} autoPlay muted width={400} />
           </FadeIn>
@@ -63,11 +64,12 @@ const Mediakit = () => {
             </FadeIn>
             <FadeIn delay={0.15}>
               <p className="text-16 opacity-90 max-w-xl text-center">
-                Innk ba es una revista digital en la que cualquiera puede
-                escribir. ¿Los motivos? No existen. O sí, pueden ser todos. Los
-                que decidan formar parte de Innk no necesitan encontrar ese
-                “algo” que los justifique. Algunos escriben porque les gusta,
-                otros para darse a conocer y otros como un negocio, por ejemplo.
+                Buscando un slogan, no encontramos nada que nos represente mejor
+                que <i>"Escribí lo que quieras"</i>. No somos solo una revista
+                digital, somos una comunidad. Aquellos que se animen a escribir,
+                no solo van a hallar un espacio para plasmar sus ideas
+                libremente, sino un grupo de gente dispuesta a ayudarlos a
+                difundirlas.
               </p>
             </FadeIn>
           </div>

@@ -39,7 +39,7 @@ const Counter = ({
         {hasEnded && showsUp ? (
           <h1
             className={clsx(
-              'text-42 sm:text-48 md:text-80 font-semibold leading-none',
+              'text-38 sm:text-48 md:text-80 font-semibold leading-none',
               {
                 'text-violet': isPurple
               }
@@ -58,7 +58,7 @@ const Counter = ({
             }}
             suffix={suffix ?? ''}
             className={clsx(
-              'text-42 sm:text-48 md:text-80 font-semibold leading-none',
+              'text-38 sm:text-48 md:text-80 font-semibold leading-none',
               {
                 'text-violet': isPurple
               }
@@ -66,7 +66,7 @@ const Counter = ({
           />
         ) : null}
         <p
-          className={clsx('text-12 sm:text-16 md:text-20 font-semibold', {
+          className={clsx('text-14 sm:text-16 md:text-20 font-semibold', {
             'text-violet': isPurple
           })}
         >
@@ -92,10 +92,10 @@ const Counters = () => {
       <Counter
         delay={0.4}
         duration={2.5}
-        to={70}
+        to={80}
         isPurple
         label="escritores"
-        onEnd="+70"
+        onEnd="+80"
       />
     </div>
   )

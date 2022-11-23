@@ -80,6 +80,9 @@ module.exports = {
       },
       maxWidth: {
         1440: '1440px'
+      },
+      minWidth: {
+        370: '370px'
       }
     }
   },
