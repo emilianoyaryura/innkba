@@ -80,22 +80,22 @@ const Counter = ({
 const Counters = () => {
   return (
     <div className="grid grid-cols-3 justify-items-center py-60">
-      <Counter duration={3} to={80} label="visitas" onEnd="+80k" suffix="k" />
+      <Counter duration={3} to={100} label="visitas" onEnd="+100k" suffix="k" />
       <Counter
         duration={2}
         delay={0.2}
-        to={20}
+        to={22}
         label="usuarios"
-        onEnd="+20k"
+        onEnd="+22k"
         suffix="k"
       />
       <Counter
         delay={0.4}
         duration={2.5}
-        to={100}
+        to={140}
         isPurple
         label="escritores"
-        onEnd="+100"
+        onEnd="+140"
       />
     </div>
   )
