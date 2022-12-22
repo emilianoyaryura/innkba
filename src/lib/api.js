@@ -324,7 +324,8 @@ export const getAllStoriesPreview = async () => {
 export const getAllAuthors = async () => {
   const authors = await client.getEntries({
     content_type: 'author',
-    select: ['fields.name', 'fields.slug']
+    select: ['fields.name', 'fields.slug'],
+    limit: 1000
   })
 
   const real = authors.items.filter((au) => au.fields.slug)
