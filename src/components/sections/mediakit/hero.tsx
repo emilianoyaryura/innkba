@@ -156,7 +156,7 @@ const MediakitHero = () => {
         transition={{ duration: 0.4, delay: 1.3, type: 'spring' }}
         className="text-22 uppercase font-bold leading-none mr-3 text-gray-800 mt-3 absolute top-10 right-10"
       >
-        2022
+        2023
       </motion.h1>
     </Container>
   )

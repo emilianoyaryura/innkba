@@ -95,7 +95,7 @@ const Counters = () => {
         to={140}
         isPurple
         label="escritores"
-        onEnd="+140"
+        onEnd="+170"
       />
     </div>
   )
