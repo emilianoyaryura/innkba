@@ -27,6 +27,7 @@ function getCleanPost(post) {
       twitter: post.fields.author[0].fields.twitter ?? '',
       website: post.fields.author[0].fields.website ?? '',
       email: post.fields.author[0].fields.email ?? '',
+      cafecito: post.fields.author[0].fields.cafecito ?? '',
       slug: post.fields.author[0].fields.slug ?? ''
     },
     spotify: {
@@ -358,6 +359,7 @@ export const getSingleAuthor = async (slug) => {
       twitter: author.fields.twitter ?? '',
       website: author.fields.website ?? '',
       email: author.fields.email ?? '',
+      cafecito: author.fields.cafecito ?? '',
       background: author.fields.background ?? '',
       slug: author.fields.slug ?? ''
     }

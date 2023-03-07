@@ -121,6 +121,18 @@ const Template = ({
           size="large"
           className=" mt-10 sm:mt-12 flex flex-col items-center"
         >
+          {post.author.cafecito && (
+            <button
+              onClick={() => {
+                if (!post.author.cafecito) return
+                router.push(post.author.cafecito)
+              }}
+              aria-label="donate"
+              className="fixed left-1/2 transform text-gray-800 -translate-x-1/2 bottom-8 bg-white z-40 shadow-md text-14 leading-none border rounded-full border-gray-700 p-2"
+            >
+              Apoyá al {post.author.name}
+            </button>
+          )}
           <div className="flex items-center justify-center space-x-6 mb-6">
             <Link href={`/${getSectionSlug(post.category)}`} passHref>
               <a className="flex items-center justify-center py-2 px-4 rounded bg-lightBlue">
