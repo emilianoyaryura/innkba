@@ -64,7 +64,7 @@ const ChapterPage = ({
     } catch (err) {
       console.log(err, 'error')
     }
-  }, [query])
+  }, [chapter.slug, story.slug])
 
   useEffect(() => {
     handleViews()
@@ -106,6 +106,18 @@ const ChapterPage = ({
       }}
     >
       <Container size="small">
+        {story.author.cafecito && (
+          <button
+            onClick={() => {
+              if (!story.author.cafecito) return
+              router.push(story.author.cafecito)
+            }}
+            aria-label="donate"
+            className="fixed left-1/2 transform text-gray-800 -translate-x-1/2 bottom-8 bg-white z-40 shadow-md text-14 leading-none border rounded-full border-gray-700 p-2"
+          >
+            Apoyá a {story.author.name}
+          </button>
+        )}
         <div className="mt-10 sm:mt-16">
           <h1 className="text-28 sm:text-32 font-medium">{chapter.title}</h1>
           <div className="flex flex-col sm:flex-row sm:justify-between pt-3 sm:pt-2 mt-2 border-t border-solid border-gray-300">

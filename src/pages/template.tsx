@@ -130,7 +130,7 @@ const Template = ({
               aria-label="donate"
               className="fixed left-1/2 transform text-gray-800 -translate-x-1/2 bottom-8 bg-white z-40 shadow-md text-14 leading-none border rounded-full border-gray-700 p-2"
             >
-              Apoyá al {post.author.name}
+              Apoyá a {post.author.name}
             </button>
           )}
           <div className="flex items-center justify-center space-x-6 mb-6">
