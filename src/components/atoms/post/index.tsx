@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import { getSectionSlug } from 'lib/utils/section'
-import Image from 'next/image'
 import Link from 'next/link'
 import { PostPreview } from 'ts/models'
 
@@ -20,13 +19,11 @@ const Post = ({
         className="flex flex-col cursor-pointer noDecoration group"
         aria-label="go to post"
       >
-        <Image
+        <img
           src={post.image.src ?? ''}
           alt={post.image.title ?? ''}
-          width={320}
-          height={270}
-          className="rounded-xl transition-all duration-150 group-hover:opacity-90"
-          objectFit="cover"
+          className="rounded-xl transition-all w-full duration-150 group-hover:opacity-90 object-cover"
+          style={{ height: '270px' }}
         />
         <div className="mt-5 pr-3">
           {!withoutCategory && (

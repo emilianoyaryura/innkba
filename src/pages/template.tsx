@@ -3,7 +3,6 @@ import { AuthorPreview, ContentfulPost, PostPreview, Story } from 'ts/models'
 import Container from 'components/layout/container'
 import PageLayout from 'components/layout/pageLayout'
 import { getDate } from 'lib/utils/date'
-import Image from 'next/image'
 import Link from 'next/link'
 import { renderBody } from 'lib/renderer'
 import Post from 'components/atoms/post'
@@ -190,13 +189,12 @@ const Template = ({
                 className="absolute right-0 hidden sm:flex"
               />
             </div>
-            <Image
+            <img
               src={post.image.src ?? ''}
               alt={post.image.title ?? post.title}
               width={860}
               height={490}
-              objectFit="cover"
-              className="rounded-xl sm:rounded-2xl"
+              className="rounded-xl sm:rounded-2xl object-cover"
             />
             <div className="hidden sm:flex items-center space-x-1 justify-end mt-5">
               <button
