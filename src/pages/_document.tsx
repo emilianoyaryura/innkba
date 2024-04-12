@@ -21,6 +21,11 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
           />
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9711995605403083"
+            crossOrigin="anonymous"
+          ></script>
         </Head>
         <body>
           <GAScript />
