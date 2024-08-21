@@ -2,7 +2,6 @@ import Head, { defaultMeta, HeadProps } from 'components/common/head'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 import { TinyPost } from 'ts/models'
-import Footer from '../footer'
 import Nav from '../nav'
 import PreFooter from '../preFooter'
 
@@ -35,7 +34,7 @@ const PageLayout = ({
       {posts && <Nav posts={posts} />}
       {children}
       {!withoutPreFooter && <PreFooter />}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import HomePage from 'pages'
+import HomePage from 'pages/indexold'
 import { getAllAuthors, getHomePage, getPostsPreview } from 'lib/api'
 
 export const getStaticProps = async () => {
